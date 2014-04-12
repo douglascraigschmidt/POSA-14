@@ -48,18 +48,18 @@ public class PingPongRight
         }
 
         /**
-         * Use a ReentrantLock to protect the critical section.
+         * Define a ReentrantLock to protect the critical section.
          */
         // TODO - You fill in here.
 
         /**
-         * Use a ConditionObject to wait while the number of permits
+         * Define a ConditionObject to wait while the number of permits
          * is 0.
          */
         // TODO - You fill in here.
 
         /**
-         * A count of the number of available permits.
+         * Define a count of the number of available permits.
          */
         // TODO - You fill in here.
     }
