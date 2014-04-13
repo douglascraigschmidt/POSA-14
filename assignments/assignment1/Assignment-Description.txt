@@ -18,6 +18,13 @@ In particular, you'll need to do the following:
   Section 1: Module 2: Part 5: Java ReentrantLock
   Section 1: Module 2: Part 8: Java ConditionObject 
 
+  There are also relevant discussions about using Java
+  ConditionObjects at these links that may help with the
+  SimpleSemaphore implementation:
+
+  http://docs.oracle.com/javase/1.5.0/docs/api/java/util/concurrent/locks/Condition.html
+  http://stackoverflow.com/questions/11308768/condition-should-unlock-before-await
+
 . Use your SimpleSemaphore to implement the PlayPingPongThread class
   and fix the problems with the earlier PingPongWrong solution, which
   is covered in this video:
