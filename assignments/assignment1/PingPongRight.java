@@ -26,7 +26,7 @@ public class PingPongRight
         /**
          * Constructor initialize the data members. 
          */
-        public SimpleSemaphore (int maxPermits)
+        public SimpleSemaphore (int permits)
         { 
             // TODO - You fill in here.
         }
