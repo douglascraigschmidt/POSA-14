@@ -1,0 +1,80 @@
+Programming Assignment 0
+
+In this first (intentionally simple) assignment, you will implement a
+subset of the java.util.concurrent.atomic.AtomicLong class using a
+Java ReentrantReadWriteLock.  The goal is to understand how to use
+ReentrantReadWriteLock to serialize access to a variable that's shared
+by multiple threads.  The AtomicLongTest.java program creates two
+Threads that increment and decrement the AtomicLong 100,000,000 times
+each.  If the AtomicLong implementation is properly serialized it's
+final value should be 0.
+
+The BuggyLongTest.java program shows what happens if concurrent access
+to a long isn't properly serialized.  This test program works best on
+a multi-core/multi-processor machine, which should actually induce
+failure due to race conditions stemming from parallel execution.  If
+this test "succeeds" then your target platform is not sufficiently
+parallel to demonstrate the bug.
+
+In this directory you'll find the AtomicLong.java class, which
+contains the skeleton Java code that you'll implement by completing
+the "TODO - You fill in here" comments to provide a working solution.
+DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
+"TODO - You fill in here" portions!!!
+
+In particular, you'll need to do the following:
+
+. Implement the AtomicLong class using a Java ReentrantReadWriteLock,
+  which is covered in this video:
+  
+  Section 1: Module 2: Part 6: Java ReentrantReadWriteLock
+
+  There's also a good tutorial on ReentrantReadWriteLock at
+  
+  http://tutorials.jenkov.com/java-util-concurrent/readwritelock.html
+
+. Make sure to use a readLock() for AtomicLong.get() and writeLock()
+  for all the other AtomicLong methods.
+
+Note that the AtomicLongTest.java program uses Java Threads and
+Runnables, which are described in these videos:
+
+  Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
+  Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+
+Likewise, it also uses the Java CountDownLatch and CyclicBarrier
+classes, which are described in this video:
+
+  Section 1: Module 2: Part 9: Java CountDownLatch
+
+At the moment, all these videos are available in the YouTube playlist
+at
+
+https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
+ 
+When the 2014 POSA MOOC officially starts these videos will be
+available at
+
+https://class.coursera.org/posa-002/lecture
+
+To compile this code you can either use the provided Eclipse project
+or simply type
+
+% javac AtomicLockTest.java AtomicLock.java
+
+on the command-line and then run the resulting class file by typing
+
+% java AtomicLockTest
+
+The output for a correct solution should look exactly like this:
+
+Starting AtomicLongTest
+test worked
+Finishing AtomicLongTest
+
+
+
+
+
+
+
