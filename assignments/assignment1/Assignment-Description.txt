@@ -38,6 +38,12 @@ In particular, you'll need to do the following:
 
   Section 1: Module 2: Part 9: Java CountDownLatch
 
+  There are also relevant discussions about using Java
+  CountDownLatches at these links:
+
+  http://javatechig.com/java/countdownlatch-and-java-concurrency-example  
+  http://tutorials.jenkov.com/java-util-concurrent/countdownlatch.html
+
 Note, at the moment, all these videos are available in the YouTube
 playlist at 
 
