@@ -47,7 +47,7 @@ class AtomicLong
     /**
      * @brief Atomically decrements by one the current value
      *
-     * @returns the previous value
+     * @returns the updated value
      */
     public long decrementAndGet()
     {
