@@ -177,8 +177,7 @@ public class ThreadedDownloads extends Activity
         hideKeyboard();
 
         /**
-         * Inform the user that the download is starting via a
-         * progress dialog.
+         * Inform the user that the download is starting.
          */
         mProgressDialog =
             ProgressDialog.show(ThreadedDownloads.this,
@@ -214,7 +213,7 @@ public class ThreadedDownloads extends Activity
          *            The bitmap image url
          */
         RunnableWithHandlers(String url) {
-            this.mUrl = url;
+            mUrl = url;
         }
 
         /**
@@ -257,8 +256,8 @@ public class ThreadedDownloads extends Activity
 
         /**
          * Create and start a new Thread to download an image in the
-         * background via Messages and display it in the UI Thread
-         * via the messageHandler.
+         * background and then use Messages and MessageHandler to
+         * cause it to be displayed in the UI Thread.
          */
         new Thread(new RunnableWithMessages(url)).start();
     }
@@ -266,9 +265,11 @@ public class ThreadedDownloads extends Activity
     /**
      * @class MyHandler
      *
-     * @brief A static inner class that inherits from Handler. Since
-     *        it's static its instances do not hold implicit
-     *        references to their outer classes.
+     * @brief A static inner class that inherits from Handler and uses
+     *        its handleMessage() hook method to process Messages sent
+     *        to it from a background Thread. Since it's static its
+     *        instances do not hold implicit references to their outer
+     *        classes.
      */
     private static class MessageHandler extends Handler {
         /**
@@ -310,7 +311,7 @@ public class ThreadedDownloads extends Activity
                 mProgressDialog =
                     ProgressDialog.show(mActivity.get(),
                                         "Download",
-                                        "downloading via Runnables and Messages");
+                                        "downloading via Handlers and Messages");
                 break;
 
             case DISMISS_DIALOG:

@@ -4,17 +4,17 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * @class AtomicLongTest
+ * @class SimpleAtomicLongTest
  *
- * @brief This class tests our implementation of AtomicLong to ensure
+ * @brief This class tests our implementation of SimpleAtomicLong to ensure
  *        it works properly.
  */
-class AtomicLongTest
+class SimpleAtomicLongTest
 {
     /**
      * Number of iterations to run the test.
      */
-    final static long mMaxIterations = 100000000;
+    final static long mMaxIterations = 10000000;
 
     /**
      * Barrier synchronizer that controls when the two threads start
@@ -29,9 +29,9 @@ class AtomicLongTest
     final static CountDownLatch mStopLatch = new CountDownLatch(2);
 
     /**
-     * An instance of our implementation of AtomicLong.
+     * An instance of our implementation of SimpleAtomicLong.
      */
-    final static AtomicLong mCounter = new AtomicLong(0);
+    final static SimpleAtomicLong mCounter = new SimpleAtomicLong(0);
 
     /**
      * @brief This class runs the test by invoking a command each time
@@ -83,7 +83,7 @@ class AtomicLongTest
      */
     public static void main(String[] args) {
         try {
-            System.out.println("Starting AtomicLongTest");
+            System.out.println("Starting SimpleAtomicLongTest");
 
             /**
              * A Runnable command that decrements the mCounter.
@@ -99,13 +99,13 @@ class AtomicLongTest
 
             /**
              * Start a Thread whose Runnable command decrements the
-             * AtomicLong mMaxIterations number of times.
+             * SimpleAtomicLong mMaxIterations number of times.
              */
             new Thread(new RunTest(decrementCommand)).start();
 
             /**
              * Start a Thread whose Runnable command increments the
-             * AtomicLong mMaxIterations number of times.
+             * SimpleAtomicLong mMaxIterations number of times.
              */
             new Thread(new RunTest(incrementCommand)).start();
 
@@ -125,7 +125,7 @@ class AtomicLongTest
             else
                 System.out.println("test failed: mCounter = " + result);
 
-            System.out.println("Finishing AtomicLongTest");
+            System.out.println("Finishing SimpleAtomicLongTest");
         }
         catch (Exception e) { }
     }

@@ -14,7 +14,7 @@ class BuggyLongTest
     /**
      * Number of iterations to run the test.
      */
-    static final long mMaxIterations = 100000000;
+    static final long mMaxIterations = 10000000;
 
     /**
      * Barrier synchronizer that controls when the two threads start
