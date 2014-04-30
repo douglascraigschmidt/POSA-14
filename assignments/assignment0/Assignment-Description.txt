@@ -37,8 +37,8 @@ In particular, you'll need to do the following:
 . Make sure to use a readLock() for AtomicLong.get() and writeLock()
   for all the other SimpleAtomicLong methods.
 
-Note that the SimpleAtomicLongTest.java program uses Java Threads and
-Runnables, which are described in these videos:
+Note that the PalantirManagerTest.java program uses various features
+of Java Threads and Runnables, which are described in these videos:
 
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
@@ -78,10 +78,3 @@ The output for a correct solution should look exactly like this:
 Starting SimpleAtomicLongTest
 test worked
 Finishing SimpleAtomicLongTest
-
-
-
-
-
-
-

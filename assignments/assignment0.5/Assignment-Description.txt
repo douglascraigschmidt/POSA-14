@@ -1,0 +1,189 @@
+Programming Assignment 0.5
+
+In this assignment, you will use a Java ReentrantLock and Java
+ConditionObject to implement a subset of the Java
+java.util.concurrent.Semaphore class, which we call SimpleSemaphore.
+This assignment will also reuse the SimpleAtomicLock you implemented
+for Assignment 0, so make sure it's working properly before attempting
+this assignment!  The goal of this assignment is to use your
+SimpleSemaphore to correctly implement a resource manager that
+limits the number of Beings from Middle-Earth who
+can concurrently gaze into a Palantir (if you're not a Lord of the
+Ring's fan see http://en.wikipedia.org/wiki/Palantir for more
+information on Palantir).
+
+The PalantirManagerTest.java program creates three Palantiri and five
+Threads that concurrently attempt to acquire a Palantir and gaze into
+it for a certain amount of time. If the SimpleSemaphore and
+SimpleAtomicLock are implemented properly the test should succeed
+without throwing any exceptions.
+
+In this directory you'll find a number of files, all of which you
+should read.  However, the only two files you need to modify are
+SimpleAtomicLong.java class and SimpleSemaphore, which contains the
+skeleton Java code that you'll implement by completing the "TODO - You
+fill in here" comments to provide a working solution.  DO NOT CHANGE
+THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO - You
+fill in here" portions!!!
+
+In particular, you'll need to do the following:
+
+. Implement the SimpleAtomicLong class, which you should replace with
+  your working solution to assignment0.
+
+. Implement the SimpleSemaphore class using a Java ConditionObject and
+  Java ReentrantLock, which are covered in these videos:
+  
+  Section 1: Module 2: Part 5: Java ReentrantLock
+  Section 1: Module 2: Part 8: Java ConditionObject 
+
+  Note that your implementation must support the "Fair" and "NotFair"
+  semantics, which are covered in these videos.  It turns out this is
+  very easy to do if you understand how the constructor to Java
+  ReentrantLock works.
+
+  There are also relevant discussions about using Java
+  ConditionObjects at these links that may help with the
+  SimpleSemaphore implementation:
+
+  http://docs.oracle.com/javase/1.5.0/docs/api/java/util/concurrent/locks/Condition.html
+  http://stackoverflow.com/questions/11308768/condition-should-unlock-before-await
+
+Note that the PalantirManagerTest.java program uses various features
+of Java Threads and Runnables, which are described in these videos:
+
+  Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
+  Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+
+At the moment, all these videos are available in the YouTube playlist
+at
+
+https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
+ 
+When the 2014 POSA MOOC officially starts these videos will be
+available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+To compile this code you can either use the provided Eclipse project
+or go into the src directory and simply type
+
+% javac FairnessChecker.java Palantir.java PalantirManager.java
+  PalantirManagerTest.java SimpleAtomicLong.java SimpleSemaphore.java
+
+on the command-line and then run the resulting class file by typing
+
+% java PalantirManagerTest
+
+The output for a correct solution should look something this (your
+output order might be slightly different depending on your JVM/OS
+scheduler and hardware platform):
+
+Starting PalantirManagerTest
+Pippen is acquiring palantir
+Pippen is starting to gaze
+Aragorn is acquiring palantir
+Aragorn is starting to gaze
+Denathor is acquiring palantir
+Denathor is starting to gaze
+Sauron is acquiring palantir
+Saruman is acquiring palantir
+Pippen is finished gazing
+Pippen is releasing palantir
+Pippen is acquiring palantir
+Sauron is starting to gaze
+Sauron is finished gazing
+Sauron is releasing palantir
+Sauron is acquiring palantir
+Saruman is starting to gaze
+Saruman is finished gazing
+Pippen is starting to gaze
+Saruman is releasing palantir
+Saruman is acquiring palantir
+Pippen is finished gazing
+Pippen is releasing palantir
+Pippen is acquiring palantir
+Sauron is starting to gaze
+Sauron is finished gazing
+Sauron is releasing palantir
+Sauron is acquiring palantir
+Saruman is starting to gaze
+Saruman is finished gazing
+Pippen is starting to gaze
+Saruman is releasing palantir
+Saruman is acquiring palantir
+Pippen is finished gazing
+Pippen is releasing palantir
+Pippen is acquiring palantir
+Sauron is starting to gaze
+Sauron is finished gazing
+Sauron is releasing palantir
+Sauron is acquiring palantir
+Saruman is starting to gaze
+Saruman is finished gazing
+Pippen is starting to gaze
+Saruman is releasing palantir
+Saruman is acquiring palantir
+Denathor is finished gazing
+Denathor is releasing palantir
+Denathor is acquiring palantir
+Sauron is starting to gaze
+Pippen is finished gazing
+Pippen is releasing palantir
+Pippen is acquiring palantir
+Saruman is starting to gaze
+Saruman is finished gazing
+Denathor is starting to gaze
+Saruman is releasing palantir
+Saruman is acquiring palantir
+Denathor is finished gazing
+Denathor is releasing palantir
+Denathor is acquiring palantir
+Pippen is starting to gaze
+Pippen is finished gazing
+Pippen is releasing palantir
+Saruman is starting to gaze
+Saruman is finished gazing
+Denathor is starting to gaze
+Saruman is releasing palantir
+Aragorn is finished gazing
+Aragorn is releasing palantir
+Aragorn is acquiring palantir
+Aragorn is starting to gaze
+Denathor is finished gazing
+Denathor is releasing palantir
+Denathor is acquiring palantir
+Denathor is starting to gaze
+Denathor is finished gazing
+Denathor is releasing palantir
+Denathor is acquiring palantir
+Denathor is starting to gaze
+Denathor is finished gazing
+Denathor is releasing palantir
+Sauron is finished gazing
+Sauron is releasing palantir
+Sauron is acquiring palantir
+Sauron is starting to gaze
+Sauron is finished gazing
+Sauron is releasing palantir
+Aragorn is finished gazing
+Aragorn is releasing palantir
+Aragorn is acquiring palantir
+Aragorn is starting to gaze
+Aragorn is finished gazing
+Aragorn is releasing palantir
+Aragorn is acquiring palantir
+Aragorn is starting to gaze
+Aragorn is finished gazing
+Aragorn is releasing palantir
+Aragorn is acquiring palantir
+Aragorn is starting to gaze
+Aragorn is finished gazing
+Aragorn is releasing palantir
+Finishing PalantirManagerTest

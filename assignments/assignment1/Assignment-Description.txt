@@ -54,6 +54,12 @@ available at
 
 https://class.coursera.org/posa-002/lecture
 
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
 To compile this code simply type
 
 % javac PingPongRight.java
