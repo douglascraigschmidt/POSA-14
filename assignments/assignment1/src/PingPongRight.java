@@ -1,8 +1,6 @@
 // Import the necessary Java synchronization and scheduling classes.
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.Condition;
 
 /**
  * @class PingPongRight
@@ -12,58 +10,7 @@ import java.util.concurrent.locks.Condition;
  *        instances to correctly alternate printing "Ping" and "Pong",
  *        respectively, on the console display.
  */
-public class PingPongRight
-{
-    /**
-     * @class SimpleSemaphore
-     *
-     * @brief This class provides a simple counting semaphore
-     *        implementation using Java a ReentrantLock and a
-     *        ConditionObject.
-     */
-    static public class SimpleSemaphore
-    {
-        /**
-         * Constructor initialize the data members. 
-         */
-        public SimpleSemaphore (int permits)
-        { 
-            // TODO - You fill in here.
-        }
-
-        /**
-         * Acquire one permit from the semaphore.
-         */
-        public void acquire() throws InterruptedException
-        {
-            // TODO - You fill in here.
-        }
-
-        /**
-         * Return one permit to the semaphore.
-         */
-        void release() throws InterruptedException
-        {
-            // TODO - You fill in here.
-        }
-
-        /**
-         * Define a ReentrantLock to protect the critical section.
-         */
-        // TODO - You fill in here.
-
-        /**
-         * Define a ConditionObject to wait while the number of permits
-         * is 0.
-         */
-        // TODO - You fill in here.
-
-        /**
-         * Define a count of the number of available permits.
-         */
-        // TODO - You fill in here.
-    }
-
+public class PingPongRight {
     /**
      * Number of iterations to run the test program.
      */

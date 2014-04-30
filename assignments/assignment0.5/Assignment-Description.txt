@@ -3,20 +3,20 @@ Programming Assignment 0.5
 In this assignment, you will use a Java ReentrantLock and Java
 ConditionObject to implement a subset of the Java
 java.util.concurrent.Semaphore class, which we call SimpleSemaphore.
-This assignment will also reuse the SimpleAtomicLock you implemented
-for Assignment 0, so make sure it's working properly before attempting
-this assignment!  The goal of this assignment is to use your
-SimpleSemaphore to correctly implement a resource manager that
-limits the number of Beings from Middle-Earth who
-can concurrently gaze into a Palantir (if you're not a Lord of the
-Ring's fan see http://en.wikipedia.org/wiki/Palantir for more
-information on Palantir).
+This assignment also reuses the SimpleAtomicLock you implemented for
+Assignment 0, so make sure it's working properly before attempting
+this assignment!  The goal of this assignment is to use the
+SimpleSemaphore to correctly implement a resource manager that limits
+the number of Beings from Middle-Earth who can concurrently gaze into
+a Palantir (if you're not a Lord of the Ring's fan see
+http://en.wikipedia.org/wiki/Palantir for more information on
+Palantir).
 
 The PalantirManagerTest.java program creates three Palantiri and five
-Threads that concurrently attempt to acquire a Palantir and gaze into
-it for a certain amount of time. If the SimpleSemaphore and
-SimpleAtomicLock are implemented properly the test should succeed
-without throwing any exceptions.
+Threads (one for each Palantir user) that concurrently attempt to
+acquire a Palantir and gaze into it for a certain amount of time.  If
+the SimpleSemaphore and SimpleAtomicLock are implemented properly the
+test should succeed without throwing any exceptions.
 
 In this directory you'll find a number of files, all of which you
 should read.  However, the only two files you need to modify are
@@ -37,11 +37,6 @@ In particular, you'll need to do the following:
   Section 1: Module 2: Part 5: Java ReentrantLock
   Section 1: Module 2: Part 8: Java ConditionObject 
 
-  Note that your implementation must support the "Fair" and "NotFair"
-  semantics, which are covered in these videos.  It turns out this is
-  very easy to do if you understand how the constructor to Java
-  ReentrantLock works.
-
   There are also relevant discussions about using Java
   ConditionObjects at these links that may help with the
   SimpleSemaphore implementation:
@@ -49,8 +44,16 @@ In particular, you'll need to do the following:
   http://docs.oracle.com/javase/1.5.0/docs/api/java/util/concurrent/locks/Condition.html
   http://stackoverflow.com/questions/11308768/condition-should-unlock-before-await
 
-Note that the PalantirManagerTest.java program uses various features
-of Java Threads and Runnables, which are described in these videos:
+. Your SimpleSemaphore implementation must support the "Fair" and
+  "NotFair" semantics, which are covered in this video:
+
+  Section 1: Module 2: Part 7: Java Semaphore
+
+  It's easy to support both these semantics if you watch the Java
+  ReentrantLock video and understand how its constructor works.
+
+. The PalantirManagerTest.java program also uses various features of
+  Java Threads and Runnables, which are described in these videos:
 
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)

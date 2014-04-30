@@ -3,28 +3,21 @@ Programming Assignment 1
 In this assignment, you will implement a Java program that creates two
 instances of the PlayPingPongThread and then starts these thread
 instances to correctly alternate printing "Ping" and "Pong",
-respectively, on the console display.  In this directory you'll find
-the PingPongRight.java class, which contains the skeleton Java code
-that you'll implement by completing the "TODO - You fill in here"
-comments to provide a working solution.  DO NOT CHANGE THE OVERALL
-STRUCTURE OF THE SKELETON - just fill in the "TODO - You fill in here"
-portions!!!
+respectively, on the console display.  This assignment also reuses the
+SimpleSemaphore you implemented for the previous assignment, so make
+sure it's working properly before attempting this assignment!
+
+In this directory you'll find the PingPongRight.java class, which
+contains the skeleton Java code that you'll implement by completing
+the "TODO - You fill in here" comments to provide a working solution.
+DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
+"TODO - You fill in here" portions!!!
 
 In particular, you'll need to do the following:
 
-. Implement the SimpleSemaphore class using a Java ConditionObject and
-  Java ReentrantLock, which are covered in these videos:
+. Implement the SimpleSemaphore class, which you should preplace with
+  your working solutio nto the previous assignment.
   
-  Section 1: Module 2: Part 5: Java ReentrantLock
-  Section 1: Module 2: Part 8: Java ConditionObject 
-
-  There are also relevant discussions about using Java
-  ConditionObjects at these links that may help with the
-  SimpleSemaphore implementation:
-
-  http://docs.oracle.com/javase/1.5.0/docs/api/java/util/concurrent/locks/Condition.html
-  http://stackoverflow.com/questions/11308768/condition-should-unlock-before-await
-
 . Use your SimpleSemaphore to implement the PlayPingPongThread class
   and fix the problems with the earlier PingPongWrong solution, which
   is covered in this video:
@@ -44,6 +37,12 @@ In particular, you'll need to do the following:
   http://javatechig.com/java/countdownlatch-and-java-concurrency-example  
   http://tutorials.jenkov.com/java-util-concurrent/countdownlatch.html
 
+. The PingPongRight.java program also uses various features of Java
+  Threads and Runnables, which are described in these videos:
+
+  Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
+  Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+
 Note, at the moment, all these videos are available in the YouTube
 playlist at 
 
@@ -60,9 +59,10 @@ in item #38 at the POSA MOOC FAQ available from
 
 http://www.courera.org/course/posa
 
-To compile this code simply type
+To compile this code you can either use the provided Eclipse project
+or go into the src directory and simply type
 
-% javac PingPongRight.java
+% javac PingPongRight.java SimpleSemaphore.java
 
 and to run the resulting class file simply type
 
