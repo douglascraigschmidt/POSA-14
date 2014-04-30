@@ -81,6 +81,10 @@ class PalantirManagerTest
                     // the command.
                     palantir.gaze();
 
+                    // Indicate this Being is no longer using the
+                    // Palantir.
+                    mActiveThreads.decrementAndGet();
+
                     System.out.println(Thread.currentThread().getName() 
                                        + " is finished gazing");
 
@@ -91,9 +95,6 @@ class PalantirManagerTest
                     System.out.println(Thread.currentThread().getName() 
                                        + " is releasing palantir");                    
 
-                    // Indicate this Being is no longer using the
-                    // Palantir.
-                    mActiveThreads.decrementAndGet();
                 }
                     
             }

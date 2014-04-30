@@ -28,7 +28,6 @@ class SimpleAtomicLong
      */
     public SimpleAtomicLong(long initialValue)
     {
-        long value = 0;
         // TODO - you fill in here
     }
 
@@ -39,7 +38,7 @@ class SimpleAtomicLong
      */
     public long get()
     {
-        long value = 0;
+        long value;
         // TODO - you fill in here, using a readLock()
         return value;
     }
@@ -51,7 +50,7 @@ class SimpleAtomicLong
      */
     public long decrementAndGet()
     {
-        long value = 0;
+        long value;
         // TODO - you fill in here, using a writeLock()
         return value;
     }
@@ -63,7 +62,7 @@ class SimpleAtomicLong
      */
     public long getAndIncrement()
     {
-        long value = 0;
+        long value;
         // TODO - you fill in here, using a writeLock()
         return value;
     }
@@ -75,7 +74,7 @@ class SimpleAtomicLong
      */
     public long getAndDecrement()
     {
-        long value = 0;
+        long value;
         // TODO - you fill in here, using a writeLock()
         return value;
     }
@@ -87,7 +86,7 @@ class SimpleAtomicLong
      */
     public long incrementAndGet()
     {
-        long value = 0;
+        long value;
         // TODO - you fill in here, using a writeLock()
         return value;
     }
