@@ -34,7 +34,8 @@ public class ThreadedDownloads extends Activity
     /**
      * Default URL to download
      */
-    private final String mDefaultURL = "http://www.dre.vanderbilt.edu/~schmidt/ka.png";
+    private final static String mDefaultURL = 
+            "http://www.dre.vanderbilt.edu/~schmidt/ka.png";
 
     /**
      * User's selection of URL to download
@@ -44,22 +45,18 @@ public class ThreadedDownloads extends Activity
     /**
      * Image that's been downloaded
      */
-    private static ImageView mImageView;
+    private ImageView mImageView;
 
     /**
      * Display progress of download
      */
-    private static ProgressDialog mProgressDialog;
+    private ProgressDialog mProgressDialog;
 
     /**
      * Debug Tag for logging debug output to LogCat
      */
-    private String TAG = getClass().getSimpleName();
-    
-    /**
-     * This Activity's context.
-     */
-    static private Context mThisActivityContext;
+    private final static String TAG = ThreadedDownloads.class
+            .getSimpleName();
 
     /**
      * Method that initializes the Activity when it is first created.
@@ -69,12 +66,6 @@ public class ThreadedDownloads extends Activity
      */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        /** 
-         * Store the Activity Context for later use by the Toast.
-         */
-        
-        mThisActivityContext = getApplication().getApplicationContext();
 
         /**
          * Sets the content view specified in the main.xml file.
@@ -93,8 +84,8 @@ public class ThreadedDownloads extends Activity
      * Show a toast, notifying a user of an error when retrieving a
      * bitmap.
      */
-    private static void showErrorToast(String errorString) {
-        Toast.makeText(mThisActivityContext,
+    void showErrorToast(String errorString) {
+        Toast.makeText(this,
                        errorString,
                        Toast.LENGTH_LONG).show();
     }
@@ -106,13 +97,17 @@ public class ThreadedDownloads extends Activity
      * @param imageBitmap
      *            The bitmap image
      */
-    private static void displayImage(Bitmap imageBitmap)
-    {
-        if (imageBitmap != null)
-            mImageView.setImageBitmap(imageBitmap);
-        else
+    void displayImage(Bitmap imageBitmap)
+    {   
+        if (mImageView == null){
+            showErrorToast("Problem with Application,"
+                    + " please contact the Developer.");
+        } else if (imageBitmap == null)
             showErrorToast("image is corrupted,"
-                           + " please check the requested URL.");
+                    + " please check the requested URL.");
+        else{
+            mImageView.setImageBitmap(imageBitmap);
+        }
     }
 
     /**
@@ -172,18 +167,16 @@ public class ThreadedDownloads extends Activity
         /**
          * Obtain the requested URL from the user input.
          */
-        String url = mUrlEditText.getText().toString();
+        String url = getUrlString();
 
         hideKeyboard();
 
         /**
          * Inform the user that the download is starting.
          */
-        mProgressDialog =
-            ProgressDialog.show(ThreadedDownloads.this,
-                                "Download",
-                                "downloading via Runnables and Handlers");
-
+        
+        showDialog("downloading via Runnables and Handlers");
+        
         /**
          * Create and start a new Thread to download an image in the
          * background via a Runnable. The downloaded image is then
@@ -250,7 +243,7 @@ public class ThreadedDownloads extends Activity
         /**
          * Obtain the requested URL from the user input.
          */
-        String url = mUrlEditText.getText().toString();
+        String url = getUrlString();
 
         hideKeyboard();
 
@@ -262,6 +255,26 @@ public class ThreadedDownloads extends Activity
         new Thread(new RunnableWithMessages(url)).start();
     }
 
+    /**
+     * Display the Dialog to the User.
+     * 
+     * @param message 
+     *          The String to display what download method was used.
+     */
+    public void showDialog(String message){
+        mProgressDialog =
+                ProgressDialog.show(this,"Download",message);
+    }
+    
+    /**
+     * Dismiss the Dialog
+     */
+    public void dismissDialog(){
+        if (mProgressDialog != null){
+            mProgressDialog.dismiss();
+        }
+    }
+    
     /**
      * @class MyHandler
      *
@@ -305,27 +318,30 @@ public class ThreadedDownloads extends Activity
          */
         public void handleMessage(Message msg) {
 
+            /*
+             * Check to see if the activity still exists
+             */
+            if (mActivity.get() == null) {
+                return;                
+            }
             switch (msg.what) {
 
             case SHOW_DIALOG:
-                mProgressDialog =
-                    ProgressDialog.show(mActivity.get(),
-                                        "Download",
-                                        "downloading via Handlers and Messages");
+                mActivity.get().showDialog("downloading via Handlers and Messages");
                 break;
 
             case DISMISS_DIALOG:
                 /**
                  * Dismiss the progress dialog.
                  */
-                mProgressDialog.dismiss();
+                mActivity.get().dismissDialog();
                 break;
 
             case DISPLAY_IMAGE:
                 /**
                  * Display the downloaded image to the user.
                  */
-                displayImage((Bitmap) msg.obj);
+                mActivity.get().displayImage((Bitmap) msg.obj);
                 break;
             }
         }
@@ -424,7 +440,7 @@ public class ThreadedDownloads extends Activity
      */
     public void runAsyncTask(View view) {
 
-        String url = mUrlEditText.getText().toString();
+        String url = getUrlString();
 
         hideKeyboard();
 
@@ -448,10 +464,7 @@ public class ThreadedDownloads extends Activity
          * Show the progress dialog before starting the download in a
          * Background Thread.
          */
-            mProgressDialog =
-                ProgressDialog.show(ThreadedDownloads.this,
-                                    "Download",
-                                    "downloading via AsyncTask");
+            showDialog("downloading via AsyncTask");
         }
 
         /**
@@ -476,7 +489,7 @@ public class ThreadedDownloads extends Activity
             /**
              * Dismiss the progress dialog.
              */
-            mProgressDialog.dismiss();
+            dismissDialog();
 
             /**
              * Display the downloaded image to the user.
@@ -514,6 +527,15 @@ public class ThreadedDownloads extends Activity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options, menu);
         return true;
+    }
+    
+    /**
+     * Read the URL EditText and return the String it contains.
+     * 
+     * @return String value in mUrlEditText
+     */
+    String getUrlString(){
+        return mUrlEditText.getText().toString();
     }
 
 }
