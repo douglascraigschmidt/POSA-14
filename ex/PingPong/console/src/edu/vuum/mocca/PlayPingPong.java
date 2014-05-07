@@ -22,7 +22,7 @@ public class PlayPingPong implements Runnable
     private static volatile int mMaxIterations;
 
     /** Maximum number of iterations per "turn" (defaults to 1). */
-    private static int mMaxTurns = 1;
+    private static volatile int mMaxTurns = 1;
 
     /**
      * Keeps track of the platform that we're running on, e.g.,

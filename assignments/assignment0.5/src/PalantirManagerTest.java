@@ -57,9 +57,17 @@ class PalantirManagerTest
                     // all the available Palantiri are in use.
                     Palantir palantir = mPalantirManager.acquirePalantir();
 
-                    // There's a race condition here, so we'll just
-                    // give a warning if it looks like the semaphore
-                    // acquire() method isn't "fair.
+                    // There's a race condition here since it's
+                    // possible for one thread to call
+                    // mFairnessChecker.addNewThread() and then yield
+                    // to another thread which again calls
+                    // mFairnessChecker.addNewThread() and then goes
+                    // on without interruption to call
+                    // mPalantirManager.acquirePalantir(), which will
+                    // fool the fairness checker into wrongly thinking
+                    // the acquisition wasn't fair. we'll just give a
+                    // warning (rather than an error) if it looks like
+                    // the semaphore acquire() method isn't "fair".
                     if (!mFairnessChecker.checkOrder(Thread.currentThread().getName()))
                         System.out.println(Thread.currentThread().getName() 
                                            + ": warning, semaphore acquire may not be fair");
