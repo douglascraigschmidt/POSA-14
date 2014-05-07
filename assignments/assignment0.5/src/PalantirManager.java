@@ -11,7 +11,7 @@ public class PalantirManager {
     /**
      * Max number of Palantiri available.
      */
-    private static int mMaxPalantiri = 0;
+    private int mMaxPalantiri = 0;
 
     /**
      * Simple implementation of a Semaphore that can be configured
