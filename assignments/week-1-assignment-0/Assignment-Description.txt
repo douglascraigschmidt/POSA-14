@@ -1,0 +1,72 @@
+Week 1: Programming Assignment 0
+
+In this (intentionally simple) initial assignment, you will use Java
+Threads to test several implementations of the Java BlockingQueue
+interface.  The goal is to understand how to (1) create, (2) start,
+(3) interrupt, and (4) wait for the completion of multiple Java
+Threads.  The test program also illustrates the problems that occur if
+Java Threads concurrently access an object that isn't properly
+synchronized.
+
+In this directory you'll find the SynchronizedQueueTest.java class,
+which contains the skeleton Java code that you'll implement by
+completing the "TODO - You fill in here" comments to provide a working
+solution.  DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just
+fill in the "TODO - You fill in here" portions!!!
+
+In particular, you'll need to do the following:
+
+. Implement the "TODO" portions of the testQueue() method so that two
+  Java Threads are created and started to run the producerRunnable and
+  consumerRunnable objects.  
+
+. After giving the Threads a chance to run for a short while you'll
+  interrupt both of them so they will shutdown.
+
+. After interrupting the Threads you'll wait for both Threads to exit
+  before continuing.
+
+All the information needed to write this code is described in these
+videos:
+
+  Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
+  Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+
+At the moment, all these videos are available in the YouTube playlist
+at
+
+https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
+ 
+When the 2014 POSA MOOC officially starts these videos will be
+available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+To compile this code you can either use the provided Eclipse project
+or simply type
+
+% javac SynchronizedQueueTest.java
+
+on the command-line and then run the resulting class file by typing
+
+% java SynchronizedQueueTest
+
+The output for a correct solution should look something like this:
+
+Starting SynchronizedQueueTest
+0
+1
+2
+... [lots of monotonically increasing numbers omitted]
+Exception java.lang.InterruptedException occurred in producerRunnable
+Exception java.lang.InterruptedException occurred in consumerRunnable
+test ArrayBlockingQueue passed
+Exception java.lang.IndexOutOfBoundsException: Index: 0, Size: 0 occurred in consumerRunnable
+test BuggyBlockingQueue failed
+Finishing SynchronizedQueueTest
