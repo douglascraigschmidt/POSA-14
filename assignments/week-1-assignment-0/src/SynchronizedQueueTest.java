@@ -143,6 +143,8 @@ public class SynchronizedQueueTest
                 for(int i = 0; i < mMaxIterations; i++)
                     try {
                         mQueue.put(i);
+                        if (Thread.interrupted())
+                        	throw new InterruptedException();
                     }
                     catch (InterruptedException e) {
                         System.out.println("Exception " 
@@ -157,7 +159,7 @@ public class SynchronizedQueueTest
                                            + e.toString() 
                                            + " occurred in producerRunnable");
                         // Indicate a failure.
-                        mProducerCounter = mMaxIterations;
+                        mProducerCounter = -1;
                         // mProducerCounter.set(mMaxIterations);
                         return;
                     }
@@ -171,9 +173,12 @@ public class SynchronizedQueueTest
             public void run() {
                 for(int i = 0; i < mMaxIterations; i++)
                     try {
+                    	if (Thread.interrupted())
+                        	throw new InterruptedException();
                         Integer result = (Integer) mQueue.take();
 
-                        System.out.println(result);
+                        System.out.println("iteration = " 
+                                           + result);
                     }
                     catch (InterruptedException e) {
                         System.out.println("Exception " 
@@ -188,7 +193,7 @@ public class SynchronizedQueueTest
                                            + e.toString() 
                                            + " occurred in consumerRunnable");
                         // Indicate a failure.
-                        mConsumerCounter = mMaxIterations;
+                        mConsumerCounter = -1;
                         return;
                     }
             }};
@@ -198,7 +203,7 @@ public class SynchronizedQueueTest
      * this many iterations since the Threads ought to be interrupted
      * long before it gets this far).
      */
-    static int mMaxIterations = 100000;
+    static int mMaxIterations = 1000000;
 
     /**
      * Run the test for the queue parameter.
@@ -209,10 +214,12 @@ public class SynchronizedQueueTest
             // initialization below to create two Java Threads, one
             // that's passed the producerRunnable and the other that's
             // passed the consumerRunnable.
-            Thread producer = null;
             Thread consumer = null;
+            Thread producer = null;
 
-            // TODO - you fill in here to start the threads.
+            // TODO - you fill in here to start the threads.  More
+            // interesting results will occur if you start the
+            // consumer first.
         
             // Give the Threads a chance to run before interrupting
             // them.
@@ -248,8 +255,7 @@ public class SynchronizedQueueTest
      * Main entry point method into the test program.
      */
     public static void main(String argv[]) {
-        System.out.println("Starting SynchronizedQueueTest");
-
+    	System.out.println("Starting SynchronizedQueueTest");
         // Indicate how big the queue should be, which should be
         // smaller than the number of iterations to induce blocking
         // behavior.
@@ -257,12 +263,13 @@ public class SynchronizedQueueTest
 
         // Test the ArrayBlockingQueue, which should pass the test.
         mQueue = new QueueAdapter<Integer>(new ArrayBlockingQueue<Integer>(queueSize));
-        testQueue("ArrayBlockingQueue", mQueue);
+        // testQueue("ArrayBlockingQueue", mQueue);
 
         // Test the BuggyBlockingQueue, which should fail the test.
         mQueue = new QueueAdapter<Integer>(new BuggyBlockingQueue<Integer>(queueSize));
         testQueue("BuggyBlockingQueue", mQueue);
-
+        
         System.out.println("Finishing SynchronizedQueueTest");
     }
 }
+
