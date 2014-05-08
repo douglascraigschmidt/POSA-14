@@ -205,9 +205,12 @@ public class SynchronizedQueueTest
      */
     static void testQueue(String testName, QueueAdapter<Integer> queue) {
         try {
-            // TODO - you fill in here to create two Java Threads, one
+            // TODO - you fill in here to replace the null
+            // initialization below to create two Java Threads, one
             // that's passed the producerRunnable and the other that's
             // passed the consumerRunnable.
+            Thread producer = null;
+            Thread consumer = null;
 
             // TODO - you fill in here to start the threads.
         
@@ -221,13 +224,21 @@ public class SynchronizedQueueTest
             // exit.
 
             // Do some sanity checking to see if the Threads work as
-            // expected.  If the counters equal mMaxIterations then
-            // something went wrong.
-            if (mConsumerCounter == mMaxIterations 
-                || mProducerCounter == mMaxIterations)
-                System.out.println("test " + testName + " failed");
-            else
-                System.out.println("test " + testName + " passed");
+            // expected.
+            if (consumer.isAlive()
+                || producer.isAlive())
+                result = " failed because join() never called";
+            else if (mConsumerCounter == 0
+                     || mProducerCounter == 0)
+                result = " failed because Threads never ran";
+            else if (mConsumerCounter == mMaxIterations 
+                     || mProducerCounter == mMaxIterations)
+                result = " failed because Threads never interrupted";
+            else if (mConsumerCounter == -1
+                     || mProducerCounter == -1)
+                result = " failed because Threads threw an exception";
+
+            System.out.println("test " + testName + result);
         }
         catch (Exception e) { 
         }
