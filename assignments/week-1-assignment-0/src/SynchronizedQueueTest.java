@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -19,6 +18,8 @@ public class SynchronizedQueueTest
      * Keep track of the number of times the consumer test iterates.
      */
     static volatile int mConsumerCounter = 0;
+    
+    static final int TIMEOUT_SECONDS = 5;
 
     /**
      * @class QueueAdapter
@@ -43,11 +44,15 @@ public class SynchronizedQueueTest
 
         /**
          * Insert msg at the tail of the queue.
+         * @throws TimeoutException, InterruptedException
          */
-        public void put(E msg) throws InterruptedException {
+        public void put(E msg) throws InterruptedException, TimeoutException {
             // Keep track of how many times we're called.
             mProducerCounter++;
-            mQueue.put(msg); 
+            boolean timeoutValue = mQueue.offer(msg, TIMEOUT_SECONDS, TimeUnit.SECONDS);
+            if (timeoutValue == false){
+               throw new TimeoutException();
+            }
         }
 
         /**
@@ -56,7 +61,7 @@ public class SynchronizedQueueTest
         public E take() throws InterruptedException {
             // Keep track of how many times we're called.
             mConsumerCounter++;
-            return mQueue.take(); 
+            return mQueue.poll(TIMEOUT_SECONDS, TimeUnit.SECONDS);
         }
     }
 
@@ -176,6 +181,10 @@ public class SynchronizedQueueTest
                     	if (Thread.interrupted())
                         	throw new InterruptedException();
                         Integer result = (Integer) mQueue.take();
+
+                        if (result == null){
+                        	throw new TimeoutException();
+                        }
 
                         System.out.println("iteration = " 
                                            + result);
