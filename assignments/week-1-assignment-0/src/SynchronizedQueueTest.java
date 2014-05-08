@@ -57,11 +57,16 @@ public class SynchronizedQueueTest
 
         /**
          * Remove msg from the head of the queue.
+       * @throws TimeoutException, InterruptedException
          */
-        public E take() throws InterruptedException {
+        public E take() throws InterruptedException, TimeoutException {
             // Keep track of how many times we're called.
             mConsumerCounter++;
-            return mQueue.poll(TIMEOUT_SECONDS, TimeUnit.SECONDS);
+            E rValue = mQueue.poll(TIMEOUT_SECONDS, TimeUnit.SECONDS);
+            if (rValue == null){
+               throw new TimeoutException();
+            }
+            return rValue;
         }
     }
 
@@ -178,16 +183,12 @@ public class SynchronizedQueueTest
             public void run() {
                 for(int i = 0; i < mMaxIterations; i++)
                     try {
-                    	if (Thread.interrupted())
-                        	throw new InterruptedException();
+                       if (Thread.interrupted()){
+                           throw new InterruptedException();
+                    	   }
                         Integer result = (Integer) mQueue.take();
 
-                        if (result == null){
-                        	throw new TimeoutException();
-                        }
-
-                        System.out.println("iteration = " 
-                                           + result);
+                        System.out.println("iteration = " + result);
                     }
                     catch (InterruptedException e) {
                         System.out.println("Thread properly interrupted by "
@@ -230,14 +231,17 @@ public class SynchronizedQueueTest
             // interesting results will occur if you start the
             // consumer first.
         
+            
             // Give the Threads a chance to run before interrupting
             // them.
             Thread.sleep(100);
 
             // TODO - you fill in here to interrupt the threads.
 
+            
             // TODO - you fill in here to wait for the threads to
             // exit.
+
 
             String result = " passed";
 
