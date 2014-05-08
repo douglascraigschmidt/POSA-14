@@ -15,8 +15,8 @@ DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
 
 In particular, you'll need to do the following:
 
-. Implement the SimpleSemaphore class, which you should preplace with
-  your working solutio nto the previous assignment.
+. Implement the SimpleSemaphore class, which you should replace with
+  your working solution from the previous assignment.
   
 . Use your SimpleSemaphore to implement the PlayPingPongThread class
   and fix the problems with the earlier PingPongWrong solution, which
