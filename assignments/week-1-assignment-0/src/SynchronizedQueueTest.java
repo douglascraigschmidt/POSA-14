@@ -147,9 +147,9 @@ public class SynchronizedQueueTest
                         	throw new InterruptedException();
                     }
                     catch (InterruptedException e) {
-                        System.out.println("Exception " 
+                        System.out.println("Thread properly interrupted by "
                                            + e.toString() 
-                                           + " occurred in producerRunnable");
+                                           + " in producerRunnable");
                         // This isn't an error - it just means that
                         // we've been interrupted.
                         return;
@@ -181,9 +181,9 @@ public class SynchronizedQueueTest
                                            + result);
                     }
                     catch (InterruptedException e) {
-                        System.out.println("Exception " 
+                        System.out.println("Thread properly interrupted by "
                                            + e.toString() 
-                                           + " occurred in consumerRunnable");
+                                           + " in consumerRunnable");
                         // This isn't an error - it just means that
                         // we've been interrupted.
                         return;
@@ -230,6 +230,8 @@ public class SynchronizedQueueTest
             // TODO - you fill in here to wait for the threads to
             // exit.
 
+            String result = " passed";
+
             // Do some sanity checking to see if the Threads work as
             // expected.
             if (consumer.isAlive()
@@ -263,7 +265,7 @@ public class SynchronizedQueueTest
 
         // Test the ArrayBlockingQueue, which should pass the test.
         mQueue = new QueueAdapter<Integer>(new ArrayBlockingQueue<Integer>(queueSize));
-        // testQueue("ArrayBlockingQueue", mQueue);
+        testQueue("ArrayBlockingQueue", mQueue);
 
         // Test the BuggyBlockingQueue, which should fail the test.
         mQueue = new QueueAdapter<Integer>(new BuggyBlockingQueue<Integer>(queueSize));
