@@ -127,6 +127,7 @@ class PalantirManagerTest
                     }
                     catch (InterruptedException e) {}
                 }
+                public String name() {return "MinasTirith";}
             });
         // Orthanc Palantir
         palantiri.add (new Palantir() {
@@ -136,6 +137,8 @@ class PalantirManagerTest
                     }
                     catch (InterruptedException e) {}
                 }
+
+                public String name() {return "Orthanc";}
             });
         // Barad-dur Palantir
         palantiri.add (new Palantir() {
@@ -147,7 +150,8 @@ class PalantirManagerTest
                         Thread.sleep(100);
                     }
                     catch (InterruptedException e) {}
-                } 
+                }
+                public String name() {return "Barad-dur";}
             });
 
         return palantiri;

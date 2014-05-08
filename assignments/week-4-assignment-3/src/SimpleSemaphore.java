@@ -59,4 +59,3 @@ public class SimpleSemaphore {
      */
     // TODO - you fill in here
 }
-
