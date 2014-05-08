@@ -84,117 +84,117 @@ on the command-line and then run the resulting class file by typing
 
 % java PalantirManagerTest
 
-The output for a correct solution should look something this (your
-output order might be slightly different depending on your JVM/OS
-scheduler and hardware platform):
+The output for a correct solution should look something this:
 
+----------------------------------------
 Starting PalantirManagerTest
-Pippen is acquiring palantir
-Pippen is starting to gaze
-Aragorn is acquiring palantir
-Aragorn is starting to gaze
-Denathor is acquiring palantir
-Denathor is starting to gaze
-Sauron is acquiring palantir
-Saruman is acquiring palantir
-Pippen is finished gazing
-Pippen is releasing palantir
-Pippen is acquiring palantir
-Sauron is starting to gaze
-Sauron is finished gazing
-Sauron is releasing palantir
-Sauron is acquiring palantir
-Saruman is starting to gaze
-Saruman is finished gazing
-Pippen is starting to gaze
-Saruman is releasing palantir
-Saruman is acquiring palantir
-Pippen is finished gazing
-Pippen is releasing palantir
-Pippen is acquiring palantir
-Sauron is starting to gaze
-Sauron is finished gazing
-Sauron is releasing palantir
-Sauron is acquiring palantir
-Saruman is starting to gaze
-Saruman is finished gazing
-Pippen is starting to gaze
-Saruman is releasing palantir
-Saruman is acquiring palantir
-Pippen is finished gazing
-Pippen is releasing palantir
-Pippen is acquiring palantir
-Sauron is starting to gaze
-Sauron is finished gazing
-Sauron is releasing palantir
-Sauron is acquiring palantir
-Saruman is starting to gaze
-Saruman is finished gazing
-Pippen is starting to gaze
-Saruman is releasing palantir
-Saruman is acquiring palantir
-Denathor is finished gazing
-Denathor is releasing palantir
-Denathor is acquiring palantir
-Sauron is starting to gaze
-Pippen is finished gazing
-Pippen is releasing palantir
-Pippen is acquiring palantir
-Saruman is starting to gaze
-Saruman is finished gazing
-Denathor is starting to gaze
-Saruman is releasing palantir
-Saruman is acquiring palantir
-Denathor is finished gazing
-Denathor is releasing palantir
-Denathor is acquiring palantir
-Pippen is starting to gaze
-Pippen is finished gazing
-Pippen is releasing palantir
-Saruman is starting to gaze
-Saruman is finished gazing
-Denathor is starting to gaze
-Saruman is releasing palantir
-Aragorn is finished gazing
-Aragorn is releasing palantir
-Aragorn is acquiring palantir
-Aragorn is starting to gaze
-Denathor is finished gazing
-Denathor is releasing palantir
-Denathor is acquiring palantir
-Denathor is starting to gaze
-Denathor is finished gazing
-Denathor is releasing palantir
-Denathor is acquiring palantir
-Denathor is starting to gaze
-Denathor is finished gazing
-Denathor is releasing palantir
-Sauron is finished gazing
-Sauron is releasing palantir
-Sauron is acquiring palantir
-Sauron is starting to gaze
-Sauron is finished gazing
-Sauron is releasing palantir
-Aragorn is finished gazing
-Aragorn is releasing palantir
-Aragorn is acquiring palantir
-Aragorn is starting to gaze
-Aragorn is finished gazing
-Aragorn is releasing palantir
-Aragorn is acquiring palantir
-Aragorn is starting to gaze
-Aragorn is finished gazing
-Aragorn is releasing palantir
-Aragorn is acquiring palantir
-Aragorn is starting to gaze
-Aragorn is finished gazing
-Aragorn is releasing palantir
+Pippen is acquiring the palantir
+Pippen is starting to gaze at the MinisTirith palantir
+Aragorn is acquiring the palantir
+Aragorn is starting to gaze at the Orthanc palantir
+Denathor is acquiring the palantir
+Denathor is starting to gaze at the Barad-dur palantir
+Sauron is acquiring the palantir
+Saruman is acquiring the palantir
+Pippen is finished gazing at the MinisTirith palantir
+Pippen is releasing the MinisTirith palantir
+Pippen is acquiring the palantir
+Sauron is starting to gaze at the MinisTirith palantir
+Sauron is finished gazing at the MinisTirith palantir
+Sauron is releasing the MinisTirith palantir
+Sauron is acquiring the palantir
+Saruman is starting to gaze at the MinisTirith palantir
+Saruman is finished gazing at the MinisTirith palantir
+Pippen is starting to gaze at the MinisTirith palantir
+Saruman is releasing the MinisTirith palantir
+Saruman is acquiring the palantir
+Pippen is finished gazing at the MinisTirith palantir
+Pippen is releasing the MinisTirith palantir
+Pippen is acquiring the palantir
+Sauron is starting to gaze at the MinisTirith palantir
+Sauron is finished gazing at the MinisTirith palantir
+Sauron is releasing the MinisTirith palantir
+Sauron is acquiring the palantir
+Saruman is starting to gaze at the MinisTirith palantir
+Saruman is finished gazing at the MinisTirith palantir
+Pippen is starting to gaze at the MinisTirith palantir
+Saruman is releasing the MinisTirith palantir
+Saruman is acquiring the palantir
+Pippen is finished gazing at the MinisTirith palantir
+Pippen is releasing the MinisTirith palantir
+Pippen is acquiring the palantir
+Sauron is starting to gaze at the MinisTirith palantir
+Sauron is finished gazing at the MinisTirith palantir
+Sauron is releasing the MinisTirith palantir
+Sauron is acquiring the palantir
+Saruman is starting to gaze at the MinisTirith palantir
+Saruman is finished gazing at the MinisTirith palantir
+Pippen is starting to gaze at the MinisTirith palantir
+Saruman is releasing the MinisTirith palantir
+Saruman is acquiring the palantir
+Denathor is finished gazing at the Barad-dur palantir
+Denathor is releasing the Barad-dur palantir
+Denathor is acquiring the palantir
+Sauron is starting to gaze at the Barad-dur palantir
+Pippen is finished gazing at the MinisTirith palantir
+Pippen is releasing the MinisTirith palantir
+Pippen is acquiring the palantir
+Saruman is starting to gaze at the MinisTirith palantir
+Saruman is finished gazing at the MinisTirith palantir
+Denathor is starting to gaze at the MinisTirith palantir
+Saruman is releasing the MinisTirith palantir
+Saruman is acquiring the palantir
+Denathor is finished gazing at the MinisTirith palantir
+Denathor is releasing the MinisTirith palantir
+Denathor is acquiring the palantir
+Pippen is starting to gaze at the MinisTirith palantir
+Pippen is finished gazing at the MinisTirith palantir
+Pippen is releasing the MinisTirith palantir
+Saruman is starting to gaze at the MinisTirith palantir
+Saruman is finished gazing at the MinisTirith palantir
+Denathor is starting to gaze at the MinisTirith palantir
+Saruman is releasing the MinisTirith palantir
+Aragorn is finished gazing at the Orthanc palantir
+Aragorn is releasing the Orthanc palantir
+Aragorn is acquiring the palantir
+Aragorn is starting to gaze at the Orthanc palantir
+Denathor is finished gazing at the MinisTirith palantir
+Denathor is releasing the MinisTirith palantir
+Denathor is acquiring the palantir
+Denathor is starting to gaze at the MinisTirith palantir
+Denathor is finished gazing at the MinisTirith palantir
+Denathor is releasing the MinisTirith palantir
+Denathor is acquiring the palantir
+Denathor is starting to gaze at the MinisTirith palantir
+Denathor is finished gazing at the MinisTirith palantir
+Denathor is releasing the MinisTirith palantir
+Sauron is finished gazing at the Barad-dur palantir
+Sauron is releasing the Barad-dur palantir
+Sauron is acquiring the palantir
+Sauron is starting to gaze at the MinisTirith palantir
+Sauron is finished gazing at the MinisTirith palantir
+Sauron is releasing the MinisTirith palantir
+Aragorn is finished gazing at the Orthanc palantir
+Aragorn is releasing the Orthanc palantir
+Aragorn is acquiring the palantir
+Aragorn is starting to gaze at the MinisTirith palantir
+Aragorn is finished gazing at the MinisTirith palantir
+Aragorn is releasing the MinisTirith palantir
+Aragorn is acquiring the palantir
+Aragorn is starting to gaze at the MinisTirith palantir
+Aragorn is finished gazing at the MinisTirith palantir
+Aragorn is releasing the MinisTirith palantir
+Aragorn is acquiring the palantir
+Aragorn is starting to gaze at the MinisTirith palantir
+Aragorn is finished gazing at the MinisTirith palantir
+Aragorn is releasing the MinisTirith palantir
 Finishing PalantirManagerTest
+----------------------------------------
 
 Don't worry if your output occurs in a different order - that's to be
-expected in multi-threaded programs and platforms.  Also, don't worry
-about "warnings" since there's an intentional race condition in the
-test since it's possible for one thread to call
+expected in multi-threaded programs and OS/JVM platforms.  Also, don't
+worry about "warnings" since there's an intentional race condition in
+the test since it's possible for one thread to call
 mFairnessChecker.addNewThread() and then yield to another thread which
 again calls mFairnessChecker.addNewThread() and then goes on without
 interruption to call mPalantirManager.acquirePalantir(), which will

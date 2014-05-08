@@ -48,7 +48,7 @@ class PalantirManagerTest
                 // gaze into a Palantir.
                 for (int i = 0; i < mMaxPalantirSessions; ++i) {
                     System.out.println(Thread.currentThread().getName() 
-                                       + " is acquiring palantir");
+                                       + " is acquiring the palantir");
 
                     // Used to check for Semaphore fairness.
                     mFairnessChecker.addNewThread(Thread.currentThread().getName());
@@ -83,7 +83,9 @@ class PalantirManagerTest
                             throw new RuntimeException();
                         }
                     System.out.println(Thread.currentThread().getName() 
-                                       + " is starting to gaze");
+                                       + " is starting to gaze at the "
+                                       + palantir.name() 
+                                       + " palantir");
 
                     // Gaze at the Palantir for the time alloted in
                     // the command.
@@ -94,15 +96,18 @@ class PalantirManagerTest
                     mActiveThreads.decrementAndGet();
 
                     System.out.println(Thread.currentThread().getName() 
-                                       + " is finished gazing");
+                                       + " is finished gazing at the "
+                                       + palantir.name() 
+                                       + " palantir");
 
                     // Return the Palantir back to the shared pool so
                     // other Beings can gaze at it.
                     mPalantirManager.releasePalantir(palantir);
 
-                    System.out.println(Thread.currentThread().getName() 
-                                       + " is releasing palantir");                    
-
+                    System.out.println(Thread.currentThread().getName()
+                                       + " is releasing the "
+                                       + palantir.name() + 
+                                       " palantir");                    
                 }
                     
             }

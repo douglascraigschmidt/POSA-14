@@ -10,5 +10,10 @@ interface Palantir {
      * Gaze into the Palantir (and go into a tranc ;-)).
      */
     public void gaze();
+
+    /**
+     * Return the name of the Palantir.
+     */
+    public String name();
 }
 
