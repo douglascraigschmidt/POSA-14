@@ -8,7 +8,7 @@ Threads.  The test program also illustrates the problems that occur if
 Java Threads concurrently access an object that isn't properly
 synchronized.
 
-In this directory you'll find the SynchronizedQueueTest.java class,
+In this directory you'll find the SynchronizedQueue.java class,
 which contains the skeleton Java code that you'll implement by
 completing the "TODO - You fill in here" comments to provide a working
 solution.  DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just
@@ -51,22 +51,22 @@ http://www.courera.org/course/posa
 To compile this code you can either use the provided Eclipse project
 or simply type
 
-% javac SynchronizedQueueTest.java
+% javac SynchronizedQueue.java
 
 on the command-line and then run the resulting class file by typing
 
-% java SynchronizedQueueTest
+% java SynchronizedQueue
 
 The output for a correct solution should look something like this:
 
-Starting SynchronizedQueueTest
+Starting SynchronizedQueue
 0
 1
 2
 ... [lots of monotonically increasing numbers omitted]
 Exception java.lang.InterruptedException occurred in producerRunnable
 Exception java.lang.InterruptedException occurred in consumerRunnable
-test ArrayBlockingQueue passed
+*** Test ArrayBlockingQueue passed
 Exception java.lang.IndexOutOfBoundsException: Index: 0, Size: 0 occurred in consumerRunnable
-test BuggyBlockingQueue failed
-Finishing SynchronizedQueueTest
+*** Test BuggyBlockingQueue failed
+Finishing SynchronizedQueue <Helpful tip why it might have failed>
