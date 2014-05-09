@@ -27,12 +27,12 @@ public class SynchronizedQueue {
     /**
      * Error value for a timeout.
      */
-    static final int TIMEOUT_OCCURRED;
+    static final int TIMEOUT_OCCURRED = -1;
 
     /**
      * Error value for a failure.
      */
-    static final int FAILURE_OCCURRED;
+    static final int FAILURE_OCCURRED = -2;
 
     /**
      * @class SynchronizedQueueResult
@@ -187,7 +187,7 @@ public class SynchronizedQueue {
                         System.out.println("Exception " + e.toString()
                                            + " occurred in consumerRunnable");
                         // Indicate a timeout.
-                        mProducerCounter = TIMEOUT_OCCURRED.
+                        mProducerCounter = TIMEOUT_OCCURRED;
                         return;
                     } catch (Exception e) {
                         System.out.println("Exception " + e.toString()
