@@ -1,3 +1,4 @@
+package edu.vuum.mooca;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -7,7 +8,7 @@ import java.util.concurrent.*;
  * @brief This program tests the use of Java Threads and several implementations
  *        of the Java BlockingQueue interface.
  */
-public class SynchronizedQueueTest {
+public class SynchronizedQueue {
 	/**
 	 * Keep track of the number of times the producer test iterates.
 	 */
@@ -50,7 +51,7 @@ public class SynchronizedQueueTest {
 	 * @brief Applies a variant of the GoF Adapter pattern that enables us to
 	 *        test several implementations of the BlockingQueue interface.
 	 */
-	static class QueueAdapter<E> {
+	public static class QueueAdapter<E> {
 		/**
 		 * Stores the queue that we're adapting.
 		 */
@@ -59,7 +60,7 @@ public class SynchronizedQueueTest {
 		/**
 		 * Store the queue that we're adapting.
 		 */
-		QueueAdapter(BlockingQueue<E> queue) {
+		public QueueAdapter(BlockingQueue<E> queue) {
 			mQueue = queue;
 		}
 
@@ -97,121 +98,9 @@ public class SynchronizedQueueTest {
 	}
 
 	/**
-	 * @class BuggyBlockingQueue
-	 * 
-	 * @brief Defines a buggy version of the BlockingQueue interface that
-	 *        doesn't implement any synchronization mechanisms, so of course it
-	 *        will fail horribly (which is the intent).
-	 */
-	static class BuggyBlockingQueue<E> implements BlockingQueue<E> {
-		/**
-		 * ArrayList doesn't provide any synchronization, so it will not work
-		 * correctly when called from multiple Java Threads.
-		 */
-		private ArrayList<E> mList = null;
-
-		/**
-		 * Constructor just creates an ArrayList of the appropriate size.
-		 */
-		public BuggyBlockingQueue(int initialSize) {
-			mList = new ArrayList<E>(initialSize);
-		}
-
-		/**
-		 * Insert msg at the tail of the queue, but doesn't block if the queue
-		 * is full.
-		 */
-		public void put(E msg) throws InterruptedException {
-			mList.add(msg);
-		}
-
-		/**
-		 * Remove msg from the head of the queue, but doesn't block if the queue
-		 * is empty.
-		 */
-		public E take() throws InterruptedException {
-			return mList.remove(0);
-		}
-
-		/**
-		 * All these methods are inherited from the BlockingQueue interface.
-		 * They are defined as no-ops to ensure the "Buggyness" of this class
-		 * ;-)
-		 */
-		public int drainTo(Collection<? super E> c) {
-			return 0;
-		}
-		public int drainTo(Collection<? super E> c, int maxElements) {
-			return 0;
-		}
-		public boolean contains(Object o) {
-			return false;
-		}
-		public boolean remove(Object o) {
-			return false;
-		}
-		public int remainingCapacity() {
-			return 0;
-		}
-		public E poll() {
-			return null;
-		}
-		public E poll(long timeout, TimeUnit unit) throws InterruptedException {
-			return null;
-		}
-		public E peek() {
-			return null;
-		}
-		public boolean offer(E e) {
-			return false;
-		}
-		public boolean offer(E e, long timeout, TimeUnit unit) {
-			return false;
-		}
-		public boolean add(E e) {
-			return false;
-		}
-		public E element() {
-			return null;
-		}
-		public E remove() {
-			return null;
-		}
-		public void clear() {
-		}
-		public boolean retainAll(Collection<?> collection) {
-			return false;
-		}
-		public boolean removeAll(Collection<?> collection) {
-			return false;
-		}
-		public boolean addAll(Collection<? extends E> collection) {
-			return false;
-		}
-		public boolean containsAll(Collection<?> collection) {
-			return false;
-		}
-		public Object[] toArray() {
-			return null;
-		}
-		public <T> T[] toArray(T[] array) {
-			return null;
-		}
-		public Iterator<E> iterator() {
-			return null;
-		}
-		public boolean isEmpty() {
-			return false;
-		}
-		public int size() {
-			return 0;
-		}
-	}
-
-	/**
 	 * Adapter object used to test different BlockingQueue implementations.
 	 */
-	static QueueAdapter<Integer> mQueue = null;
+	public static QueueAdapter<Integer> mQueue = null;
 
 	/**
 	 * This runnable loops for mMaxIterations and calls put() on mQueue to
@@ -287,12 +176,13 @@ public class SynchronizedQueueTest {
 	 * iterations since the Threads ought to be interrupted long before it gets
 	 * this far).
 	 */
-	static int mMaxIterations = 1000000;
+	public static int mMaxIterations = 1000000;
 
 	/**
 	 * Run the test for the queue parameter.
 	 */
-	static SynchronizedQueueResult testQueue(QueueAdapter<Integer> queue) {
+	@SuppressWarnings("unused")
+	public static SynchronizedQueueResult testQueue(QueueAdapter<Integer> queue) {
 		try {
 			// TODO - you fill in here to replace the null
 			// initialization below to create two Java Threads, one
@@ -305,17 +195,14 @@ public class SynchronizedQueueTest {
 			// interesting results will occur if you start the
 			// consumer first.
 
-
 			// Give the Threads a chance to run before interrupting
 			// them.
 			Thread.sleep(100);
 
 			// TODO - you fill in here to interrupt the threads.
 
-
 			// TODO - you fill in here to wait for the threads to
 			// exit.
-
 
 			// Do some sanity checking to see if the Threads work as
 			// expected.
@@ -340,44 +227,5 @@ public class SynchronizedQueueTest {
 		}
 
 	}
-	/**
-	 * Run the test for the queue parameter.
-	 */
-	static void testQueue(String testName, QueueAdapter<Integer> queue) {
 
-		SynchronizedQueueResult result = testQueue(queue);
-
-		String resultString = "*** Test " + testName + " ";
-		if (result != SynchronizedQueueResult.RAN_PROPERLY) {
-			resultString += "Failed because: " + result.getString();
-		} else {
-			resultString += "Passed.";
-		}
-
-		System.out.println(resultString);
-
-	}
-
-	/**
-	 * Main entry point method into the test program.
-	 */
-	public static void main(String argv[]) {
-		System.out.println("Starting SynchronizedQueueTest");
-		// Indicate how big the queue should be, which should be
-		// smaller than the number of iterations to induce blocking
-		// behavior.
-		int queueSize = mMaxIterations / 10;
-
-		// Test the ArrayBlockingQueue, which should pass the test.
-		mQueue = new QueueAdapter<Integer>(new ArrayBlockingQueue<Integer>(
-				queueSize));
-		testQueue("ArrayBlockingQueue", mQueue);
-
-		// Test the BuggyBlockingQueue, which should fail the test.
-		mQueue = new QueueAdapter<Integer>(new BuggyBlockingQueue<Integer>(
-				queueSize));
-		testQueue("BuggyBlockingQueue", mQueue);
-
-		System.out.println("Finishing SynchronizedQueueTest");
-	}
 }
