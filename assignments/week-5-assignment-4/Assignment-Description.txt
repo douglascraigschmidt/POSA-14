@@ -1,0 +1,95 @@
+Programming Assignment 4
+
+In this assignment, you will implement a program that uses a
+pattern-oriented framework to spawn threads that correctly alternate
+printing "Ping" and "Pong", respectively on either the command-line
+display (of the Eclipse IDE) or in an Android TextView (in either the
+AVD emulator or on an actual Android device).  In this directory
+you'll find Java source code, AndroidManifest.xml, and associated XML
+metadata files.  The src/edu/vuum/mocca/ directory contains the
+skeleton Java code that you'll implement by completing the "TODO - You
+fill in here" comments to provide a working solution.  DO NOT CHANGE
+THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO - You
+fill in here" portions!!!
+
+In particular, you'll need to do the following:
+
+. Read & understand the PingPongThreadSema PingPongThreadCond classes,
+  which are covered in these videos:
+  
+  Section 1: Module 2: Part 10: Java Synchronization and Schedule Example
+
+. To understand these classes you'll also want to understand the Java
+  ReentrantLock, ConditionObject, and Semaphore classes, which are
+  covered in these videos:
+
+  Section 1: Module 2: Part 5: Java ReentrantLock
+  Section 1: Module 2: Part 7: Java Semaphore
+  Section 1: Module 2: Part 8: Java ConditionObject
+
+. Implement the hook methods in the AndroidPlatformStrategy.java class
+  that use a Java CountDownLatch and Activity's runOnUiThread() method
+  to post a Runnable command to the UI Thread, which are covered
+  in these videos:
+
+  Section 1: Module 2: Part 9: Java CountDownLatch
+  Section 1: Module 2: Part 10: Java Synchronization and Scheduling Example
+
+  There following videos on the Android HaMeR concurrency framework
+  may also be useful to understand what's going on, especially the
+  Part 4, which shows how the Activity.runOnUiThread() method works.
+
+  Section 1: Module 2: Part 1: Overview of Android Concurrency Frameworks and Idioms
+  Section 1: Module 2: Part 2: Android Looper
+  Section 1: Module 2: Part 3: Overview of Android Handler
+  Section 1: Module 2: Part 4: Posting and Processing Runnables to Android Handler
+
+Note, at the moment, all these videos are available in the YouTube
+playlist at
+
+https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
+ 
+When the 2014 POSA MOOC officially starts these videos will be
+available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+You'll need to build this Android application in the Eclipse ADT
+environment.  The correct solution should look like this (for both the
+Eclipse command-line and Android versions):
+
+Ready...Set...Go!
+Ping!(1)
+Pong!(1)
+Ping!(2)
+Pong!(2)
+Ping!(3)
+Pong!(3)
+Ping!(4)
+Pong!(4)
+Ping!(5)
+Pong!(5)
+Ping!(6)
+Pong!(6)
+Ping!(7)
+Pong!(7)
+Ping!(8)
+Pong!(8)
+Ping!(9)
+Pong!(9)
+Ping!(10)
+Pong!(10)
+Done!
+
+
+
+
+
+
+
