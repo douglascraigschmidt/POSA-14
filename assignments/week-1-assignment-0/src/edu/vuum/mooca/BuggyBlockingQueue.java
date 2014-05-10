@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  *        implement any synchronization mechanisms, so of course it will fail
  *        horribly (which is the intent).
  */
-class BuggyBlockingQueue<E> implements BlockingQueue<E> {
+public class BuggyBlockingQueue<E> implements BlockingQueue<E> {
 	/**
 	 * ArrayList doesn't provide any synchronization, so it will not work
 	 * correctly when called from multiple Java Threads.
