@@ -39,10 +39,10 @@ In particular, you'll need to do the following:
   may also be useful to understand what's going on, especially the
   Part 4, which shows how the Activity.runOnUiThread() method works.
 
-  Section 1: Module 2: Part 1: Overview of Android Concurrency Frameworks and Idioms
-  Section 1: Module 2: Part 2: Android Looper
-  Section 1: Module 2: Part 3: Overview of Android Handler
-  Section 1: Module 2: Part 4: Posting and Processing Runnables to Android Handler
+  Section 1: Module 3: Part 1: Overview of Android Concurrency Frameworks and Idioms
+  Section 1: Module 3: Part 2: Android Looper
+  Section 1: Module 3: Part 3: Overview of Android Handler
+  Section 1: Module 3: Part 4: Posting and Processing Runnables to Android Handler
 
 Note, at the moment, all these videos are available in the YouTube
 playlist at
