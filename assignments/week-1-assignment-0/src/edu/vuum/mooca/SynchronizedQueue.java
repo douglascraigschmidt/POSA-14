@@ -40,7 +40,7 @@ public class SynchronizedQueue {
      * @brief Enumerated type for return values of testing logic, has
      *       String for easy output.
      */
-    public enum SynchronizedQueueResult {
+   public enum SynchronizedQueueResult {
         RAN_PROPERLY("Threads Ran Properly."), 
         JOIN_NEVER_CALLED("Join() never called."),
         THREADS_NEVER_RAN("Threads never ran."),
@@ -128,7 +128,7 @@ public class SynchronizedQueue {
      * Adapter object used to test different BlockingQueue
      * implementations.
      */
-    public static QueueAdapter<Integer> mQueue = null;
+    private static QueueAdapter<Integer> mQueue = null;
 
     /**
      * This runnable loops for mMaxIterations and calls put() on
@@ -209,9 +209,10 @@ public class SynchronizedQueue {
     /**
      * Run the test for the queue parameter.
      */
-    @SuppressWarnings("unused")
     public static SynchronizedQueueResult testQueue(QueueAdapter<Integer> queue) {
         try {
+            mQueue = queue;
+
             // TODO - you fill in here to replace the null
             // initialization below to create two Java Threads, one
             // that's passed the producerRunnable and the other that's

@@ -35,14 +35,13 @@ public class MainTestDriver {
         int queueSize = SynchronizedQueue.mMaxIterations / 10;
 
         // Test the ArrayBlockingQueue, which should pass the test.
-        SynchronizedQueue.mQueue = new QueueAdapter<Integer>(
-                                                             new ArrayBlockingQueue<Integer>(queueSize));
-        testQueue("ArrayBlockingQueue", SynchronizedQueue.mQueue);
+        QueueAdapter<Integer> queue =
+            new QueueAdapter<Integer>(new ArrayBlockingQueue<Integer>(queueSize));
+        testQueue("ArrayBlockingQueue", queue);
 
         // Test the BuggyBlockingQueue, which should fail the test.
-        SynchronizedQueue.mQueue = new QueueAdapter<Integer>(
-                                                             new BuggyBlockingQueue<Integer>(queueSize));
-        testQueue("BuggyBlockingQueue", SynchronizedQueue.mQueue);
+        queue = new QueueAdapter<Integer>(new BuggyBlockingQueue<Integer>(queueSize));
+        testQueue("BuggyBlockingQueue", queue);
 
         System.out.println("Finishing SynchronizedQueueTest");
     }
