@@ -36,6 +36,7 @@ videos:
 
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+  Section 1: Module 2: Part 3: Motivating Java Synchronization and Scheduling Mechanisms     
 
 Make sure to watch these videos and read all the supplied Java code
 carefully prior to starting the assignment.  These videos are
