@@ -50,6 +50,12 @@ in item #38 at the POSA MOOC FAQ available from
 
 http://www.courera.org/course/posa
 
+The SynchronizerQueueTest.java file uses JUnit to run the tests.  We
+do this to automate the testing process and leverage the integration
+of JUnit with Eclipse, as described here:
+
+http://www.vogella.com/tutorials/JUnit/article.html#eclipse
+
 When you first open the project in Eclipse, you might see compile
 errors if JUnit is not included in your build path.  To fix these
 errors, open SynchronizedQueueTest.java, hover over "org.junit," and
