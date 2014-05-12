@@ -5,29 +5,31 @@ Due Monday, May 26th, 2014
 
 In this (intentionally simple) initial assignment, you will use Java
 Threads to test several implementations of the Java BlockingQueue
-interface.  The goal is to understand how to (1) create, (2) start,
-(3) interrupt, and (4) wait for the completion of multiple Java
-Threads.  The test program also illustrates the problems that occur if
-Java Threads concurrently access an object that isn't properly
-synchronized.
+interface.  The goal is to learn how to (1) create, (2) start, (3)
+interrupt, and (4) wait for the completion of multiple Java Threads.
+The test program also illustrates some problems that can occur if Java
+Threads concurrently access an object that isn't synchronized
+properly.
 
-In this directory you'll find the SynchronizedQueue.java class,
-which contains the skeleton Java code that you'll implement by
-completing the "TODO - You fill in here" comments to provide a working
-solution.  DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just
-fill in the "TODO - You fill in here" portions!!!
+In the "src/edu/vuum/mocca" folder in this directory you'll find the
+SynchronizedQueue.java class, which contains the skeleton Java code
+that you'll implement by completing the "TODO - You fill in here"
+comments to provide a working solution.  DO NOT CHANGE THE OVERALL
+STRUCTURE OF THE SKELETON - just fill in the "TODO - You fill in here"
+portions!!!
 
 In particular, you'll need to do the following:
 
 . Implement the "TODO" portions of the testQueue() method so that two
   Java Threads are created and started to run the producerRunnable and
-  consumerRunnable objects.  
+  consumerRunnable objects.
 
-. After giving the Threads a chance to run for a short while you'll
-  interrupt both of them so they will shutdown.
+. After giving the Threads a chance to run for a short while (which is
+  done for you via the Thread.sleep() method) you'll interrupt both of
+  them so they will shutdown.
 
 . After interrupting the Threads you'll wait for both Threads to exit
-  before continuing.
+  before continuing with the test (which is also done for you).
 
 All the information needed to write this code is described in these
 videos:
@@ -35,12 +37,8 @@ videos:
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
 
-At the moment, all these videos are available in the YouTube playlist
-at
-
-https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
- 
-When the 2014 POSA MOOC officially starts these videos will be
+Make sure to watch these videos and read all the supplied Java code
+carefully prior to starting the assignment.  These videos are
 available at
 
 https://class.coursera.org/posa-002/lecture
@@ -51,25 +49,11 @@ in item #38 at the POSA MOOC FAQ available from
 
 http://www.courera.org/course/posa
 
-To compile this code you can either use the provided Eclipse project
-or simply type
+To run the JUnit tests in Eclipse, right-click on
+SynchronizedQueueTest.java and go to "Run As > JUnit Test". The JUnit
+view will pop up in Eclipse and run the tests contained therein.  All
+tests should pass. The ArrayBlockingQueue will pass because your
+testQueue method runs successfully.  The tests for BuggyBlockingQueue
+(which is an intentionally flawed class), should "pass" if some error
+occurs while running testQueue.
 
-% javac SynchronizedQueue.java
-
-on the command-line and then run the resulting class file by typing
-
-% java SynchronizedQueue
-
-The output for a correct solution should look something like this:
-
-Starting SynchronizedQueue
-0
-1
-2
-... [lots of monotonically increasing numbers omitted]
-Exception java.lang.InterruptedException occurred in producerRunnable
-Exception java.lang.InterruptedException occurred in consumerRunnable
-*** Test ArrayBlockingQueue passed
-Exception java.lang.IndexOutOfBoundsException: Index: 0, Size: 0 occurred in consumerRunnable
-*** Test BuggyBlockingQueue failed
-Finishing SynchronizedQueue <Helpful tip why it might have failed>

@@ -1,5 +1,4 @@
 package edu.vuum.mooca;
-import java.util.*;
 import java.util.concurrent.*;
 
 /**
@@ -200,9 +199,9 @@ public class SynchronizedQueue {
 	};
 
     /**
-     * Number of iterations to test (the actual test shouldn't run this many
-     * iterations since the Threads ought to be interrupted long before it gets
-     * this far).
+     * Number of iterations to test (the actual test shouldn't run
+     * this many iterations since the Threads ought to be interrupted
+     * long before it gets this far).
      */
     public static int mMaxIterations = 1000000;
 
