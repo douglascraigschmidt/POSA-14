@@ -64,6 +64,6 @@ tests should pass. The ArrayBlockingQueue will pass because your
 testQueue method runs successfully.  The tests for BuggyBlockingQueue
 (which is an intentionally flawed class), should "pass" if some error
 occurs while running testQueue (these errors are expected).  As long
-as these JUnit tests both "pass" successfully your program should be
-"correct".
+as these JUnit tests both "pass" successfully your program will be
+be consider "correct" for the purposes of this assignment.
 
