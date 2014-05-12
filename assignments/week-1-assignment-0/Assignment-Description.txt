@@ -49,11 +49,18 @@ in item #38 at the POSA MOOC FAQ available from
 
 http://www.courera.org/course/posa
 
+When you first open the project in Eclipse, you might see compile
+errors if JUnit is not included in your build path.  To fix these
+errors, open SynchronizedQueueTest.java, hover over "org.junit," and
+click "Fix project setup."  Make sure "Add JUnit 4 library to the
+build path" is selected and then click "OK."  At this point, the
+compile errors should disappear!
+
 To run the JUnit tests in Eclipse, right-click on
 SynchronizedQueueTest.java and go to "Run As > JUnit Test". The JUnit
 view will pop up in Eclipse and run the tests contained therein.  All
 tests should pass. The ArrayBlockingQueue will pass because your
 testQueue method runs successfully.  The tests for BuggyBlockingQueue
 (which is an intentionally flawed class), should "pass" if some error
-occurs while running testQueue.
+occurs while running testQueue (these errors are expected).
 
