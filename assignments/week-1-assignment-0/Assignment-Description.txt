@@ -63,5 +63,7 @@ view will pop up in Eclipse and run the tests contained therein.  All
 tests should pass. The ArrayBlockingQueue will pass because your
 testQueue method runs successfully.  The tests for BuggyBlockingQueue
 (which is an intentionally flawed class), should "pass" if some error
-occurs while running testQueue (these errors are expected).
+occurs while running testQueue (these errors are expected).  As long
+as these JUnit tests both "pass" successfully your program should be
+"correct".
 
