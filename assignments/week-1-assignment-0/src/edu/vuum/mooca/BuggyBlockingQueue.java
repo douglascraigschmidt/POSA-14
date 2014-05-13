@@ -79,7 +79,7 @@ public class BuggyBlockingQueue<E> implements BlockingQueue<E> {
         try {
             put(e);
         }
-        catch (InterruptedException e) {
+        catch (InterruptedException ex) {
             // Just swallow this exception for this simple (buggy) test.
         }
         return true;
