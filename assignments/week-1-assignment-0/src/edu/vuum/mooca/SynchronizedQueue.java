@@ -222,7 +222,7 @@ public class SynchronizedQueue {
             // TODO - you fill in here to start the threads. More
             // interesting results will occur if you start the
             // consumer first.
-
+            
             // Give the Threads a chance to run before interrupting
             // them.
             Thread.sleep(100);
@@ -231,7 +231,7 @@ public class SynchronizedQueue {
 
             // TODO - you fill in here to wait for the threads to
             // exit.
-
+            
             // Do some sanity checking to see if the Threads work as
             // expected.
             if (consumer == null 
