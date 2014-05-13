@@ -212,6 +212,10 @@ public class SynchronizedQueue {
         try {
             mQueue = queue;
 
+            // Please make sure to keep all the "TODO" comments in the
+            // code below to make it easy for peer reviewers to find
+            // them.
+
             // TODO - you fill in here to replace the null
             // initialization below to create two Java Threads, one
             // that's passed the producerRunnable and the other that's

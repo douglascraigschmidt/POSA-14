@@ -22,7 +22,9 @@ In particular, you'll need to do the following:
 
 . Implement the "TODO" portions of the testQueue() method so that two
   Java Threads are created and started to run the producerRunnable and
-  consumerRunnable objects.
+  consumerRunnable objects.  Please keep the "TODO" comments in the
+  code so that peer reviewers can find them quickly during the
+  assessment phase.
 
 . After giving the Threads a chance to run for a short while (which is
   done for you via the Thread.sleep() method) you'll interrupt both of
