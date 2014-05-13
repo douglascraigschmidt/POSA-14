@@ -67,7 +67,7 @@ public class BuggyBlockingQueue<E> implements BlockingQueue<E> {
         return null;
     }
     public E poll(long timeout, TimeUnit unit) throws InterruptedException {
-        return null;
+        return take();
     }
     public E peek() {
         return null;
@@ -76,7 +76,8 @@ public class BuggyBlockingQueue<E> implements BlockingQueue<E> {
         return false;
     }
     public boolean offer(E e, long timeout, TimeUnit unit) {
-        return false;
+        put(e);
+        return true;
     }
     public boolean add(E e) {
         return false;
