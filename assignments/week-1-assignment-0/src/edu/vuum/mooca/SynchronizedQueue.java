@@ -186,7 +186,7 @@ public class SynchronizedQueue {
                         System.out.println("Exception " + e.toString()
                                            + " occurred in consumerRunnable");
                         // Indicate a timeout.
-                        mProducerCounter = TIMEOUT_OCCURRED;
+                        mConsumerCounter = TIMEOUT_OCCURRED;
                         return;
                     } catch (Exception e) {
                         System.out.println("Exception " + e.toString()
