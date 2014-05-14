@@ -3,7 +3,7 @@ Programming Assignment 0
 In this first (intentionally simple) assignment, you will use a Java
 ReentrantReadWriteLock to implement a subset of the
 java.util.concurrent.atomic.AtomicLong class, which we call
-SimpleAtomicLock.  The goal is to understand how to use
+SimpleAtomicLong.  The goal is to understand how to use
 ReentrantReadWriteLock to serialize access to a variable that's shared
 by multiple threads.  The SimpleAtomicLongTest.java program creates
 two Threads that increment and decrement the AtomicLong 10,000,000
@@ -67,11 +67,11 @@ http://www.courera.org/course/posa
 To compile this code you can either use the provided Eclipse project
 or simply type
 
-% javac SimpleAtomicLockTest.java SimpleAtomicLock.java
+% javac SimpleAtomicLongTest.java SimpleAtomicLong.java
 
 on the command-line and then run the resulting class file by typing
 
-% java SimpleAtomicLockTest
+% java SimpleAtomicLongTest
 
 The output for a correct solution should look exactly like this:
 

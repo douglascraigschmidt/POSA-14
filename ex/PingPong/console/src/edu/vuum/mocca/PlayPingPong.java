@@ -188,7 +188,7 @@ public class PlayPingPong implements Runnable
         /**
          * Thread whose turn it currently is.
          */
-        private static long mThreadOwner;
+        private static long mTurnOwner;
         
         public void setOtherThreadId(long otherThreadId) 
         {
@@ -213,7 +213,7 @@ public class PlayPingPong implements Runnable
             mConds[FIRST_COND] = firstCond;
             mConds[SECOND_COND] = secondCond;
             if (isOwner) 
-                mThreadOwner = this.getId();
+                mTurnOwner = this.getId();
         }
 
         /**
@@ -222,7 +222,7 @@ public class PlayPingPong implements Runnable
         void acquire() {
             mLock.lock();
 
-            while (mThreadOwner != this.getId()) {
+            while (mTurnOwner != this.getId()) {
                 mConds[FIRST_COND].awaitUninterruptibly();
             }
 
@@ -238,7 +238,7 @@ public class PlayPingPong implements Runnable
             --mTurnCountDown;
 
             if (mTurnCountDown == 0) {
-                mThreadOwner = mOtherThreadId;
+                mTurnOwner = mOtherThreadId;
                 mTurnCountDown = mMaxTurns;
                 mConds[SECOND_COND].signal();
             }
