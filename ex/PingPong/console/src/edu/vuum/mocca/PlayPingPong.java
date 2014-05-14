@@ -178,7 +178,7 @@ public class PlayPingPong implements Runnable
         /**
          * Number of times we've iterated thus far in our "turn".
          */
-        private int mIterationCount = 0;
+        private int mTurnCountDown = 0;
         
         /**
          * Id for the other thread.
@@ -208,7 +208,7 @@ public class PlayPingPong implements Runnable
                            boolean isOwner) 
         {
             super(stringToPrint);
-            mIterationCount = mMaxTurns;
+            mTurnCountDown = mMaxTurns;
             mLock = lock;
             mConds[FIRST_COND] = firstCond;
             mConds[SECOND_COND] = secondCond;
@@ -235,11 +235,11 @@ public class PlayPingPong implements Runnable
         void release() {
             mLock.lock();
 
-            --mIterationCount;
+            --mTurnCountDown;
 
-            if (mIterationCount == 0) {
+            if (mTurnCountDown == 0) {
                 mThreadOwner = mOtherThreadId;
-                mIterationCount = mMaxTurns;
+                mTurnCountDown = mMaxTurns;
                 mConds[SECOND_COND].signal();
             }
             mLock.unlock();
