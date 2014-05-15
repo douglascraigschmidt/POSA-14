@@ -5,7 +5,10 @@ package edu.vuum.mooca;
  *
  * @brief This is where you put your implementation code to to (1)
  *        create, (2) start, (3) interrupt, and (4) wait for the
- *        completion of multiple Java Threads.
+ *        completion of multiple Java Threads.  This class plays the
+ *        role of the "Concrete Class" in the Template Method pattern
+ *        and isolates the code written by students from the
+ *        underlying SynchronizedQueue test infrastructure.
  *
  *        Make sure to keep all the "TODO" comments in the code below
  *        to make it easy for peer reviewers to find them.
