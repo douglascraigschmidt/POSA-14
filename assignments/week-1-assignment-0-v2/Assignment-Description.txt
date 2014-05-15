@@ -1,7 +1,12 @@
-Week 1: Programming Assignment 0
+Week 1: Programming Assignment 0 v2
 
-Released Monday, May 12, 2014
-Due Monday, May 26th, 2014
+[Note, this is a different skeleton for assignment 0, which fixes some
+problems with the "official" version, provides better diagnostics, and
+also has a cleaner design that uses the Template Method pattern to
+decouple the test infrastructure from the student-supplied
+code. However, it is NOT the offical version that will be peer graded
+and is provided solely as a way students to understand better how
+concurrency and Java Threads work.]
 
 In this (intentionally simple) initial assignment, you will use Java
 Threads to test several implementations of the Java BlockingQueue
