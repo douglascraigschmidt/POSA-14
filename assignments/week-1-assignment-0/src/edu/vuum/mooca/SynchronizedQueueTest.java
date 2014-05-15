@@ -68,21 +68,4 @@ public class SynchronizedQueueTest {
                    errors,
                    errors);
     }
-	
-    /**
-     * Tests the BuggyBlockingQueue, an intentionally flawed class.
-     * The buggyBlockingQueueTest() will succeed if the testQueue
-     * method fails, i.e., this test succeeds if our queue causes
-     * errors (which is what we expect)!
-     */
-    @Test
-    public void buggyBlockingQueueTest() {
-        QueueAdapter<Integer> queueAdapter =
-            new QueueAdapter<Integer>(new BuggyBlockingQueue<Integer>(queueSize));
-        String errors = runQueueTest("BuggyBlockingQueue", queueAdapter);
-        assertNotNull("Test should not complete without errors. " +
-                      "BuggyBlockingQueue is intended to function incorrectly.",
-                      errors);
-    }
-
 }
