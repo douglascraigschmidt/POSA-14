@@ -1,0 +1,90 @@
+Week 1: Programming Assignment 0
+
+Released Monday, May 12, 2014
+Due Monday, May 26th, 2014
+
+In this (intentionally simple) initial assignment, you will use Java
+Threads to test several implementations of the Java BlockingQueue
+interface.  The goal is to learn how to (1) create, (2) start, (3)
+interrupt, and (4) wait for the completion of multiple Java Threads.
+The test program also illustrates some problems that can occur if Java
+Threads concurrently access an object that isn't synchronized
+properly.
+
+In the "src/edu/vuum/mocca" folder in this directory you'll find the
+SynchronizedQueueImpl.java class, which contains the skeleton Java
+code that you'll implement by completing the "TODO - You fill in here"
+comments to provide a working solution.  DO NOT CHANGE THE OVERALL
+STRUCTURE OF THE SKELETON - just fill in the "TODO - You fill in here"
+portions!!!
+
+In particular, you'll need to do the following:
+
+. Implement the "TODO" portions of the createThreads() and
+  startThreads() methods so that the two Java mProducer and mConsumer
+  Threads are created and started to run the mProducerRunnable and
+  mConsumerRunnable objects.  Please keep the "TODO" comments in the
+  code so that peer reviewers can find them quickly during the
+  assessment phase.
+
+. Implement the "TODO" portion of the interruptThreads() method, which
+  interrupts both the mProducer and mConsumer Threads so they will
+  shutdown.
+
+. Implement the "TODO" portion of the "joinThreads()" method, which
+  waits for both Threads to exit before continuing with the test
+  (which is done for you by the testQueue() template method in the
+  SynchronizedQueue.java file).
+
+. If you'd like to enable verbose debugging output please set the 
+  diagnosticsEnabled flag in SynchronizedQueueImpl to true (it
+  defaults to false).
+
+All the information needed to write this code is described in these
+videos:
+
+  Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
+  Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+  Section 1: Module 2: Part 3: Motivating Java Synchronization and Scheduling Mechanisms     
+
+Make sure to watch these videos and read all the supplied Java code
+carefully prior to starting the assignment.  These videos are
+available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+The SynchronizerQueueTest.java file uses JUnit to run the tests.  We
+do this to automate the testing process and leverage the integration
+of JUnit with Eclipse, as described here:
+
+http://www.vogella.com/tutorials/JUnit/article.html#eclipse
+
+When you first open the project in Eclipse, you might see compile
+errors if JUnit is not included in your build path.  To fix these
+errors, open SynchronizedQueueTest.java, hover over "org.junit," and
+click "Fix project setup."  Make sure "Add JUnit 4 library to the
+build path" is selected and then click "OK."  At this point, the
+compile errors should disappear!
+
+To run the JUnit tests in Eclipse, right-click on
+SynchronizedQueueTest.java and go to "Run As > JUnit Test". The JUnit
+view will pop up in Eclipse and run the tests contained therein.  All
+tests should pass. The ArrayBlockingQueue will pass because your
+testQueue method runs successfully.  The tests for BuggyBlockingQueue
+(which is an intentionally flawed class), should "pass" if some error
+occurs while running testQueue (these errors are expected).  As long
+as these JUnit tests both "pass" successfully your program will be be
+consider "correct" for the purposes of assessing this assignment.
+
+If the tests run and "pass," you should see check-marks next to each
+of the tests in the JUnit view.  If you set the diagnosticsEnabled
+flag to true then debugging output will be printed to the console as
+the tests run. This text is for informational purposes only and have
+no bearing on whether your program is "correct," but will help you to
+better understand what it's doing.
