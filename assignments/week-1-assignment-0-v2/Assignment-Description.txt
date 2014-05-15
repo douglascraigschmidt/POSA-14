@@ -5,7 +5,7 @@ problems with the "official" version, provides better diagnostics, and
 also has a cleaner design that uses the Template Method pattern to
 decouple the test infrastructure from the student-supplied
 code. However, it is NOT the offical version that will be peer graded
-and is provided solely as a way students to understand better how
+and is provided solely as a way for students to understand better how
 concurrency and Java Threads work.]
 
 In this (intentionally simple) initial assignment, you will use Java
