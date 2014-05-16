@@ -1,14 +1,13 @@
-Programming Assignment 0
+Week 2: Programming Assignment 1
 
-In this first (intentionally simple) assignment, you will use a Java
-ReentrantReadWriteLock to implement a subset of the
-java.util.concurrent.atomic.AtomicLong class, which we call
-SimpleAtomicLong.  The goal is to understand how to use
+Released Monday, May 19th, 2014
+Due Monday, June 2nd, 2014
+
+In this seonc assignment, you will implement a subset of the
+java.util.concurrent.atomic.SimpleAtomicLong class using a Java
+ReentrantReadWriteLock.  The goal is to understand how to use
 ReentrantReadWriteLock to serialize access to a variable that's shared
-by multiple threads.  The SimpleAtomicLongTest.java program creates
-two Threads that increment and decrement the AtomicLong 10,000,000
-times each.  If the SimpleAtomicLong implementation is properly
-serialized it's final value should be 0.
+by multiple threads.
 
 The BuggyLongTest.java program shows what happens if concurrent access
 to a long isn't properly serialized.  This test program works best on
@@ -17,11 +16,12 @@ failure due to race conditions stemming from parallel execution.  If
 this test "succeeds" then your target platform is not sufficiently
 parallel to demonstrate the bug.
 
-In this directory you'll find the SimpleAtomicLong.java class, which
-contains the skeleton Java code that you'll implement by completing
-the "TODO - You fill in here" comments to provide a working solution.
-DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
-"TODO - You fill in here" portions!!!
+In the src/edu/vuum/mocca directory you'll find the
+SimpleAtomicLong.java class, which contains the skeleton Java code
+that you'll implement by completing the "TODO - You fill in here"
+comments to provide a working solution.  DO NOT CHANGE THE OVERALL
+STRUCTURE OF THE SKELETON - just fill in the "TODO - You fill in here"
+portions!!!
 
 In particular, you'll need to do the following:
 
@@ -34,17 +34,17 @@ In particular, you'll need to do the following:
   
   http://tutorials.jenkov.com/java-util-concurrent/readwritelock.html
 
-. Make sure to use a readLock() for AtomicLong.get() and writeLock()
-  for all the other SimpleAtomicLong methods.
+. Make sure to use a readLock() for SimpleAtomicLong.get() and
+  writeLock() for all the other SimpleAtomicLong methods.
 
-. The SimpleAtomicLongTest.java program uses various features of Java
-  Threads and Runnables, which are described in these videos:
+Note that the SimpleAtomicLongTest.java program uses Java Threads and
+Runnables, which are described in these videos:
 
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
 
-  Likewise, it also uses the Java CountDownLatch and CyclicBarrier
-  classes, which are described in this video:
+Likewise, it also uses the Java CountDownLatch and CyclicBarrier
+classes, which are described in this video:
 
   Section 1: Module 2: Part 9: Java CountDownLatch
 
@@ -58,23 +58,16 @@ available at
 
 https://class.coursera.org/posa-002/lecture
 
-We'll also discuss this assignment specification (and later its
-solution) in the POSA MOOC "Virtual Office Hours", which are described
-in item #38 at the POSA MOOC FAQ available from
+To test this code in Eclipse, right-click on
+SimpleAtomicLongTests.java and Run As > JUnit Test.  The JUnit view
+will pop up in Eclipse and run the the tests, which are divided into
+two subsets: multi-threaded and single-threaded tests.  The
+single-threaded tests verify functionality of all methods within a
+single thread, while the multi-threaded tests do the same in a
+multi-threaded environment. All tests should run successfully.
 
-http://www.courera.org/course/posa
 
-To compile this code you can either use the provided Eclipse project
-or simply type
 
-% javac SimpleAtomicLongTest.java SimpleAtomicLong.java
 
-on the command-line and then run the resulting class file by typing
 
-% java SimpleAtomicLongTest
 
-The output for a correct solution should look exactly like this:
-
-Starting SimpleAtomicLongTest
-test worked
-Finishing SimpleAtomicLongTest

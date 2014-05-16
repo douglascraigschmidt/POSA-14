@@ -1,4 +1,4 @@
-// Import the necessary Java synchronization and scheduling classes.
+package edu.vuum.mocca;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
@@ -14,7 +14,7 @@ class BuggyLongTest
     /**
      * Number of iterations to run the test.
      */
-    static final long mMaxIterations = 10000000;
+    static final long mMaxIterations = 100000000;
 
     /**
      * Barrier synchronizer that controls when the two threads start
@@ -41,7 +41,7 @@ class BuggyLongTest
             System.out.println("Starting BuggyLongTest");
 
             /**
-             * Start a Thread whose Runnable decrements the AtomicLong
+             * Start a Thread whose Runnable decrements the SimpleAtomicLong
              * mMaxIterations number of times.
              */
             new Thread(new Runnable()
@@ -70,7 +70,7 @@ class BuggyLongTest
                 }).start();
 
             /**
-             * Start a Thread whose Runnable increments the AtomicLong
+             * Start a Thread whose Runnable increments the SimpleAtomicLong
              * mMaxIterations number of times.
              */
             new Thread(new Runnable()
