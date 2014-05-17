@@ -294,15 +294,27 @@ public abstract class SynchronizedQueue {
      */
     protected static String mTestName = null;
     
-    public static boolean diagnosticsEnabled = false;
+    /**
+     * If this is set to true in SynchronizedQueueImpl.java then lots
+     * of debugging output will be generated.
+     */
+    public static boolean diagnosticsEnabled;
 
+    /**
+     * These are hook methods that play the role of "primitive
+     * operations" in the Template Method pattern.  They must be
+     * defined in SynchronizedQueueImpl.java by adding code after the
+     * "TODO" comments.
+     */
     protected abstract void createThreads();
     protected abstract void startThreads();
     protected abstract void interruptThreads();    
     protected abstract void joinThreads() throws InterruptedException;    
 
     /**
-     * This template method runs the test on the queue parameter.
+     * This template method runs the test on the queue parameter.  It
+     * decouples the test code from the user-defined code using the
+     * Template Method pattern.
      */
     public SynchronizedQueueResult testQueue(QueueAdapter<Integer> queue,
                                              String testName) {
