@@ -30,11 +30,11 @@ Last, copy the submitter's SynchronizedQueue.java file into your IDE
 (which may have been given a random, odd name by Coursera, so you'll
 need to rename it) and store it in the src/edu/vuum/mocca directory.
 I recommend scanning the submitted code to ensure there are no changes
-other than replacing the "TODO" comments with the appropriate solution
-(a quick way to do this automatically is to run "diff" on the original
-SynchronizedQueue.java file and the submitted SynchronizedQueue.java
-file to make sure all the changes are as expected, in the expected
-places in the code).
+other than adding the appropriate code as indicated by the "TODO"
+comments. A quick way to check for this automatically is to run "diff"
+on the original SynchronizedQueue.java file and the submitted
+SynchronizedQueue.java file to make sure all the changes are as
+expected, in the expected places in the code.
 
 Once you've reviewed the code against the rubric described below
 please try to compile and run it, walking through the steps called out
