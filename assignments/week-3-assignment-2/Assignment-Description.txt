@@ -1,22 +1,27 @@
-Programming Assignment 0.5
+Week 3: Programming Assignment 2
+
+Released Monday, May 26th, 2014
+Due Monday, June 9th, 2014
 
 In this assignment, you will use a Java ReentrantLock and Java
 ConditionObject to implement a subset of the Java
 java.util.concurrent.Semaphore class, which we call SimpleSemaphore.
 This assignment also reuses the SimpleAtomicLock you implemented for
-Assignment 0, so make sure it's working properly before attempting
-this assignment!  The goal of this assignment is to use the
-SimpleSemaphore to correctly implement a resource manager that limits
-the number of Beings from Middle-Earth who can concurrently gaze into
-a Palantir (if you're not a Lord of the Ring's fan see
+Assignment 0, so make sure it's compiling and running properly before
+attempting this assignment!
+
+The goal of this assignment is to use the SimpleSemaphore to correctly
+implement a resource manager that limits the number of Beings from
+Middle-Earth who can concurrently gaze into a Palantir.  Please see
 http://en.wikipedia.org/wiki/Palantir for more information on
-Palantir).
+Palantirs if you're not yet a fan of Tolkein's Lord of the Ring's.
 
 The PalantirManagerTest.java program creates three Palantiri and five
 Threads (one for each Palantir user) that concurrently attempt to
 acquire a Palantir and gaze into it for a certain amount of time.  If
 the SimpleSemaphore and SimpleAtomicLock are implemented properly the
-test should succeed without throwing any exceptions.
+test should succeed without throwing any exceptions, as described
+further below.
 
 In this directory you'll find a number of files, all of which you
 should read.  However, the only two files you need to modify are
@@ -29,7 +34,7 @@ fill in here" portions!!!
 In particular, you'll need to do the following:
 
 . Implement the SimpleAtomicLong class, which you should replace with
-  your working solution to assignment0.
+  your working solution to week-2-assignment-1.
 
 . Implement the SimpleSemaphore class using a Java ConditionObject and
   Java ReentrantLock, which are covered in these videos:
@@ -199,7 +204,7 @@ mFairnessChecker.addNewThread() and then yield to another thread which
 again calls mFairnessChecker.addNewThread() and then goes on without
 interruption to call mPalantirManager.acquirePalantir(), which will
 fool the fairness checker into wrongly thinking the acquisition wasn't
-fair. we'll just give a warning (rather than an error) if it looks
-like the semaphore acquire() method isn't "fair".  The key is not to
-have runtime exceptions in your output!
+fair.  We therefore just give a warning (rather than an error) if it
+looks like the semaphore acquire() method isn't "fair".  The key is
+not to have runtime exceptions in your output!
 
