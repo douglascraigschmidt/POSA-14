@@ -16,7 +16,7 @@ Middle-Earth who can concurrently gaze into a Palantir.  Please see
 http://en.wikipedia.org/wiki/Palantir for more information on
 Palantirs if you're not yet a fan of Tolkein's Lord of the Ring's.
 
-The PalantirManagerTest.java program creates three Palantiri and five
+The PalantirManagerTestDriver.java program creates three Palantiri and five
 Threads (one for each Palantir user) that concurrently attempt to
 acquire a Palantir and gaze into it for a certain amount of time.  If
 the SimpleSemaphore and SimpleAtomicLock are implemented properly the
@@ -25,7 +25,7 @@ further below.
 
 In this directory you'll find a number of files, all of which you
 should read.  However, the only two files you need to modify are
-SimpleAtomicLong.java class and SimpleSemaphore, which contains the
+SimpleAtomicLong.java and SimpleSemaphore.java, which contains the
 skeleton Java code that you'll implement by completing the "TODO - You
 fill in here" comments to provide a working solution.  DO NOT CHANGE
 THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO - You
@@ -80,14 +80,24 @@ in item #38 at the POSA MOOC FAQ available from
 http://www.courera.org/course/posa
 
 To compile this code you can either use the provided Eclipse project
-or go into the src directory and simply type
+or manually compile and run the code yourself (described below)
+
+
+There are 3 Unit test files and 1 Unit test suite that will run the 3 test 
+files for you at once. These are included in the test/ directory.
+
+Right click on the test suite (AllTests.java) or an individual *_UnitTest.java file in 
+Eclipse and select 'Run As' -> 'JUnit Test'. When the assignment is complete, 12 of 12 
+tests should complete successfully. 
+
+To manually compile the code go into the src directory and simply type
 
 % javac FairnessChecker.java Palantir.java PalantirManager.java
   PalantirManagerTest.java SimpleAtomicLong.java SimpleSemaphore.java
 
 on the command-line and then run the resulting class file by typing
 
-% java PalantirManagerTest
+% java PalantirManagerTestDriver
 
 The output for a correct solution should look something this:
 
