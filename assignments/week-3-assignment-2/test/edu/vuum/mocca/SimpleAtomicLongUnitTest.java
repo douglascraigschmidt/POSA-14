@@ -1,59 +1,89 @@
 package edu.vuum.mocca;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SimpleAtomicLongUnitTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testSimpleAtomicLong() {
-		fail("Not yet implemented");
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertNotNull(testLong);
 	}
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertEquals(testLong.get(), 0);
+		
+		SimpleAtomicLong testLong2 = new SimpleAtomicLong(100);
+		assertEquals(testLong2.get(), 100);
+		
+		SimpleAtomicLong testLong3 = new SimpleAtomicLong(-100);
+		assertEquals(testLong3.get(), -100);
 	}
 
 	@Test
 	public void testDecrementAndGet() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAndIncrement() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAndDecrement() {
-		fail("Not yet implemented");
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertEquals(testLong.decrementAndGet(), -1);
+		assertEquals(testLong.get(), -1);
+		
+		SimpleAtomicLong testLong2 = new SimpleAtomicLong(100);
+		assertEquals(testLong2.decrementAndGet(), 99);
+		assertEquals(testLong2.get(), 99);
+		
+		SimpleAtomicLong testLong3 = new SimpleAtomicLong(-100);
+		assertEquals(testLong3.decrementAndGet(), -101);
+		assertEquals(testLong3.get(), -101);
 	}
 
 	@Test
 	public void testIncrementAndGet() {
-		fail("Not yet implemented");
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertEquals(testLong.incrementAndGet(), 1);
+		assertEquals(testLong.get(), 1);
+		
+		SimpleAtomicLong testLong2 = new SimpleAtomicLong(100);
+		assertEquals(testLong2.incrementAndGet(), 101);
+		assertEquals(testLong2.get(), 101);
+		
+		SimpleAtomicLong testLong3 = new SimpleAtomicLong(-100);
+		assertEquals(testLong3.incrementAndGet(), -99);
+		assertEquals(testLong3.get(), -99);
+	}
+	
+	@Test
+	public void testGetAndIncrement() {
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertEquals(testLong.getAndIncrement(), 0);
+		assertEquals(testLong.get(), 1);
+		
+		SimpleAtomicLong testLong2 = new SimpleAtomicLong(100);
+		assertEquals(testLong2.getAndIncrement(), 100);
+		assertEquals(testLong2.get(), 101);
+		
+		SimpleAtomicLong testLong3 = new SimpleAtomicLong(-100);
+		assertEquals(testLong3.getAndIncrement(), -100);
+		assertEquals(testLong3.get(), -99);
 	}
 
+	@Test
+	public void testGetAndDecrement() {
+		SimpleAtomicLong testLong = new SimpleAtomicLong(0);
+		assertEquals(testLong.getAndDecrement(), 0);
+		assertEquals(testLong.get(), -1);
+		
+		SimpleAtomicLong testLong2 = new SimpleAtomicLong(100);
+		assertEquals(testLong2.getAndDecrement(), 100);
+		assertEquals(testLong2.get(), 99);
+		
+		SimpleAtomicLong testLong3 = new SimpleAtomicLong(-100);
+		assertEquals(testLong3.getAndDecrement(), -100);
+		assertEquals(testLong3.get(), -101);
+	}
+
+	
 }

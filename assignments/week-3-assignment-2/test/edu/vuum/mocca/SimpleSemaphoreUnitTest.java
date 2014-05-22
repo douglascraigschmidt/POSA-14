@@ -28,22 +28,45 @@ public class SimpleSemaphoreUnitTest {
 
 	@Test
 	public void testSimpleSemaphore() {
-		fail("Not yet implemented");
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
+		assertNotNull(simpleSemaphore);
 	}
 
 	@Test
-	public void testAcquire() {
-		fail("Not yet implemented");
+	public void testAcquire() throws InterruptedException {
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
+		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		simpleSemaphore.acquire();
+		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		simpleSemaphore.acquire();
+		assertEquals(simpleSemaphore.mAvailablePermits, 0);
 	}
 
 	@Test
-	public void testAcquireUninterruptibly() {
-		fail("Not yet implemented");
+	public void testAcquireUninterruptibly() throws InterruptedException {
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
+		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		simpleSemaphore.acquireUninterruptibly();
+		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		simpleSemaphore.acquireUninterruptibly();
+		assertEquals(simpleSemaphore.mAvailablePermits, 0);
 	}
 
 	@Test
-	public void testRelease() {
-		fail("Not yet implemented");
+	public void testRelease() throws InterruptedException {
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
+		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		simpleSemaphore.acquire();
+		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		simpleSemaphore.acquire();
+		assertEquals(simpleSemaphore.mAvailablePermits, 0);
+		simpleSemaphore.release();
+		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		simpleSemaphore.release();
+		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		// Test to see if release allows you to go 'above' resource count
+		simpleSemaphore.release();
+		assertEquals(simpleSemaphore.mAvailablePermits, 2);
 	}
 
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *        Ring's fan see http://en.wikipedia.org/wiki/Palantir for more
  *        information on Palantir).
  */
-class PalantirManagerTest 
+class PalantirManagerTestDriver 
 {
     /**
      * Total number of times each Palantir user gets to gaze into a
