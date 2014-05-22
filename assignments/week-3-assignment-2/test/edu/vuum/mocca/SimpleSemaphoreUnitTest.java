@@ -38,26 +38,26 @@ public class SimpleSemaphoreUnitTest {
 	@Test
 	public void testAcquire() throws InterruptedException {
 		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
-		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		assertEquals(simpleSemaphore.availablePermits(), 2);
 		simpleSemaphore.acquire();
-		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		assertEquals(simpleSemaphore.availablePermits(), 1);
 		simpleSemaphore.acquire();
-		assertEquals(simpleSemaphore.mAvailablePermits, 0);
+		assertEquals(simpleSemaphore.availablePermits(), 0);
 	}
 
 	@Test
 	public void testAcquireUninterruptibly() throws InterruptedException {
 		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
-		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		assertEquals(simpleSemaphore.availablePermits(), 2);
 		simpleSemaphore.acquireUninterruptibly();
-		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		assertEquals(simpleSemaphore.availablePermits(), 1);
 		simpleSemaphore.acquireUninterruptibly();
-		assertEquals(simpleSemaphore.mAvailablePermits, 0);
+		assertEquals(simpleSemaphore.availablePermits(), 0);
 	}
 
 	@Test
 	public void testRelease() throws InterruptedException {
-		Semaphore simpleSemaphore = new Semaphore(2, true);
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
 		assertEquals(simpleSemaphore.availablePermits(), 2);
 		simpleSemaphore.acquire();
 		assertEquals(simpleSemaphore.availablePermits(), 1);
@@ -67,6 +67,14 @@ public class SimpleSemaphoreUnitTest {
 		assertEquals(simpleSemaphore.availablePermits(), 1);
 		simpleSemaphore.release();
 		assertEquals(simpleSemaphore.availablePermits(), 2);
+	}
+	
+	@Test
+	public void testAvailablePermits() throws InterruptedException{
+		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
+		assertEquals(simpleSemaphore.availablePermits(), 2);
+		simpleSemaphore.acquire();
+		assertEquals(simpleSemaphore.availablePermits(), 1);
 	}
 
 }
