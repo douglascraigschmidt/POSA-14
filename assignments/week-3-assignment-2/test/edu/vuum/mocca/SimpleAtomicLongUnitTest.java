@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class SimpleSemaphoreTest {
+public class SimpleAtomicLongUnitTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -27,22 +27,32 @@ public class SimpleSemaphoreTest {
 	}
 
 	@Test
-	public void testSimpleSemaphore() {
+	public void testSimpleAtomicLong() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAcquire() {
+	public void testGet() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAcquireUninterruptibly() {
+	public void testDecrementAndGet() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testRelease() {
+	public void testGetAndIncrement() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetAndDecrement() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testIncrementAndGet() {
 		fail("Not yet implemented");
 	}
 
