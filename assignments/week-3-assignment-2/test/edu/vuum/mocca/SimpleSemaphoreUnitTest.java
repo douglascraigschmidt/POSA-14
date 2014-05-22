@@ -1,6 +1,9 @@
 package edu.vuum.mocca;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.concurrent.Semaphore;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -54,19 +57,16 @@ public class SimpleSemaphoreUnitTest {
 
 	@Test
 	public void testRelease() throws InterruptedException {
-		SimpleSemaphore simpleSemaphore = new SimpleSemaphore(2, true);
-		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		Semaphore simpleSemaphore = new Semaphore(2, true);
+		assertEquals(simpleSemaphore.availablePermits(), 2);
 		simpleSemaphore.acquire();
-		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		assertEquals(simpleSemaphore.availablePermits(), 1);
 		simpleSemaphore.acquire();
-		assertEquals(simpleSemaphore.mAvailablePermits, 0);
+		assertEquals(simpleSemaphore.availablePermits(), 0);
 		simpleSemaphore.release();
-		assertEquals(simpleSemaphore.mAvailablePermits, 1);
+		assertEquals(simpleSemaphore.availablePermits(), 1);
 		simpleSemaphore.release();
-		assertEquals(simpleSemaphore.mAvailablePermits, 2);
-		// Test to see if release allows you to go 'above' resource count
-		simpleSemaphore.release();
-		assertEquals(simpleSemaphore.mAvailablePermits, 2);
+		assertEquals(simpleSemaphore.availablePermits(), 2);
 	}
 
 }
