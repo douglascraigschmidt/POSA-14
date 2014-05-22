@@ -16,8 +16,8 @@ Middle-Earth who can concurrently gaze into a Palantir.  Please see
 http://en.wikipedia.org/wiki/Palantir for more information on
 Palantirs if you're not yet a fan of Tolkein's Lord of the Ring's.
 
-The PalantirManagerTestDriver.java program creates three Palantiri and five
-Threads (one for each Palantir user) that concurrently attempt to
+The PalantirManagerUnitTest.java program creates three Palantiri and
+five Threads (one for each Palantir user) that concurrently attempt to
 acquire a Palantir and gaze into it for a certain amount of time.  If
 the SimpleSemaphore and SimpleAtomicLock are implemented properly the
 test should succeed without throwing any exceptions, as described
@@ -63,13 +63,7 @@ In particular, you'll need to do the following:
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
 
-At the moment, all these videos are available in the YouTube playlist
-at
-
-https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
- 
-When the 2014 POSA MOOC officially starts these videos will be
-available at
+These videos are available at
 
 https://class.coursera.org/posa-002/lecture
 
@@ -77,144 +71,38 @@ We'll also discuss this assignment specification (and later its
 solution) in the POSA MOOC "Virtual Office Hours", which are described
 in item #38 at the POSA MOOC FAQ available from
 
-http://www.courera.org/course/posa
+http://www.coursera.org/course/posa
 
-To compile this code you can either use the provided Eclipse project
-or manually compile and run the code yourself (described below)
+To compile this code you need to use the provided Eclipse project.
+There is a Unit Test Suite that will run all three Unit test files
+included in the test/ directory for you at once.  When you first open
+the project in Eclipse, you might see compile errors if JUnit is not
+included in your build path.  To fix these errors, open
+SynchronizedQueueTest.java, hover over "org.junit," and click "Fix
+project setup."  Make sure "Add JUnit 4 library to the build path" is
+selected and then click "OK."  At this point, the compile errors
+should disappear!
 
+Right click on the test suite (AllTests.java) or an individual
+*_UnitTest.java file in Eclipse and select 'Run As' -> 'JUnit
+Test'. When the assignment is complete, 12 of 12 tests should complete
+successfully.  If a test passes a green-check mark will appear next to
+the test in the JUnit view.  As long as this JUnit test "passes"
+successfully your program will be be consider "correct" for the
+purposes of assessing this assignment.
 
-There are 3 Unit test files and 1 Unit test suite that will run the 3 test 
-files for you at once. These are included in the test/ directory.
-
-Right click on the test suite (AllTests.java) or an individual *_UnitTest.java file in 
-Eclipse and select 'Run As' -> 'JUnit Test'. When the assignment is complete, 12 of 12 
-tests should complete successfully. 
-
-To manually compile the code go into the src directory and simply type
-
-% javac FairnessChecker.java Palantir.java PalantirManager.java
-  PalantirManagerTest.java SimpleAtomicLong.java SimpleSemaphore.java
-
-on the command-line and then run the resulting class file by typing
-
-% java PalantirManagerTestDriver
-
-The output for a correct solution should look something this:
-
-----------------------------------------
-Starting PalantirManagerTest
-Pippen is acquiring the palantir
-Pippen is starting to gaze at the MinisTirith palantir
-Aragorn is acquiring the palantir
-Aragorn is starting to gaze at the Orthanc palantir
-Denathor is acquiring the palantir
-Denathor is starting to gaze at the Barad-dur palantir
-Sauron is acquiring the palantir
-Saruman is acquiring the palantir
-Pippen is finished gazing at the MinisTirith palantir
-Pippen is releasing the MinisTirith palantir
-Pippen is acquiring the palantir
-Sauron is starting to gaze at the MinisTirith palantir
-Sauron is finished gazing at the MinisTirith palantir
-Sauron is releasing the MinisTirith palantir
-Sauron is acquiring the palantir
-Saruman is starting to gaze at the MinisTirith palantir
-Saruman is finished gazing at the MinisTirith palantir
-Pippen is starting to gaze at the MinisTirith palantir
-Saruman is releasing the MinisTirith palantir
-Saruman is acquiring the palantir
-Pippen is finished gazing at the MinisTirith palantir
-Pippen is releasing the MinisTirith palantir
-Pippen is acquiring the palantir
-Sauron is starting to gaze at the MinisTirith palantir
-Sauron is finished gazing at the MinisTirith palantir
-Sauron is releasing the MinisTirith palantir
-Sauron is acquiring the palantir
-Saruman is starting to gaze at the MinisTirith palantir
-Saruman is finished gazing at the MinisTirith palantir
-Pippen is starting to gaze at the MinisTirith palantir
-Saruman is releasing the MinisTirith palantir
-Saruman is acquiring the palantir
-Pippen is finished gazing at the MinisTirith palantir
-Pippen is releasing the MinisTirith palantir
-Pippen is acquiring the palantir
-Sauron is starting to gaze at the MinisTirith palantir
-Sauron is finished gazing at the MinisTirith palantir
-Sauron is releasing the MinisTirith palantir
-Sauron is acquiring the palantir
-Saruman is starting to gaze at the MinisTirith palantir
-Saruman is finished gazing at the MinisTirith palantir
-Pippen is starting to gaze at the MinisTirith palantir
-Saruman is releasing the MinisTirith palantir
-Saruman is acquiring the palantir
-Denathor is finished gazing at the Barad-dur palantir
-Denathor is releasing the Barad-dur palantir
-Denathor is acquiring the palantir
-Sauron is starting to gaze at the Barad-dur palantir
-Pippen is finished gazing at the MinisTirith palantir
-Pippen is releasing the MinisTirith palantir
-Pippen is acquiring the palantir
-Saruman is starting to gaze at the MinisTirith palantir
-Saruman is finished gazing at the MinisTirith palantir
-Denathor is starting to gaze at the MinisTirith palantir
-Saruman is releasing the MinisTirith palantir
-Saruman is acquiring the palantir
-Denathor is finished gazing at the MinisTirith palantir
-Denathor is releasing the MinisTirith palantir
-Denathor is acquiring the palantir
-Pippen is starting to gaze at the MinisTirith palantir
-Pippen is finished gazing at the MinisTirith palantir
-Pippen is releasing the MinisTirith palantir
-Saruman is starting to gaze at the MinisTirith palantir
-Saruman is finished gazing at the MinisTirith palantir
-Denathor is starting to gaze at the MinisTirith palantir
-Saruman is releasing the MinisTirith palantir
-Aragorn is finished gazing at the Orthanc palantir
-Aragorn is releasing the Orthanc palantir
-Aragorn is acquiring the palantir
-Aragorn is starting to gaze at the Orthanc palantir
-Denathor is finished gazing at the MinisTirith palantir
-Denathor is releasing the MinisTirith palantir
-Denathor is acquiring the palantir
-Denathor is starting to gaze at the MinisTirith palantir
-Denathor is finished gazing at the MinisTirith palantir
-Denathor is releasing the MinisTirith palantir
-Denathor is acquiring the palantir
-Denathor is starting to gaze at the MinisTirith palantir
-Denathor is finished gazing at the MinisTirith palantir
-Denathor is releasing the MinisTirith palantir
-Sauron is finished gazing at the Barad-dur palantir
-Sauron is releasing the Barad-dur palantir
-Sauron is acquiring the palantir
-Sauron is starting to gaze at the MinisTirith palantir
-Sauron is finished gazing at the MinisTirith palantir
-Sauron is releasing the MinisTirith palantir
-Aragorn is finished gazing at the Orthanc palantir
-Aragorn is releasing the Orthanc palantir
-Aragorn is acquiring the palantir
-Aragorn is starting to gaze at the MinisTirith palantir
-Aragorn is finished gazing at the MinisTirith palantir
-Aragorn is releasing the MinisTirith palantir
-Aragorn is acquiring the palantir
-Aragorn is starting to gaze at the MinisTirith palantir
-Aragorn is finished gazing at the MinisTirith palantir
-Aragorn is releasing the MinisTirith palantir
-Aragorn is acquiring the palantir
-Aragorn is starting to gaze at the MinisTirith palantir
-Aragorn is finished gazing at the MinisTirith palantir
-Aragorn is releasing the MinisTirith palantir
-Finishing PalantirManagerTest
-----------------------------------------
-
-Don't worry if your output occurs in a different order - that's to be
-expected in multi-threaded programs and OS/JVM platforms.  Also, don't
-worry about "warnings" since there's an intentional race condition in
-the test since it's possible for one thread to call
+If you'd like to enable verbose debugging output please set the
+diagnosticsEnabled flag in PlanantirManagerUnitTest.java to true (it
+defaults to false).  However, this will generate a lot of output and
+you'll need to look at it carefully to understand what it's doing.  If
+you do this, don't worry about "warnings" since there's an intentional
+race condition in the test since it's possible for one thread to call
 mFairnessChecker.addNewThread() and then yield to another thread which
 again calls mFairnessChecker.addNewThread() and then goes on without
 interruption to call mPalantirManager.acquirePalantir(), which will
 fool the fairness checker into wrongly thinking the acquisition wasn't
 fair.  We therefore just give a warning (rather than an error) if it
 looks like the semaphore acquire() method isn't "fair".  The key is
-not to have runtime exceptions in your output!
+not to have runtime exceptions, i.e., you want only "green-check
+marks" in the JUnit view output!
 

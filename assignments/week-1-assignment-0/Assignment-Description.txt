@@ -50,7 +50,7 @@ We'll also discuss this assignment specification (and later its
 solution) in the POSA MOOC "Virtual Office Hours", which are described
 in item #38 at the POSA MOOC FAQ available from
 
-http://www.courera.org/course/posa
+http://www.coursera.org/course/posa
 
 The SynchronizerQueueTest.java file uses JUnit to run the tests.  We
 do this to automate the testing process and leverage the integration

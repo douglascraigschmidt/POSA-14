@@ -41,8 +41,8 @@ In particular, you'll need to do the following:
   (which is done for you by the testQueue() template method in the
   SynchronizedQueue.java file).
 
-. If you'd like to enable verbose debugging output please set the 
-  diagnosticsEnabled flag in SynchronizedQueueImpl to true (it
+. If you'd like to enable verbose debugging output please set the
+  diagnosticsEnabled flag in SynchronizedQueueImpl.java to true (it
   defaults to false).
 
 All the information needed to write this code is described in these
@@ -62,7 +62,7 @@ We'll also discuss this assignment specification (and later its
 solution) in the POSA MOOC "Virtual Office Hours", which are described
 in item #38 at the POSA MOOC FAQ available from
 
-http://www.courera.org/course/posa
+http://www.coursera.org/course/posa
 
 The SynchronizerQueueTest.java file uses JUnit to run the tests.  We
 do this to automate the testing process and leverage the integration
