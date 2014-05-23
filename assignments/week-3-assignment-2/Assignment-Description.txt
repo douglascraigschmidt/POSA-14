@@ -34,7 +34,10 @@ fill in here" portions!!!
 In particular, you'll need to do the following:
 
 . Implement the SimpleAtomicLong class, which you should replace with
-  your working solution to week-2-assignment-1.
+  your solution to week-2-assignment-1, after applying any fixes
+  suggested by peer graders.  This class is only used by the
+  PalantirManagerUnitTest.java and should not be used by the
+  SimpleSemaphore implementation.
 
 . Implement the SimpleSemaphore class using a Java ConditionObject and
   Java ReentrantLock, which are covered in these videos:
