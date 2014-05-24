@@ -67,6 +67,7 @@ public class SimpleSemaphore {
     /**
      * Define a count of the number of available permits.
      */
-    // TODO - you fill in here
+    // TODO - you fill in here.  Make sure that this data member will
+    // ensure its values aren't cached by multiple Threads..
 }
 
