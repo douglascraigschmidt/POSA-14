@@ -14,6 +14,23 @@ import java.util.concurrent.locks.Condition;
  */
 public class SimpleSemaphore {
     /**
+     * Define a ReentrantLock to protect the critical section.
+     */
+    // TODO - you fill in here
+
+    /**
+     * Define a ConditionObject to wait while the number of
+     * permits is 0.
+     */
+    // TODO - you fill in here
+
+    /**
+     * Define a count of the number of available permits.
+     */
+    // TODO - you fill in here.  Make sure that this data member will
+    // ensure its values aren't cached by multiple Threads..
+
+    /**
      * Constructor initialize the data members.  
      */
     public SimpleSemaphore (int permits,
@@ -52,22 +69,5 @@ public class SimpleSemaphore {
     	// TODO - you fill in here
     	return 0; // You will change this value. 
     }
-    
-    /**
-     * Define a ReentrantLock to protect the critical section.
-     */
-    // TODO - you fill in here
-
-    /**
-     * Define a ConditionObject to wait while the number of
-     * permits is 0.
-     */
-    // TODO - you fill in here
-
-    /**
-     * Define a count of the number of available permits.
-     */
-    // TODO - you fill in here.  Make sure that this data member will
-    // ensure its values aren't cached by multiple Threads..
 }
 
