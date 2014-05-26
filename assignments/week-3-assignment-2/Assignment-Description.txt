@@ -25,19 +25,20 @@ further below.
 
 In this directory you'll find a number of files, all of which you
 should read.  However, the only two files you need to modify are
-SimpleAtomicLong.java and SimpleSemaphore.java, which contains the
-skeleton Java code that you'll implement by completing the "TODO - You
-fill in here" comments to provide a working solution.  DO NOT CHANGE
-THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO - You
-fill in here" portions!!!
+SimpleAtomicLong.java and SimpleSemaphore.java in the
+src/edu/vuum/mocca directory, which contains the skeleton Java code
+that you'll implement by completing the "TODO - You fill in here"
+comments to provide a working solution.  DO NOT CHANGE THE OVERALL
+STRUCTURE OF THE SKELETON - just fill in the "TODO - You fill in here"
+portions!!!
 
 In particular, you'll need to do the following:
 
 . Implement the SimpleAtomicLong class, which you should replace with
   your solution to week-2-assignment-1, after applying any fixes
   suggested by peer graders.  This class is only used by the
-  PalantirManagerUnitTest.java and should not be used by the
-  SimpleSemaphore implementation.
+  PalantirManagerUnitTest.java and should not be used in the
+  SimpleSemaphore implementation itself.
 
 . Implement the SimpleSemaphore class using a Java ConditionObject and
   Java ReentrantLock, which are covered in these videos:

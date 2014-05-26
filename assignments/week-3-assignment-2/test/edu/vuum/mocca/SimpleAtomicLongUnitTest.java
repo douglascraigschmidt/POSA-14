@@ -9,7 +9,7 @@ import org.junit.Test;
  * @class SimpleAtomicLongUnitTest
  *
  * @brief Simple unit test for the SimpleAtomicLong clas that ensures
- *        the version submitted for this assignment works properly.
+ *        the version submitted for this assignment works correctly.
  */
 public class SimpleAtomicLongUnitTest {
     @Test

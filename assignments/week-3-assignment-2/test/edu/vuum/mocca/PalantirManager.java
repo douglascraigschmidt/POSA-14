@@ -36,7 +36,7 @@ public class PalantirManager {
      * Create a resource manager for the palantiri passed as a
      * parameter.
      */
-    PalantirManager(List<Palantir> palantiri) {
+    PalantirManager(final List<Palantir> palantiri) {
         mMaxPalantiri = palantiri.size();
         mPalantiri = palantiri;
         used = new boolean[palantiri.size()];
@@ -60,7 +60,7 @@ public class PalantirManager {
      * Returns the designated @code palantir so that it's
      * available for others to use.
      */
-    public void releasePalantir(Palantir palantir) {
+    public void releasePalantir(final Palantir palantir) {
         if (markAsUnused(palantir))
             mAvailable.release();
     }
@@ -83,7 +83,7 @@ public class PalantirManager {
     /**
      * Return the @code palantir back to the resource pool.
      */
-    protected synchronized boolean markAsUnused(Palantir palantir) {
+    protected synchronized boolean markAsUnused(final Palantir palantir) {
         // Linear search is fine for this simple demo.
         for (int i = 0; i < mMaxPalantiri; ++i) {
             if (palantir == mPalantiri.get(i)) {
