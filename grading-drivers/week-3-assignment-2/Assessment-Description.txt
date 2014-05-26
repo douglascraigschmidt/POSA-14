@@ -1,0 +1,56 @@
+Week 3: Programming Assignment 2 Peer Assessment Description
+
+Due Monday, June 16th, 2014
+
+You will be asked to evaluate five other student's projects as well as
+do a self assessment of your own project. If you do not assess the
+work of others, then you will receive a 20% penalty for your solution.
+
+As you do your evaluation, please keep an open mind and focus on the
+positive. Our goal is not to find every way to deduct points over
+small deviations from the requirements or for legitimate differences
+in implementation styles, etc. Look for ways to give points when it's
+clear that the submitter has given a good faith effort to do the
+project, and when it's likely that they've succeeded.
+
+Review the submitter's source code. Since you did your own project,
+you know where the changes should be and you have a good idea of the
+kind of method calls and work flows that should be in the submitter's
+code. Remember that they may have done things differently than you
+did. That's fine.
+
+Next, get a copy of the grading driver files from 
+
+https://github.com/douglascraigschmidt/POSA-14/tree/master/grading-drivers/week-3-assignment-2
+
+and copy the submitter's SimpleAtomicLong.java and
+SimpleSemaphore.java files into your IDE (which may have been given a
+random, odd name by Coursera, so you'll need to rename it) and store
+it in the src/edu/vuum/mocca/ directory.  I recommend scanning the
+submitted code to ensure there are no changes other than adding the
+appropriate code as indicated by the "TODO" comments. A quick way to
+check for this automatically is to run "diff" on the original files
+and the submitted files to make sure all the changes are as expected,
+in the expected places in the code. Then make sure everything compiles
+properly in your environment. Note that the grading drivers are in a
+different location than the original skeletons to ensure that all
+submissions are tested against the "master" regression tests and
+minimize the amount of code that comes from "the wild".
+
+Once you've reviewed the code against the rubric described below
+please try to run it, walking through the steps called out in the
+grading video that we'll create in each week's "VIrtual Office Hours"
+(see item #38 in the POSA MOOC FAQ at
+http://www.coursera.org/course/posa for info on Virtual Office
+Hours). I suggest you make a fresh Eclipse workspace when doing this,
+so that the submitter's code is isolated and easily distinguishable
+from yours. One way you can do that is to select File > Open Workspace
+> Browse > New Folder. This will lead to a new, empty Eclipse
+workspace. Then you can copy that submitter's SimpleAtomicLong.java
+and SimpleSemaphore.java files into this new workspace.  Also, it's
+recommended to run the submitted code a virtual machine sandbox to
+further isolate it from causing harm.
+
+And again, remember that most everyone is working very hard and
+putting in a serious effort. When in doubt, err on the side of giving
+too many points, rather than giving too few.
