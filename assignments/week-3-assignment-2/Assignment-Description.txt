@@ -40,8 +40,9 @@ In particular, you'll need to do the following:
   PalantirManagerUnitTest.java and should not be used in the
   SimpleSemaphore implementation itself.
 
-. Implement the SimpleSemaphore class using a Java ConditionObject and
-  Java ReentrantLock, which are covered in these videos:
+. Implement the SimpleSemaphore class using a Java ConditionObject
+  (accessed via a Condition) and Java ReentrantLock, which are covered
+  in these videos:
   
   Section 1: Module 2: Part 5: Java ReentrantLock
   Section 1: Module 2: Part 8: Java ConditionObject 
