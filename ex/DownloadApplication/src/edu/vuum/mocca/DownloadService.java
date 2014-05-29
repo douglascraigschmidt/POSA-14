@@ -103,7 +103,7 @@ public class DownloadService extends Service
          * A factory method that creates a Message to return to the
          * DownloadActivity with the pathname of the downloaded image.
          */
-        private Message makeMessage(String pathname){
+        private Message makeReplyMessage(String pathname){
             Message message = Message.obtain();
             // Return the result to indicate whether the download
             // succeeded or failed.
@@ -117,6 +117,22 @@ public class DownloadService extends Service
             bundle.putString("PATHNAME", 
                              pathname);
             message.setData(bundle);
+            return message;
+        }
+
+        /**
+         * A factory method that creates a Message that contains
+         * information on the image to download and how to stop the
+         * Service.
+         */
+        private Message makeDownloadMessage(Intent intent,
+                                            int startId){
+            Message message = Message.obtain();
+            // Include Intent & startId in Message to indicate which URI
+            // to retrieve and which request is being stopped when
+            // download completes.
+            message.obj = intent;
+            message.arg1 = startId;
             return message;
         }
 
@@ -260,13 +276,9 @@ public class DownloadService extends Service
                               int startId) {
         // Create a Message that will be sent to ServiceHandler to
         // retrieve animagebased on the URI in the Intent.
-        Message message = mServiceHandler.obtainMessage();
-        
-        // Include Intent & startId in Message to indicate which URI
-        // to retrieve and which request is being stopped when
-        // download completes.
-        message.obj = intent;
-        message.arg1 = startId;
+        Message message =
+            mServiceHandler.makeDownloadMessage(intent,
+                                                startId);
         
         // Send the Message to ServiceHandler to retrieve an image
         // based on contents of the Intent.
