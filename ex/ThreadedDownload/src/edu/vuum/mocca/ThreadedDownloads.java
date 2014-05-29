@@ -276,7 +276,7 @@ public class ThreadedDownloads extends Activity {
     }
     
     /**
-     * @class MyHandler
+     * @class MessageHandler
      *
      * @brief A static inner class that inherits from Handler and uses
      *        its handleMessage() hook method to process Messages sent
@@ -297,7 +297,7 @@ public class ThreadedDownloads extends Activity {
         /**
          * Allows Activity to be garbage collected properly.
          */
-        WeakReference<ThreadedDownloads> mActivity;
+        private WeakReference<ThreadedDownloads> mActivity;
 
         /**
          * Class constructor constructs mActivity as weak reference
@@ -306,10 +306,9 @@ public class ThreadedDownloads extends Activity {
          * @param activity
          *            The corresponding activity
          */
-        MessageHandler(ThreadedDownloads activity) {
+        public MessageHandler(ThreadedDownloads activity) {
             mActivity = new WeakReference<ThreadedDownloads>(activity);
         }
-
         /**
          * Process the specified Messages passed to MessageHandler in
          * the UI Thread. These Messages instruct the Handler to start
