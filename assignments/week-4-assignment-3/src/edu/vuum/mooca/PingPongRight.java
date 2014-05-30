@@ -84,7 +84,8 @@ public class PingPongRight {
         // TODO - You fill in here.
 
         /**
-         * The two SimpleSemaphores use to alternate pings and pongs.
+         * An array of two SimpleSemaphores use to alternate pings and
+         * pongs.
          */
         // TODO - You fill in here.
     }
