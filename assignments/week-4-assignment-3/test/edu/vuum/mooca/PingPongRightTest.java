@@ -77,7 +77,11 @@ public class PingPongRightTest {
                 fail("Pong Thread completed before Ping started.");
 
             if (!(windowsTrue || unixTrue)) 
-                fail("Output was wrong.");
+                fail("Output was wrong.\n" 
+                     + "--- Received output ---\n" 
+                     + outResults 
+                     + "--- Expected output ---\n" 
+                     + testResultWindows);
 
             outContent.reset();
         }
