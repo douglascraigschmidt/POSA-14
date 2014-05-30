@@ -1,11 +1,15 @@
-Programming Assignment 1
+Week 4: Programming Assignment 3
+
+Released Monday, June 2nd, 2014
+Due Monday, June 16th, 2014
 
 In this assignment, you will implement a Java program that creates two
 instances of the PlayPingPongThread and then starts these thread
 instances to correctly alternate printing "Ping" and "Pong",
 respectively, on the console display.  This assignment also reuses the
-SimpleSemaphore you implemented for the previous assignment, so make
-sure it's working properly before attempting this assignment!
+SimpleSemaphore you implemented for the previous assignment, so please
+address any peer assessment comments and make sure it's working
+properly before attempting this assignment!
 
 In this directory you'll find the PingPongRight.java class, which
 contains the skeleton Java code that you'll implement by completing
@@ -43,13 +47,7 @@ In particular, you'll need to do the following:
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
 
-Note, at the moment, all these videos are available in the YouTube
-playlist at 
-
-https://www.youtube.com/playlist?list=PLZ9NgFYEMxp4tbiFYip6tDNIEBRUDyPQK
- 
-When the 2014 POSA MOOC officially starts these videos will be
-available at
+These videos are available at
 
 https://class.coursera.org/posa-002/lecture
 
@@ -67,6 +65,23 @@ or go into the src directory and simply type
 and to run the resulting class file simply type
 
 % java PingPongRight
+
+There is a Unit Test Suite that will run all three Unit test files
+included in the test/ directory for you at once.  When you first open
+the project in Eclipse, you might see compile errors if JUnit is not
+included in your build path.  To fix these errors, open
+SynchronizedQueueTest.java, hover over "org.junit," and click "Fix
+project setup."  Make sure "Add JUnit 4 library to the build path" is
+selected and then click "OK."  At this point, the compile errors
+should disappear!
+
+Right click on the test suite (AllTests.java) or an individual
+*_UnitTest.java file in Eclipse and select 'Run As' -> 'JUnit
+Test'. When the assignment is complete, all the tests should complete
+successfully.  If a test passes a green-check mark will appear next to
+the test in the JUnit view.  As long as this JUnit test "passes"
+successfully your program will be be consider "correct" for the
+purposes of assessing this assignment.
 
 The correct solution should look exactly like this:
 
