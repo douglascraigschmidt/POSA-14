@@ -234,7 +234,9 @@ public class PalantirManagerUnitTest {
                 System.out.println("Finishing PalantirManagerTest");
         } catch (Exception e) {
             if (diagnosticsEnabled)
-        	System.out.println("A " + e.getMessage() + " Exception was thrown");
+        	System.out.println("A " 
+                                   + e.getMessage() 
+                                   + " Exception was thrown");
             fail("A "
                  + e.getMessage()
                  + " Exception was thrown");
