@@ -20,8 +20,7 @@ public class PingPongRight {
     /**
      * Latch that will be decremented each time a thread exits.
      */
-    // TODO initialize this.
-    public static CountDownLatch latch = null;
+    public static CountDownLatch mLatch = null;
 
     /**
      * @class PlayPingPongThread
@@ -97,8 +96,12 @@ public class PingPongRight {
                                String pingString,
                                String pongString, 
                                String finishString, 
-                               int maxIterations)
-        throws InterruptedException {
+                               int maxIterations) throws InterruptedException {
+
+        // TODO initialize this by replacing null with the appropriate
+        // constructor call.
+        mLatch = null;
+
         // Create the ping and pong SimpleSemaphores that control
         // alternation between threads.
 
