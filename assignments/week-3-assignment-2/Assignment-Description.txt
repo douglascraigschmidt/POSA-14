@@ -90,7 +90,7 @@ should disappear!
 
 Right click on the test suite (AllTests.java) or an individual
 *_UnitTest.java file in Eclipse and select 'Run As' -> 'JUnit
-Test'. When the assignment is complete, 24 of 24 tests should complete
+Test'. When the assignment is complete, all the tests should complete
 successfully.  If a test passes a green-check mark will appear next to
 the test in the JUnit view.  As long as this JUnit test "passes"
 successfully your program will be be consider "correct" for the

@@ -130,7 +130,7 @@ public class PalantirManagerUnitTest {
 
                     if (diagnosticsEnabled)
                         System.out.println(Thread.currentThread().getName()
-                                           + " is releasing the " 
+                                           + " has released the "
                                            + palantir.name() 
                                            + " palantir");
                 }
