@@ -32,11 +32,17 @@ public class PingPongRight {
     public static class PlayPingPongThread extends Thread {
 
         /**
-         * Constants to distinguish between ping and pong Semaphores.
+         * Constants to distinguish between ping and pong
+         * SimpleSemaphores, if you choose to use an array of
+         * SimpleSemaphores.  If you don't use this implementation
+         * feel free to remove these constants.
          */
         private final static int FIRST_SEMA = 0;
         private final static int SECOND_SEMA = 1;
 
+        /**
+         * Maximum number of loop iterations.
+         */
         private int mMaxLoopIterations = 0;
 
         /**
@@ -84,8 +90,9 @@ public class PingPongRight {
         // TODO - You fill in here.
 
         /**
-         * An array of two SimpleSemaphores use to alternate pings and
-         * pongs.
+         * Two SimpleSemaphores use to alternate pings and pongs.  You
+         * can use an array of SimpleSemaphores or just define them as
+         * two data members.
          */
         // TODO - You fill in here.
     }
