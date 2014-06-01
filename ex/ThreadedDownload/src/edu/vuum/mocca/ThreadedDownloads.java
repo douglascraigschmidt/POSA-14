@@ -321,27 +321,28 @@ public class ThreadedDownloads extends Activity {
              * Check to see if the activity still exists and return if
              * not.
              */
-            if (mActivity.get() == null) 
+            ThreadedDownloads activity = mActivity.get();
+            if (activity == null) 
                 return;                
 
             switch (msg.what) {
 
             case SHOW_DIALOG:
-                mActivity.get().showDialog("downloading via Handlers and Messages");
+                activity.showDialog("downloading via Handlers and Messages");
                 break;
 
             case DISMISS_DIALOG:
                 /**
                  * Dismiss the progress dialog.
                  */
-                mActivity.get().dismissDialog();
+                activity.dismissDialog();
                 break;
 
             case DISPLAY_IMAGE:
                 /**
                  * Display the downloaded image to the user.
                  */
-                mActivity.get().displayImage((Bitmap) msg.obj);
+                activity.displayImage((Bitmap) msg.obj);
                 break;
             }
         }
