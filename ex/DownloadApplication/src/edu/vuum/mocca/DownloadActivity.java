@@ -150,21 +150,6 @@ public class DownloadActivity extends Activity {
      */
     private class DownloadHandler extends Handler {
         /**
-         * Allows Activity to be garbage collected properly.
-         */
-        private WeakReference<DownloadActivity> mActivity;
-
-        /**
-         * Class constructor constructs mActivity as weak reference
-         * to the activity
-         * 
-         * @param activity
-         *            The corresponding activity
-         */
-        public DownloadHandler(DownloadActivity activity) {
-            mActivity = new WeakReference<DownloadActivity>(activity);
-        }
-
         /**
          * This hook method is dispatched in response to receiving
          * the pathname back from the DownloadService.
@@ -179,20 +164,20 @@ public class DownloadActivity extends Activity {
                 
             // See if things worked or not.
             if (msg.arg1 != RESULT_OK || pathname == null)
-                mActivity.get().showDialog("failed download");
+                showDialog("failed download");
 
             // Stop displaying the progress dialog.
             dismissDialog();
 
             // Display the image in the UI Thread.
-            mActivity.get().displayImage(BitmapFactory.decodeFile(pathname));
+            displayImage(BitmapFactory.decodeFile(pathname));
         }
     };
 
     /**
      * Instance of DownloadHandler.
      */
-    Handler downloadHandler = new DownloadHandler(this);
+    Handler downloadHandler = new DownloadHandler();
 
     /**
      * Display the Dialog to the User.
