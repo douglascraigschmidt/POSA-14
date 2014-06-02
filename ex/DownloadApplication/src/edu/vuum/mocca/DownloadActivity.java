@@ -172,6 +172,9 @@ public class DownloadActivity extends Activity {
          */
         public void handleMessage(Message msg) {
             DownloadActivity activity = mActivity.get();
+            // Bail out of the DownloadActivity is gone.
+            if (activity == null)
+                return;
 
             // Extract the data from Message, which is in the form
             // of a Bundle that can be passed across processes.

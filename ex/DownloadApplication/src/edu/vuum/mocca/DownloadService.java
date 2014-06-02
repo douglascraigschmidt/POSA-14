@@ -70,7 +70,7 @@ public class DownloadService extends Service
     }
 
     /**
-     * @class DownloadHandler
+     * @class ServiceHandler
      *
      * @brief An inner class that inherits from Handler and uses its
      *        handleMessage() hook method to process Messages sent to
