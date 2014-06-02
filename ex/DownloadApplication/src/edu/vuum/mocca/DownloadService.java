@@ -146,7 +146,7 @@ public class DownloadService extends Service
                                             intent.getData().toString());
 
             // Call factory method to create Message.
-            Message message = makeMessage(pathname);
+            Message message = makeReplyMessage(pathname);
         
             // Extract the Messenger.
             Messenger messenger = (Messenger)
