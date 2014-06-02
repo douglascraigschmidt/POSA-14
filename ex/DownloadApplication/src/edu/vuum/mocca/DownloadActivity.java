@@ -148,13 +148,31 @@ public class DownloadActivity extends Activity {
      *        handleMessage() hook method to process Messages sent to
      *        it from the DownloadService.
      */
-    private class DownloadHandler extends Handler {
+    private static class DownloadHandler extends Handler {
+        /**
+         * Allows Activity to be garbage collected properly.
+         */
+        private WeakReference<DownloadActivity> mActivity;
+
+        /**
+         * Class constructor constructs mActivity as weak reference
+         * to the activity
+         * 
+         * @param activity
+         *            The corresponding activity
+         */
+        public DownloadHandler(DownloadActivity activity) {
+            mActivity = new WeakReference<DownloadActivity>(activity);
+        }
+
         /**
         /**
          * This hook method is dispatched in response to receiving
          * the pathname back from the DownloadService.
          */
         public void handleMessage(Message msg) {
+            DownloadActivity activity = mActivity.get();
+
             // Extract the data from Message, which is in the form
             // of a Bundle that can be passed across processes.
             Bundle data = msg.getData();
@@ -164,20 +182,20 @@ public class DownloadActivity extends Activity {
                 
             // See if things worked or not.
             if (msg.arg1 != RESULT_OK || pathname == null)
-                showDialog("failed download");
+                activity.showDialog("failed download");
 
             // Stop displaying the progress dialog.
-            dismissDialog();
+            activity.dismissDialog();
 
             // Display the image in the UI Thread.
-            displayImage(BitmapFactory.decodeFile(pathname));
+            activity.displayImage(BitmapFactory.decodeFile(pathname));
         }
     };
 
     /**
      * Instance of DownloadHandler.
      */
-    Handler downloadHandler = new DownloadHandler();
+    Handler downloadHandler = new DownloadHandler(this);
 
     /**
      * Display the Dialog to the User.
