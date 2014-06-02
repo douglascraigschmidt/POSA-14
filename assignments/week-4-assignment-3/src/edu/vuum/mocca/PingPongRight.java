@@ -134,8 +134,8 @@ public class PingPongRight {
         // TODO - Initiate the ping and pong threads, which will call
         // the run() hook method.
 
-        // TODO - replace the following line with a CountDownLatch
-        // barrier synchronizer call that waits for both threads to
+        // TODO - replace the following line with a barrier
+        // synchronizer call to mLatch that waits for both threads to
         // finish.
         throw new java.lang.InterruptedException();
 
@@ -155,3 +155,4 @@ public class PingPongRight {
                 mMaxIterations);
     }
 }
+
