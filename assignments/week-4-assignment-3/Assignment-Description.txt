@@ -20,7 +20,8 @@ DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
 In particular, you'll need to do the following:
 
 . Implement the SimpleSemaphore class, which you should replace with
-  your working solution from the previous assignment.
+  your working solution based on feedback from the previous
+  assignment.
   
 . Use your SimpleSemaphore to implement the PlayPingPongThread class
   and fix the problems with the earlier PingPongWrong solution, which
@@ -46,6 +47,18 @@ In particular, you'll need to do the following:
 
   Section 1: Module 2: Part 1: Overview of Java Threads (Part 1)
   Section 1: Module 2: Part 2: Overview of Java Threads (Part 2)
+
+. A more sophisticated example of a concurrent ping-pong program is
+  is shown in these videos:
+ 
+  Section 1: Module 2: Part 10: Java Synchronization and Scheduling Example (Part 1)
+  Section 1: Module 2: Part 11: Java Synchronization and Scheduling Example (Part 2)
+
+  This programming assignment isn't as sophisticated (e.g., it doesn't
+  implement a framework and doesn't use as many GoF patterns), but I
+  suggest you watch these videos to learn more about how binary
+  semaphores can be used to correctly alternate printing "ping" and
+  "pong" from two Java Threads.
 
 These videos are available at
 
