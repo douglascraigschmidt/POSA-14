@@ -18,9 +18,8 @@
 
     <EditText
        android:id="@+id/mUrlEditText"
-       android:layout_width="0dip"
+       android:layout_width="fill_parent"
        android:layout_height="wrap_content"
-       android:layout_weight="1"
        android:inputType="text|textMultiLine"
        android:hint="@string/defaultURL" />
   </LinearLayout>
@@ -28,19 +27,22 @@
   <LinearLayout
      android:layout_width="fill_parent"
      android:layout_height="wrap_content"
-     android:orientation="horizontal">
+     android:orientation="horizontal"
+     android:gravity="center_horizontal">
 
   <Button
      android:id="@+id/button1"
-     android:layout_width="wrap_content"
+     android:layout_width="0dip"
      android:layout_height="wrap_content"
+     android:layout_weight="1"
      android:onClick="downloadImage"
      android:text="@string/download" />
 
   <Button
      android:id="@+id/button2"
-     android:layout_width="wrap_content"
+     android:layout_width="0dip"
      android:layout_height="wrap_content"
+     android:layout_weight="1"
      android:onClick="resetImage"
      android:text="@string/resetImage" />
 
