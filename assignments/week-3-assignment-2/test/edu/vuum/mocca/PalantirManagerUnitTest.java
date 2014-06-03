@@ -1,6 +1,7 @@
 package edu.vuum.mocca;
 
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,11 @@ public class PalantirManagerUnitTest {
      * Total number of active Threads.
      */
     static volatile long mMaxActiveThreads = 0;
+
+    /**
+     * Keep track of whether a runtime exception occurs.
+     */
+    boolean mFailed = false;
 
     /**
      * Count of the number of Active Threads.
@@ -218,9 +224,6 @@ public class PalantirManagerUnitTest {
             // Semaphore implementation is "fair".
             mFairnessChecker = new FairnessChecker(palantirUsers.size());
 
-            // We'll be optimisitic ;-)
-            boolean failed = false;
-
             // Start all the Threads that Middle-Earth Beings use to
             // gaze into the Palantir.
             for (ListIterator<Thread> iterator = palantirUsers.listIterator(); 
@@ -236,7 +239,7 @@ public class PalantirManagerUnitTest {
                             System.out.println(t 
                                                + " throws exception: " 
                                                + e);
-                            failed = true;
+                            mFailed = true;
                         }
                     });
                 t.start();
@@ -250,7 +253,7 @@ public class PalantirManagerUnitTest {
                 iterator.next().join();
 
             // Make sure we haven't failed.
-            assertFalse(failed);
+            assertFalse(mFailed);
 
             if (diagnosticsEnabled)            
                 System.out.println("Finishing PalantirManagerTest");
