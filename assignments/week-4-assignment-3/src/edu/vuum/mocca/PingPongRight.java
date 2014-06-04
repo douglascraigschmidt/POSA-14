@@ -83,14 +83,14 @@ public class PingPongRight {
         }
 
         /**
-         * Hook method for ping/pong acquire.
+         * Method for ping/pong acquire.
          */
         void acquire() {
             // TODO fill in here
         }
 
         /**
-         * Hook method for ping/pong release.
+         * Method for ping/pong release.
          */
         void release() {
             // TODO fill in here
