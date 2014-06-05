@@ -83,14 +83,14 @@ public class PingPongRight {
         }
 
         /**
-         * Method for ping/pong acquire.
+         * Method for acquiring the appropriate SimpleSemaphore.
          */
         private void acquire() {
             // TODO fill in here
         }
 
         /**
-         * Method for ping/pong release.
+         * Method for releasing the appropriate SimpleSemaphore.
          */
         private void release() {
             // TODO fill in here
