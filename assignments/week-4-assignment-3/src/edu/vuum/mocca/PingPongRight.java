@@ -85,14 +85,14 @@ public class PingPongRight {
         /**
          * Method for ping/pong acquire.
          */
-        void acquire() {
+        private void acquire() {
             // TODO fill in here
         }
 
         /**
          * Method for ping/pong release.
          */
-        void release() {
+        private void release() {
             // TODO fill in here
         }
     }
