@@ -17,7 +17,7 @@ public class ConsolePlatformStrategy extends PlatformStrategy
      * Latch to decrement each time a thread exits to control when the
      * play() method returns.
      */
-    private static CountDownLatch mLatch = new CountDownLatch(2);
+    private static CountDownLatch mLatch = null;
 
     /** Contains information for outputting to console window. */
     PrintStream mOutput;
@@ -31,7 +31,7 @@ public class ConsolePlatformStrategy extends PlatformStrategy
     /** Do any initialization needed to start a new game. */
     public void begin()
     {
-        mLatch = new CountDownLatch(2);
+        mLatch = new CountDownLatch(NUMBER_OF_THREADS);
     }
 
     /** Print the outputString to the display. */
