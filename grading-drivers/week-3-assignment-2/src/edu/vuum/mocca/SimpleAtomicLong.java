@@ -23,7 +23,7 @@ class SimpleAtomicLong
     /**
      * The ReentrantReadWriteLock used to serialize access to mValue.
      */
-    // TODO - replace the null with the appropriate initialization:
+    // TODO - add the implementation
 
     /**
      * Creates a new SimpleAtomicLong with the given initial value.
