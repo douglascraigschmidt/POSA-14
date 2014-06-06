@@ -24,8 +24,8 @@ public class Main
                                          null).makePlatformStrategy());
 
         /** Initializes the Options singleton. */
-        Options.instance().parseArgs(args);
-
+       Options.instance().parseArgs(args);
+       
         /**
          * Create a PlayPingPong object to run the designated number of
          * iterations.

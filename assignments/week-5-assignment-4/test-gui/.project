@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>W5-A4</name>
+	<name>W5-A4-Test</name>
 	<comment></comment>
 	<projects>
+		<project>week-5-assignment-4</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

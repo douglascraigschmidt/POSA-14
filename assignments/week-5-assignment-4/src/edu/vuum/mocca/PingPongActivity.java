@@ -20,8 +20,8 @@ public class PingPongActivity extends Activity
     private Button mPlayButton;
     
     /** Variables to track state of the game */
-    private static final int PLAY = 0;
-    private static final int RESET = 1;
+    private static int PLAY = 0;
+    private static int RESET = 1;
     private int mGameState = PLAY;
 		
     protected void onCreate(Bundle savedInstanceState) 

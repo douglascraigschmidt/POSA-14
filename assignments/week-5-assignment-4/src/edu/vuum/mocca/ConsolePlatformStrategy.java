@@ -23,51 +23,43 @@ public class ConsolePlatformStrategy extends PlatformStrategy
     PrintStream mOutput;
 
     /** Ctor. */
-    ConsolePlatformStrategy(Object output) 
-    {
+    ConsolePlatformStrategy(Object output) {
         mOutput = (PrintStream) output;
     }
-	
+
     /** Do any initialization needed to start a new game. */
-    public void begin()
-    {
+    public void begin() {
         mLatch = new CountDownLatch(NUMBER_OF_THREADS);
     }
 
     /** Print the outputString to the display. */
-    public void print(String outputString)
-    {
+    public void print(String outputString) {
         /** Print to the console window. */
-        System.out.println(outputString);
+        mOutput.println(outputString);
     }
 
     /** Indicate that a game thread has finished running. */
-    public void done()
-    {
+    public void done() {
         mLatch.countDown();
     }
-    
+
     /** Barrier that waits for all the game threads to finish. */
-    public void awaitDone()
-    {
+    public void awaitDone() {
         try {
             mLatch.await();
-        } catch(java.lang.InterruptedException e) {
+        } catch (java.lang.InterruptedException e) {
         }
     }
 
     /** Returns a string revealing the platform in use. */
-    public String platformName() 
-    {
+    public String platformName() {
         return System.getProperty("java.specification.vendor");
     }
-	
+
     /**
-     * Error log formats the message and displays it for the debugging
-     * purposes.
+     * Error log formats the message and displays it for the debugging purposes.
      */
-    public void errorLog(String javaFile, String errorMessage) 
-    {
-        System.out.println(javaFile + " " + errorMessage);
+    public void errorLog(String javaFile, String errorMessage) {
+        mOutput.println(javaFile + " " + errorMessage);
     }
 }

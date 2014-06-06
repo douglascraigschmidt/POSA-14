@@ -10,6 +10,11 @@ import java.util.HashMap;
  */
 public class PlatformStrategyFactory 
 {
+	public final static String ANDROID_PLATFORM = "The Android Project";
+	public final static String JAVA_V6_PLATFORM = "Sun Microsystems Inc.";
+	public final static String JAVA_V7_PLATFORM = "Oracle Corporation";
+	public final static String JAVA_V8_PLATFORM = "Oracle Corporation";	
+	
     /** 
      * This interface uses the Strategy pattern to create @a PlatformStrategy
      * implementations at runtime.
@@ -39,7 +44,7 @@ public class PlatformStrategyFactory
          * The "The Android Project" string maps to a command object
          * that creates an @a AndroidPlatformStrategy implementation.
          */
-        mPlatformStrategyMap.put("The Android Project",
+        mPlatformStrategyMap.put(ANDROID_PLATFORM,
                                  new IPlatformStrategyFactoryStrategy() 
                                  {
                                      /** 
