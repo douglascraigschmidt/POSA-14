@@ -249,13 +249,22 @@ public class PlayPingPong implements Runnable {
 
     static String pingString = "ping  ";
     static String pongString = "_pong ";
+        
+    static boolean checkedStringFormatting = false;
+        
+    private void formatStrings() {
+        if (!checkedStringFormatting) {
+            if (mPlatformStrategy.platformName().equals(
+                    PlatformStrategyFactory.ANDROID_PLATFORM)) {
+                pingString += "  ";
+            }
+            checkedStringFormatting = true;
+        }
+    }
 
     private void makePingPongThreads(String schedMechanism,
                                      PingPongThread[] pingPongThreads) {
-        if (mPlatformStrategy.platformName().equals(
-                                                    PlatformStrategyFactory.ANDROID_PLATFORM)) {
-            pingString += "  ";
-        }
+        formatStrings();
         if (schedMechanism.equals("SEMA")) {
             // Create the semaphores that schedule threads
             // printing "ping " and "_pong" in the correct
