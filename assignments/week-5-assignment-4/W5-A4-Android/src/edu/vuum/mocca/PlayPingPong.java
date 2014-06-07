@@ -42,9 +42,10 @@ public class PlayPingPong implements Runnable {
     /**
      * @Brief PingPongThread
      * 
-     * @class This class implements the core ping/pong algorithm, but defers the
-     *        scheduling aspect to subclasses. It plays the role of the
-     *        "Abstract Class" in the Template Method pattern.
+     * @class This class implements the core ping/pong algorithm, but
+     *        defers the scheduling aspect to subclasses. It plays the
+     *        role of the "Abstract Class" in the Template Method
+     *        pattern.
      */
     static abstract class PingPongThread extends Thread {
         /**
@@ -59,7 +60,6 @@ public class PlayPingPong implements Runnable {
          * protocol in the run() template method.
          */
         abstract void acquire();
-
         abstract void release();
 
         /**
@@ -69,9 +69,9 @@ public class PlayPingPong implements Runnable {
         }
 
         /**
-         * This method runs in a separate thread of control and implements the
-         * core ping/pong algorithm. It plays the role of the "template method"
-         * in the Template Method pattern.
+         * This method runs in a separate thread of control and
+         * implements the core ping/pong algorithm. It plays the role
+         * of the "template method" in the Template Method pattern.
          */
         public void run() {
             for (int loopsDone = 1; loopsDone <= mMaxIterations; ++loopsDone) {
@@ -120,7 +120,7 @@ public class PlayPingPong implements Runnable {
         private final static int SECOND_SEMA = 1;
 
         PingPongThreadSema(String stringToPrint, Semaphore firstSema,
-                Semaphore secondSema) {
+                           Semaphore secondSema) {
             super(stringToPrint);
             mSemas[FIRST_SEMA] = firstSema;
             mSemas[SECOND_SEMA] = secondSema;
@@ -187,7 +187,7 @@ public class PlayPingPong implements Runnable {
         private final static int SECOND_COND = 1;
 
         PingPongThreadCond(String stringToPrint, ReentrantLock lock,
-                Condition firstCond, Condition secondCond, boolean isOwner) {
+                           Condition firstCond, Condition secondCond, boolean isOwner) {
             super(stringToPrint);
             mIterationCount = mMaxTurns;
             mLock = lock;
@@ -232,7 +232,7 @@ public class PlayPingPong implements Runnable {
      * play ping/pong.
      */
     public PlayPingPong(PlatformStrategy platformStrategy, int maxIterations,
-            int maxTurns, String syncMechanism) {
+			int maxTurns, String syncMechanism) {
         // The PlatformStrategy being used.
         mPlatformStrategy = platformStrategy;
 
@@ -271,22 +271,22 @@ public class PlayPingPong implements Runnable {
             Semaphore pongSema = new Semaphore(0);
 
             pingPongThreads[PING_THREAD] = new PingPongThreadSema(pingString,
-                    pingSema, pongSema);
+                                                                  pingSema, pongSema);
             pingPongThreads[PONG_THREAD] = new PingPongThreadSema(pongString,
-                    pongSema, pingSema);
+                                                                  pongSema, pingSema);
         } else if (schedMechanism.equals("COND")) {
             ReentrantLock lock = new ReentrantLock();
             Condition pingCond = lock.newCondition();
             Condition pongCond = lock.newCondition();
 
             pingPongThreads[PING_THREAD] = new PingPongThreadCond(pingString,
-                    lock, pingCond, pongCond, true);
+                                                                  lock, pingCond, pongCond, true);
             pingPongThreads[PONG_THREAD] = new PingPongThreadCond(pongString,
-                    lock, pongCond, pingCond, false);
+                                                                  lock, pongCond, pingCond, false);
             pingPongThreads[PING_THREAD]
-                    .setOtherThreadId(pingPongThreads[PONG_THREAD].getId());
+                .setOtherThreadId(pingPongThreads[PONG_THREAD].getId());
             pingPongThreads[PONG_THREAD]
-                    .setOtherThreadId(pingPongThreads[PING_THREAD].getId());
+                .setOtherThreadId(pingPongThreads[PING_THREAD].getId());
         }
     }
 
