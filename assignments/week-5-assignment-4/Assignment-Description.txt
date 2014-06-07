@@ -116,6 +116,13 @@ Configurations] window.  Once each of the 4 total run-configurations
 has been selected once, They will show up under [Run]->[Run History]
 for easier access.
 
+If for some reason you don't see the above mentioned 4 Run-Configurations, 
+or choose to make your own. You will have to go into the run configuration(s) 
+that you created, and under 'Classpath' remove "Android #.#.#", then 
+click 'apply' and 'run'. This is because the JRE _hates_ the Android
+Library, and has no idea how to execute the byte code meant for Android.
+This is only needed for any JRE based code (including the junit tests.)
+
 
 
 
