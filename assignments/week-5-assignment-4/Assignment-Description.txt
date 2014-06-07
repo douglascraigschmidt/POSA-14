@@ -10,11 +10,11 @@ command-line display (of the Eclipse IDE) or in an Android TextView
 (in either the AVD emulator or on an actual Android device).
 
 In this directory you'll find Java source code, AndroidManifest.xml,
-and associated XML metadata files.  The src/edu/vuum/mocca/ directory
-contains the skeleton Java code that you'll implement by completing
-the "TODO - You fill in here" comments to provide a working solution.
-DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
-"TODO - You fill in here" portions!!!
+and associated XML metadata files.  The directory
+W5-A4-Android/src/edu/vuum/mocca/ contains the skeleton Java code that
+you'll implement by completing the "TODO - You fill in here" comments
+to provide a working solution.  DO NOT CHANGE THE OVERALL STRUCTURE OF
+THE SKELETON - just fill in the "TODO - You fill in here" portions!!!
 
 Although there's a lot of files, the actual amount of code you'll need
 to write is small - the main goal is to understand the
@@ -66,7 +66,8 @@ http://www.courera.org/course/posa
 You'll need to build this Android application in the Eclipse ADT
 environment.  By default, the output for the correct solution should
 look similar to this (for both the Eclipse command-line and Android
-versions): However this assignment is only asking you to create the Android version.
+versions): However this assignment is only asking you to create the
+Android version.
 
 Ready...Set...Go!
 Ping!(1)
@@ -91,14 +92,14 @@ Ping!(10)
 Pong!(10)
 Done!
 
-To Run the Android Application, right click on the 'W5-A4-Android' 
+To Run the Android Application, right click on the 'W5-A4-Android'
 project and select [Run As] -> [Android Application]
 
 To Run the Android Unit Test, right click on the 'W5-A4-Android-Test'
 project and select [Run As] -> [Android Unit Test]
 
-Also:
-The test assumes that each line of text is formatted: <text content> + '\n'
+This test assumes that each line of text is formatted: <text content>
++ '\n'
 
 
 
