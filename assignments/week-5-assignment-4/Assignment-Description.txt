@@ -4,22 +4,16 @@ Released Monday, June 9th, 2014
 Due Monday, June 24th, 2014
 
 In this assignment, you will implement a program that uses a
-pattern-oriented ping-pong framework to spawn threads that correctly
-alternate printing "Ping" and "Pong", respectively on either the
-command-line display (of the Eclipse IDE) or in an Android TextView
-(in either the AVD emulator or on an actual Android device).
-
-In this directory you'll find Java source code, AndroidManifest.xml,
-and associated XML metadata files.  The src/edu/vuum/mocca/ directory
-contains the skeleton Java code that you'll implement by completing
-the "TODO - You fill in here" comments to provide a working solution.
-DO NOT CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the
-"TODO - You fill in here" portions!!!
-
-Although there's a lot of files, the actual amount of code you'll need
-to write is small - the main goal is to understand the
-pattern-oriented ping-pong framework and how to apply the the Android
-HaMeR framework.
+pattern-oriented framework to spawn threads that correctly alternate
+printing "Ping" and "Pong", respectively on either the command-line
+display (of the Eclipse IDE) or in an Android TextView (in either the
+AVD emulator or on an actual Android device).  In this directory
+you'll find Java source code, AndroidManifest.xml, and associated XML
+metadata files.  The src/edu/vuum/mocca/ directory contains the
+skeleton Java code that you'll implement by completing the "TODO - You
+fill in here" comments to provide a working solution.  DO NOT CHANGE
+THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO - You
+fill in here" portions!!!
 
 In particular, you'll need to do the following:
 
@@ -115,13 +109,6 @@ section.  These will all be selected from within the [Run
 Configurations] window.  Once each of the 4 total run-configurations
 has been selected once, They will show up under [Run]->[Run History]
 for easier access.
-
-If for some reason you don't see the above mentioned 4 Run-Configurations, 
-or choose to make your own. You will have to go into the run configuration(s) 
-that you created, and under 'Classpath' remove "Android #.#.#", then 
-click 'apply' and 'run'. This is because the JRE _hates_ the Android
-Library, and has no idea how to execute the byte code meant for Android.
-This is only needed for any JRE based code (including the junit tests.)
 
 
 
