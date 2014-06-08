@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
        	android:layout_height="wrap_content"
        	android:layout_gravity="top|center"
-       	android:gravity="center_horizontal"
+       	android:gravity="left"
        	android:minLines="1"
        	android:lines="30"
        	android:maxLines="30"
