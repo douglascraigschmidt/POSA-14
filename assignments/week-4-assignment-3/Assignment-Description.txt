@@ -8,8 +8,8 @@ instances of the PlayPingPongThread and then starts these thread
 instances to correctly alternate printing "Ping" and "Pong",
 respectively, on the console display.  This assignment also reuses the
 SimpleSemaphore you implemented for the previous assignment, so please
-address any peer assessment comments and make sure it's working
-properly before attempting this assignment!
+apply any fixes motivated by watching the Virtual Office Hours video
+of the instructor's solution(s).
 
 In this directory you'll find the PingPongRight.java class, which
 contains the skeleton Java code that you'll implement by completing
