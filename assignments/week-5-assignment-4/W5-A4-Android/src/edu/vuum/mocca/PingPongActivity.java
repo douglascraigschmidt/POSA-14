@@ -43,8 +43,7 @@ public class PingPongActivity extends Activity {
         PlatformStrategy.instance(androidPlatformStrategy);
 
         /** Initializes the Options singleton. */
-        String args[] = new String[] { "PlayPingPongGUI" };
-        Options.instance().parseArgs(args);
+        Options.instance().parseArgs(null);
     }
 
     /** Sets the action of the button on click state. */

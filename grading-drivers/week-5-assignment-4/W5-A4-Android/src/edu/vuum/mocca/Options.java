@@ -62,18 +62,20 @@ public class Options
      */
     public boolean parseArgs(String argv[])
     {
-        for (int argc = 0; argc < argv.length; argc += 2)
-            if (argv[argc].equals("-i"))
-                mMaxIterations = Integer.parseInt(argv[argc + 1]);
-            else if (argv[argc].equals("-s"))
-                mSyncMechanism = argv[argc + 1];
-            else if (argv[argc].equals("-t"))
-                mMaxTurns = Integer.parseInt(argv[argc + 1]);
-            else
-                {
-                    printUsage();
-                    return false;
-                }
+        if (argv != null) {
+            for (int argc = 0; argc < argv.length; argc += 2)
+                if (argv[argc].equals("-i"))
+                    mMaxIterations = Integer.parseInt(argv[argc + 1]);
+                else if (argv[argc].equals("-s"))
+                    mSyncMechanism = argv[argc + 1];
+                else if (argv[argc].equals("-t"))
+                    mMaxTurns = Integer.parseInt(argv[argc + 1]);
+                else
+                    {
+                        printUsage();
+                        return false;
+                    }
+        }
 
         return true;
     }

@@ -38,7 +38,7 @@ public class ConsolePlatformStrategy extends PlatformStrategy
     public void print(String outputString)
     {
         /** Print to the console window. */
-        System.out.println(outputString);
+        mOutput.println(outputString);
     }
 
     /** Indicate that a game thread has finished running. */
@@ -68,6 +68,7 @@ public class ConsolePlatformStrategy extends PlatformStrategy
      */
     public void errorLog(String javaFile, String errorMessage) 
     {
-        System.out.println(javaFile + " " + errorMessage);
+        mOutput.println(javaFile + " " + errorMessage);
     }
 }
+
