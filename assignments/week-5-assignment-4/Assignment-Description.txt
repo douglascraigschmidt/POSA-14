@@ -1,7 +1,7 @@
 Week 5: Programming Assignment 4
 
 Released Monday, June 9th, 2014
-Due Monday, June 24th, 2014
+Due Monday, June 23rd, 2014
 
 In this assignment, you will implement a program that uses a
 pattern-oriented ping-pong framework to spawn threads that correctly
