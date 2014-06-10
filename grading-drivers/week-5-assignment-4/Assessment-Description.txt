@@ -1,0 +1,107 @@
+Week 5: Programming Assignment 4
+
+Released Monday, June 9th, 2014
+Due Monday, June 24th, 2014
+
+In this assignment, you will implement a program that uses a
+pattern-oriented ping-pong framework to spawn threads that correctly
+alternate printing "Ping" and "Pong", respectively on either the
+command-line display (of the Eclipse IDE) or in an Android TextView
+(in either the AVD emulator or on an actual Android device).
+
+In this directory you'll find Java source code, AndroidManifest.xml,
+and associated XML metadata files.  The directory
+W5-A4-Android/src/edu/vuum/mocca/ contains the skeleton Java code that
+you'll implement by completing the "TODO - You fill in here" comments
+to provide a working solution.  DO NOT CHANGE THE OVERALL STRUCTURE OF
+THE SKELETON - just fill in the "TODO - You fill in here" portions!!!
+
+Although there are a lot of files, the actual amount of code you need
+to write is small - the main goal is to understand the
+pattern-oriented ping-pong framework and how to apply the Android
+HaMeR framework.  In particular, you'll need to do the following:
+
+. Read & understand the PingPongThreadSema and PingPongThreadCond
+  classes, which are covered in these videos:
+  
+  Section 1: Module 2: Part 10: Java Synchronization and Schedule Example
+
+. To understand these classes you'll also want to understand the Java
+  ReentrantLock, ConditionObject, and Semaphore classes, which are
+  covered in these videos:
+
+  Section 1: Module 2: Part 5: Java ReentrantLock
+  Section 1: Module 2: Part 7: Java Semaphore
+  Section 1: Module 2: Part 8: Java ConditionObject
+
+. Implement the hook methods in the AndroidPlatformStrategy.java class
+  that use a Java CountDownLatch and Activity's runOnUiThread() method
+  to post a Runnable command to the UI Thread, which are covered in
+  these videos:
+
+  Section 1: Module 2: Part 9: Java CountDownLatch
+  Section 1: Module 2: Part 10: Java Synchronization and Scheduling Example
+
+  There following videos on the Android HaMeR concurrency framework
+  may also be useful to understand what's going on, especially the
+  Part 4, which shows how the Activity.runOnUiThread() method works.
+
+  Section 1: Module 3: Part 1: Overview of Android Concurrency Frameworks and Idioms
+  Section 1: Module 3: Part 2: Android Looper
+  Section 1: Module 3: Part 3: Overview of Android Handler
+  Section 1: Module 3: Part 4: Posting and Processing Runnables to Android Handler
+
+These videos are available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+You'll need to build this Android application in the Eclipse ADT
+environment.  By default, the output for the correct solution should
+look similar to this (for both the Eclipse command-line and Android
+versions):
+
+Ready...Set...Go!
+ping  (1)
+_pong (1)
+ping  (2)
+_pong (2)
+ping  (3)
+_pong (3)
+ping  (4)
+_pong (4)
+ping  (5)
+_pong (5)
+ping  (6)
+_pong (6)
+ping  (7)
+_pong (7)
+ping  (8)
+_pong (8)
+ping  (9)
+_pong (9)
+ping  (10)
+_pong (10)
+Done!
+
+However, this assignment only requires you to create and test the
+Android version.  BTW, the test assumes that each line of text is
+formatted: <text content> + '\n'
+
+To Run the Android Application, right click on the 'W5-A4-Android'
+project and select [Run As] -> [Android Application]
+
+To Run the Android Unit Test, right click on the 'W5-A4-Android-Test'
+project and select [Run As] -> [Android Unit Test]
+
+
+
+
+
+
+
