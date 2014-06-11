@@ -23,9 +23,9 @@ public class ConsolePlatformStrategy extends PlatformStrategy
     PrintStream mOutput;
 
     /** Ctor. */
-    ConsolePlatformStrategy(PrintStream output) 
+    public ConsolePlatformStrategy(Object output) 
     {
-        mOutput = output;
+        mOutput = (PrintStream) output;
     }
 	
     /** Do any initialization needed to start a new game. */
