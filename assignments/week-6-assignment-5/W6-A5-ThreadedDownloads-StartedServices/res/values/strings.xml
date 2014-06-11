@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">W6-A5-ThreadedDownloads-StartedServices</string>
+    <string name="prompt">Enter URL:</string>
+    <string name="default_url">https://d396qusza40orc.cloudfront.net/posa/ka.png</string>
+    <string name="thread_pool_string">Run ThreadPool Messenger</string>
+    <string name="intent_service_string">Run IntentService Messenger</string>
+    <string name="reset_image_string">Reset Image</string>
+</resources>
