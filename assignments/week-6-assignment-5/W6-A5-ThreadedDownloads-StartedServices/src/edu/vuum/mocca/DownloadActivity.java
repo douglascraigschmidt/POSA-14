@@ -73,11 +73,12 @@ public class DownloadActivity extends DownloadBase {
     		
     		// If DownloadActivity hasn't been garbage collected
     		// (closed by user), display the sent image.
-    		if (activity != null) 
+    		if (activity != null) {
 	            // TODO - You fill in here to display the image
 	            // bitmap that's been downloaded and returned to
 	            // the DownloadActivity as a pathname that's named
 	            // "PATHNAME".
+                }
     	}
     }
 
