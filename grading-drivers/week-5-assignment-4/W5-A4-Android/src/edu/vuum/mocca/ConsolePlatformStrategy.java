@@ -23,9 +23,9 @@ public class ConsolePlatformStrategy extends PlatformStrategy
     PrintStream mOutput;
 
     /** Ctor. */
-    ConsolePlatformStrategy(Object output) 
+    ConsolePlatformStrategy(PrintStream output) 
     {
-        mOutput = (PrintStream) output;
+        mOutput = output;
     }
 	
     /** Do any initialization needed to start a new game. */
@@ -56,12 +56,6 @@ public class ConsolePlatformStrategy extends PlatformStrategy
         }
     }
 
-    /** Returns a string revealing the platform in use. */
-    public String platformName() 
-    {
-        return System.getProperty("java.specification.vendor");
-    }
-	
     /**
      * Error log formats the message and displays it for the debugging
      * purposes.

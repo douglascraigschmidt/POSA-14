@@ -4,6 +4,8 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+import edu.vuum.mocca.PlatformStrategy.PlatformType;
+
 /**
  * @class PlayPingPong
  * 
@@ -253,7 +255,7 @@ public class PlayPingPong implements Runnable {
 
     private void formatStrings() {
         if (!checkedStringFormatting) {
-            if (mPlatformStrategy.platformName().equals("The Android Project")) {
+            if (PlatformStrategy.platformType().equals(PlatformType.ANDROID)) {
                 pingString += "  ";
             }
             checkedStringFormatting = true;

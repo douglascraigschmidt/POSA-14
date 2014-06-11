@@ -49,8 +49,33 @@ public abstract class PlatformStrategy
      * Returns the name of the platform in a string. e.g., Android or
      * a JVM.
      */
-    public abstract String platformName();
+    public static String platformName() 
+    {
+        return System.getProperty("java.specification.vendor");
+    }
+    
+    /** 
+     * Returns the type of the platformm e.g. Android or
+     * a JVM.
+     */
+    public static PlatformType platformType() {
+    	if(platformName().indexOf("Android") >= 0) {
+    		return PlatformType.ANDROID;
+    	}
+    	else {
+    		return PlatformType.PLAIN_JAVA;
+    	}
+    }
 
+    /**
+     * Enumeration distinguishing platforms Android from Plain Java
+     */
+    public enum PlatformType {
+    	ANDROID,
+    	PLAIN_JAVA
+    }
+    
+    
     /**
      * Error log formats the message and displays it for the debugging
      * purposes.

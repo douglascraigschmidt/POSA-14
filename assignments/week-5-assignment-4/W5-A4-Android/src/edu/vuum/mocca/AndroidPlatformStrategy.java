@@ -23,17 +23,17 @@ public class AndroidPlatformStrategy extends PlatformStrategy
     /** Activity variable finds gui widgets by view. */
     private WeakReference<Activity> mActivity;
 
-    public AndroidPlatformStrategy(Object output,
-                                   final Object activityParam)
+    public AndroidPlatformStrategy(TextView output,
+                                   final Activity activityParam)
     {
         /**
          * A textview output which displays calculations and
          * expression trees.
          */
-        mTextViewOutput = (TextView) output;
+        mTextViewOutput = output;
 
         /** The current activity window (succinct or verbose). */
-        mActivity = new WeakReference<Activity>((Activity) activityParam);
+        mActivity = new WeakReference<Activity>(activityParam);
     }
 
     /**
@@ -71,11 +71,6 @@ public class AndroidPlatformStrategy extends PlatformStrategy
         // TODO - You fill in here.
     }
 
-    /** Returns the platform name in a String. */
-    public String platformName() 
-    {
-        return System.getProperty("java.specification.vendor");
-    }
 
     /** 
      * Error log formats the message and displays it for the

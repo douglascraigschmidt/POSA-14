@@ -20,8 +20,7 @@ public class Main
          * ConsolePlatform.
          */
         PlatformStrategy.instance
-            (new PlatformStrategyFactory(System.out,
-                                         null).makePlatformStrategy());
+            (new ConsolePlatformStrategy(System.out));
 
         /** Initializes the Options singleton. */
         Options.instance().parseArgs(args);
