@@ -134,13 +134,23 @@ public class DownloadService extends Service
             String pathname = downloadImage(DownloadService.this,
                                             intent.getData().toString());
 
-            // Call factory method to create Message.
-            Message message = makeReplyMessage(pathname);
-        
             // Extract the Messenger.
             Messenger messenger = (Messenger)
                     intent.getExtras().get("MESSENGER");
 
+            // Send the pathname via the messenger.
+            sendPath(messenger, pathname);
+        }
+
+        /**
+         * Send the pathname back to the DownloadActivity via the
+         * messenger.
+         */
+        private void sendPath(Messenger messenger, 
+                              String pathname) {
+            // Call factory method to create Message.
+            Message message = makeReplyMessage(pathname);
+        
             try {
                 // Send pathname to back to the DownloadActivity.
                 messenger.send(message);
@@ -150,7 +160,7 @@ public class DownloadService extends Service
                       e);
             }
         }
-        
+
 	/**
 	 * Create a file to store the result of a download.
 	 * 
