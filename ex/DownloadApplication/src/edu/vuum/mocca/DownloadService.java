@@ -126,7 +126,7 @@ public class DownloadService extends Service
         }
 
         /**
-         * Download the designated image and reply to the
+         * Retrieves the designated image and reply to the
          * DownloadActivity via the Messenger sent with the Intent.
          */
         private void downloadImageAndReply(Intent intent) {
