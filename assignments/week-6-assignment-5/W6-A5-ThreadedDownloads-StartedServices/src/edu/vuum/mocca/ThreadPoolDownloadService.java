@@ -80,11 +80,9 @@ public class ThreadPoolDownloadService extends Service {
      * Hook method called when a component calls startService() with
      * the proper Intent.
      */
-    public int onStartCommand(Intent intent,
+    public int onStartCommand(final Intent intent,
                               int flags,
                               int startId) {
-        final Intent i = intent;
-        
         // TODO - You fill in here to replace null with a new Runnable
         // that the ThreadPoolExecutor will execute to download the
         // image and respond to the client.  The Runnable's run()

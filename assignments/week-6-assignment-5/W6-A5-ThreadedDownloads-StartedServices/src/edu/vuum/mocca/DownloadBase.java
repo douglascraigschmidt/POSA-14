@@ -74,11 +74,13 @@ public class DownloadBase extends Activity {
     }
     
     /**
-     * Resets image to the default image stored with the program.
+     * Resets image to the default image stored with the program and
+     * reset the image default URL.
      */
     public void resetImage(View view) {
     	mImageView.setImageBitmap(mDefaultBitmap);
     	mCurrentBitmap = mDefaultBitmap;
+        mEditText.setText((String) getResources().getString(R.string.default_url));
         Log.d(TAG, "reset Image");
     }
     
@@ -89,7 +91,7 @@ public class DownloadBase extends Activity {
      * exists.
      */
     @Override
-     public void onCreate(Bundle savedInstanceState) {
+        public void onCreate(Bundle savedInstanceState) {
         Log.d(getClass().getSimpleName(), "onCreate");
         super.onCreate(savedInstanceState);
         

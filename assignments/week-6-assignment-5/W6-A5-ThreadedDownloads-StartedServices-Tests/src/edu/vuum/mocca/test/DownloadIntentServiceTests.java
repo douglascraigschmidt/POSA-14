@@ -3,6 +3,7 @@ package edu.vuum.mocca.test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.test.ServiceTestCase;
 import edu.vuum.mocca.DownloadIntentService;
+import edu.vuum.mocca.DownloadUtils;
 
 /**
  * @class DownloadIntentServiceTests
@@ -40,6 +42,11 @@ public class DownloadIntentServiceTests
      * Store the intent from makeIntent() to test proper creations.
      */
     Intent mIntent;
+    
+    /**
+     * The context of THIS project, not the target project
+     */
+    Context mContext;
 	
     /**
      * Constructor initializes the superclass.
@@ -86,6 +93,11 @@ public class DownloadIntentServiceTests
         mIntent = DownloadIntentService.makeIntent(getContext(), 
                                                    new Handler(), 
                                                    Options.TEST_URI);
+        
+        // Get the context for THIS project, not the target project.
+        mContext = getContext().createPackageContext(this.getClass().getPackage().getName(),
+                                                            Context.CONTEXT_IGNORE_SECURITY);
+        
     }
 	
     /**
@@ -113,7 +125,8 @@ public class DownloadIntentServiceTests
      * Try starting the service
      */
     public void test_startService () throws Exception {
-        mLatch = new CountDownLatch(1);
+    	
+    	mLatch = new CountDownLatch(1);
 		
         // Start a thread to handle the message when it's sent.
         new Thread(new Runnable() {
@@ -139,15 +152,11 @@ public class DownloadIntentServiceTests
 		
         // Wait for it to send us a Message (or time out)
         mLatch.await(Options.LONG_WAIT_TIME, TimeUnit.MILLISECONDS);
-		
+        
         // Check if we got a Message or timed out
         assertNotNull(mReceivedUri);
 		
-        // Get the context for THIS project, not the target project.
-        Context context = getContext().createPackageContext(this.getClass().getPackage().getName(),
-                                                            Context.CONTEXT_IGNORE_SECURITY);
-		
         // Check that the image actually downloaded.
-        assertTrue(Utilities.checkDownloadedImage(context, mReceivedUri));
+        assertTrue(Utilities.checkDownloadedImage(mContext, mReceivedUri));
     }
 }

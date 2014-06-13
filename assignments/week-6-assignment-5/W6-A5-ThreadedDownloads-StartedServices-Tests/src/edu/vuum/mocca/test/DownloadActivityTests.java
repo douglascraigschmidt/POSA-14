@@ -36,7 +36,12 @@ public class DownloadActivityTests
      * The context of this project, not the target project.
      */
     Context mContext;
-
+    
+    /**
+     * The activity we're testing
+     */
+    DownloadActivity mActivity;    
+    
     /**
      * Store the bitmap that we expect to be downloaded.
      */
@@ -47,9 +52,11 @@ public class DownloadActivityTests
      */
     public void setUp() throws Exception{
         super.setUp();
-
+        
+        mActivity = getActivity();
+        
         // Setup Robotium and get the EditText View.
-        mSolo = new Solo(getInstrumentation(), getActivity());
+        mSolo = new Solo(getInstrumentation(), mActivity);
 		
         mContext = getInstrumentation().getContext();
 		
@@ -59,55 +66,48 @@ public class DownloadActivityTests
 		
         mExpected = BitmapFactory.decodeResource(mContext.getResources(),
                                                  R.drawable.dougs);
-        getInstrumentation().callActivityOnStart(getActivity());
-        getInstrumentation().callActivityOnResume(getActivity());
-    }
-	
-    /**
-     * Called after each test finishes running to cleanup.
-     */
-    public void tearDown() {
-        getActivity().finish();
+        
+        getInstrumentation().callActivityOnStart(mActivity);
+        getInstrumentation().callActivityOnResume(mActivity);
+ 
+        // Wait for things to settle
+        Thread.sleep(Options.SHORT_WAIT_TIME);
+      
     }
 	
     /**
      * Push the button and see if the correct image is displayed.
      */
     public void testThreadPoolButton() throws Exception {
-        // Wait for things to settle
-        Thread.sleep(Options.SHORT_WAIT_TIME);
-		
+        
         // Make sure the current image isn't the one we're looking for
-        assertFalse(mExpected.sameAs(getActivity().mCurrentBitmap));
+        assertFalse(mExpected.sameAs(mActivity.mCurrentBitmap));
 		
         // Click on the "Start ThreadPool Button"
         mSolo.clickOnView(mSolo.getView(edu.vuum.mocca.R.id.thread_pool_button));
-			
+        
         // Wait for the image to download
         Thread.sleep(Options.LONG_WAIT_TIME);
 		
         // Check if we displayed the correct image
-        assertTrue(mExpected.sameAs(getActivity().mCurrentBitmap));
+        assertTrue(mExpected.sameAs(mActivity.mCurrentBitmap));
     }
 	
     /**
      * Push the button and see if the correct image is displayed.
      */
     public void testIntentServiceButton() throws Exception {
-		
-        // Wait for things to settle
-        Thread.sleep(Options.SHORT_WAIT_TIME);
-				
+     
         // Make sure the current image isn't the one we're looking for
-        assertFalse(mExpected.sameAs(getActivity().mCurrentBitmap));
+        assertFalse(mExpected.sameAs(mActivity.mCurrentBitmap));
 		
         // Click on the "Start ThreadPool Button"
         mSolo.clickOnView(mSolo.getView(edu.vuum.mocca.R.id.intent_service_button));
-		
+        
         // Wait for the image to download
         Thread.sleep(Options.LONG_WAIT_TIME);
 		
         // Check if we displayed the correct image
-        assertTrue(mExpected.sameAs(getActivity().mCurrentBitmap));
+        assertTrue(mExpected.sameAs(mActivity.mCurrentBitmap));
     }
 }

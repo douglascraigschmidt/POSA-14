@@ -3,6 +3,7 @@ package edu.vuum.mocca.test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.test.ServiceTestCase;
 import edu.vuum.mocca.DownloadIntentService;
+import edu.vuum.mocca.DownloadUtils;
 import edu.vuum.mocca.ThreadPoolDownloadService;
 
 /**
@@ -41,6 +43,11 @@ public class ThreadPoolDownloadServiceTests
      * Store the intent from makeIntent() to test proper creations.
      */
     Intent mIntent;
+    
+    /**
+     * The context of THIS project, not the target project
+     */
+    Context mContext;
 	
     /**
      * Constructor initializes the superclass.
@@ -86,7 +93,11 @@ public class ThreadPoolDownloadServiceTests
         mIntent = ThreadPoolDownloadService.makeIntent(getContext(), 
                                                        new Handler(), 
                                                        Options.TEST_URI);
-        Thread.sleep(Options.SHORT_WAIT_TIME);
+        
+        // Get the context for THIS project, not the target project.
+        mContext = getContext().createPackageContext(this.getClass().getPackage().getName(),
+                                                            Context.CONTEXT_IGNORE_SECURITY);
+        
     }
 	
     /**
@@ -114,7 +125,8 @@ public class ThreadPoolDownloadServiceTests
      * Test starting the service.
      */
     public void test_startService () throws Exception{
-        mLatch = new CountDownLatch(1);
+    	
+    	mLatch = new CountDownLatch(1);
 		
         // Start a thread to handle the message when it's sent.
         new Thread(new Runnable() {
@@ -140,7 +152,7 @@ public class ThreadPoolDownloadServiceTests
         assertNotNull(getService());
 		
         // Wait for the service to download and send us a message
-        mLatch.await(Options.SHORT_WAIT_TIME, TimeUnit.MILLISECONDS);
+        mLatch.await(Options.LONG_WAIT_TIME, TimeUnit.MILLISECONDS);
 		
         // See if we timed out or actually got a message
         assertNotNull(mReceivedUri);

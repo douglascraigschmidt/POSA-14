@@ -95,8 +95,6 @@ public class DownloadUtilsTests
                                                     new MessageHandler(Looper.myLooper()), 
                                                     Options.TEST_URI);
         mExtras = mIntent.getExtras();
-		
-		
     }
 	
     /**

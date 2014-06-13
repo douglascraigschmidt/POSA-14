@@ -87,7 +87,7 @@ displays the image.
 We provide several JUnit tests that should test your program's
 functionality.  The unit tests test the Service classes independently
 of the DownloadActivity, and then test the overall functionality of
-the program. By default, the unit tests try to download the default
+the program.  By default, the unit tests try to download the default
 URL and then check if the proper image was downloaded using Bitmap
 comparison.
 
@@ -96,3 +96,14 @@ project and select [Run As] -> [Android Application]
 
 To Run the Android Unit Test, right click on the 'W6-A5-Android-Test'
 project and select [Run As] -> [Android Unit Test]
+
+By default, the application and test program do an "offline" download
+since students often run this code an emulator or some other
+environment with slow/no Internet connectivity.  If you'd like to
+run/test it in the Internet please change the DOWNLOAD_OFFLINE boolean
+in
+
+W6-A5-ThreadedDownloads-StartedServices/src/edu/vuum/mocca/DownloadUtils.java
+
+to false.
+

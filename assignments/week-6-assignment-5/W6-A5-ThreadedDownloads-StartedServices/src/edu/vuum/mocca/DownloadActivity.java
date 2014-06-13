@@ -61,24 +61,24 @@ public class DownloadActivity extends DownloadBase {
     	 * @see https://groups.google.com/forum/#!msg/android-developers/1aPZXZG6kWk/lIYDavGYn5UJ
     	 */
     	public MessengerHandler(DownloadActivity outer) {
-    		outerClass = new WeakReference<DownloadActivity>(outer);
+            outerClass = new WeakReference<DownloadActivity>(outer);
     	}
     	
     	// Handle any messages that get sent to this Handler
     	public void handleMessage(Message msg) {
     		
-    		// Get an actual reference to the DownloadActivity
-    		// from the WeakReference.
-    		DownloadActivity activity = outerClass.get();
+            // Get an actual reference to the DownloadActivity
+            // from the WeakReference.
+            DownloadActivity activity = outerClass.get();
     		
-    		// If DownloadActivity hasn't been garbage collected
-    		// (closed by user), display the sent image.
-    		if (activity != null) {
-	            // TODO - You fill in here to display the image
-	            // bitmap that's been downloaded and returned to
-	            // the DownloadActivity as a pathname that's named
-	            // "PATHNAME".
-                }
+            // If DownloadActivity hasn't been garbage collected
+            // (closed by user), display the sent image.
+            if (activity != null) {
+                // TODO - You fill in here to display the image
+                // bitmap that's been downloaded and returned to
+                // the DownloadActivity as a pathname that's named
+                // "PATHNAME".
+            }
     	}
     }
 
@@ -132,7 +132,7 @@ public class DownloadActivity extends DownloadBase {
      * 	Also called when the activity is un-paused.
      */
     @Override
-    public void onResume() {
+        public void onResume() {
         // Attach handler to looper.
     	super.onResume();
     }
@@ -141,7 +141,7 @@ public class DownloadActivity extends DownloadBase {
      * Called when this activity becomes partially hidden.
      */
     @Override
-    public void onPause() {
+        public void onPause() {
         // Remove handler from looper.
     	super.onPause();    	
     }

@@ -1,5 +1,10 @@
 package edu.vuum.mocca.test;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Messenger;
+import edu.vuum.mocca.DownloadUtils;
 
 /**
  * @class Utilities
@@ -76,4 +82,5 @@ public class Utilities {
         
         return path;
     }
+    
 }
