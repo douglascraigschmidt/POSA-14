@@ -69,7 +69,7 @@ public class DownloadActivity extends DownloadBase {
     		
             // Get an actual reference to the DownloadActivity
             // from the WeakReference.
-            DownloadActivity activity = outerClass.get();
+            final DownloadActivity activity = outerClass.get();
     		
             // If DownloadActivity hasn't been garbage collected
             // (closed by user), display the sent image.
