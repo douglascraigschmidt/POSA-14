@@ -80,7 +80,7 @@ public class DownloadBase extends Activity {
     public void resetImage(View view) {
     	mImageView.setImageBitmap(mDefaultBitmap);
     	mCurrentBitmap = mDefaultBitmap;
-        mEditText.setText((String) getResources().getString(R.string.default_url));
+        mEditText.setText(getResources().getString(R.string.default_url));
         Log.d(TAG, "reset Image");
     }
     

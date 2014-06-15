@@ -80,10 +80,11 @@ public class DownloadIntentService extends IntentService {
      * the creation and lifecycle of a started service, but allows a
      * user to define what happens when an Intent is actually handled.
      */
-    protected void onHandleIntent (Intent intent) {
+    @Override
+	protected void onHandleIntent (Intent intent) {
         // TODO - You fill in here with a call the appropriate helper
         // method from the DownloadUtils class that downloads the uri
         // in the intent and returns the file's pathname using a
-        // Messenger that's named "MESSENGER".
+        // Messenger who's Bundle key is defined by DownloadUtils.MESSENGER_KEY
     }
 }

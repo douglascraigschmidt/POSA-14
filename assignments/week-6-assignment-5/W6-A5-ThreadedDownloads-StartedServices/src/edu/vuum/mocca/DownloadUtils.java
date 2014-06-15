@@ -32,7 +32,17 @@ public class DownloadUtils {
      * Used for debugging.
      */
     static final String TAG = "DownloadActivity";
+    
+    /**
+     * The key used to store/retrieve a Messenger extra from a Bundle.
+     */
+	public static final String MESSENGER_KEY = "MESSENGER";
 	
+	/**
+     * The key used to store/retrieve a file's pathname from a Bundle.
+     */
+	public static final String PATHNAME_KEY = "PATHNAME";
+    
     /**
      * If you have access to a stable Internet connection for testing
      * purposes, feel free to change this variable to false so it
@@ -77,7 +87,7 @@ public class DownloadUtils {
     	
     	Intent intent = new Intent(context,
                                    service);
-    	intent.putExtra("MESSENGER", 
+    	intent.putExtra(MESSENGER_KEY, 
                         messenger);
     	intent.setData(Uri.parse(uri));
     	
@@ -95,7 +105,7 @@ public class DownloadUtils {
                                  Messenger messenger) {
         Message msg = Message.obtain();
         Bundle data = new Bundle();
-        data.putString("PATHNAME",
+        data.putString(PATHNAME_KEY,
                        outputPath);
         
         // Make the Bundle the "data" of the Message.
