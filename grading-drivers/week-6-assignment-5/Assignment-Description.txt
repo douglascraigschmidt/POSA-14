@@ -1,0 +1,109 @@
+Week 6: Programming Assignment 5
+
+Released Monday, June 16th, 2014
+Due Monday, June 30th, 2014
+
+In this assignment, you will implement a program that downloads images
+using started services and then displays them in the context of the UI
+Thread.  The user can optionally select one of two different Started
+Services whose implementations you will complete:
+
+. A simple DownloadIntentService that uses on the Android
+  IntentService framework to download files in a single background
+  Thread and
+
+. A more scalable ThreadPoolDownloadService that uses a
+  ThreadPoolExecutor to download several files concurrently within a
+  fixed pool of Threads.
+
+In this directory you'll find Java source code, AndroidManifest.xml,
+and associated XML metadata files.  The directory
+W6-A5-ThreadedDownloads-StartedServices/src/edu/vuum/mocca/ contains
+the skeleton Java code that you'll implement by completing the "TODO -
+You fill in here" comments to provide a working solution.  DO NOT
+CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO
+- You fill in here" portions!!!
+
+The main goal of this project is to understand the pattern-oriented
+threaded download application and how to start and interact with
+Services using the IntentService and Messenger IPC mechanisms.  In
+particular, you'll need to do the following:
+
+. Understand how to launch Started Services using Intents and receive
+  replies from Services using the Messenger IPC mechanism in the
+  DownloadActivity class, which are covered in these videos:
+
+  Section 1: Module 3: Part 5: Sending and Handling Messages with Android Handler
+  Section 2: Module 1: Part 2: Programming Started Services (Part 1)
+  Section 2: Module 1: Part 3: Programming Started Services (Part 2)
+
+. Understand how to implement the DownloadIntentService and
+  ThreadPoolDownloadService by handling Intents, doing work in the
+  background, and sending results the Messenger IPC mechanism covered
+  in these videos:
+  
+  Section 2: Module 1: Part 4: Android IntentService
+  Section 2: Module 1: Part 6: Service to Activity Communication via Android Messenger
+
+. Understand factory methods and implement the makeIntent() factory
+  methods in each service, which are similar to the
+  DownloadService.makeIntent() factory method covered in this video:
+
+  Section 2: Module 1: Part 3: Programming Started Services (Part 2)
+
+. Understand the ThreadPoolExecutor class and utilize a factory method
+  in the Executors class to create a new thread pool, which is
+  (briefly) outlined in this video
+
+  Section 1: Module 3: Part 7: The AsyncTask Framework (Part 2)
+
+  and described further in the documentation at:
+
+  http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executors.html
+
+. Understand the methods provided in the DownloadUtils class, which
+  contains functionality that is common to both the
+  DownloadIntentService and ThreadPoolDownloadService.
+
+These videos are available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+You'll need to build this Android application in the Eclipse ADT
+environment.  Unlike previous assignments, this program is
+user-driven, so output will vary depending on which URL is provided.
+In addition to using the default URL (which is available from
+https://d396qusza40orc.cloudfront.net/posa/ka.png) you should also
+test this application by finding an Internet URL to an image (ending
+in .jpg, .gif, .png etc.) and see if your application correctly
+displays the image.
+
+We provide several JUnit tests that should test your program's
+functionality.  The unit tests test the Service classes independently
+of the DownloadActivity, and then test the overall functionality of
+the program.  By default, the unit tests try to download the default
+URL and then check if the proper image was downloaded using Bitmap
+comparison.
+
+To Run the Android Application, right click on the 'W6-A5-Android'
+project and select [Run As] -> [Android Application]
+
+To Run the Android Unit Test, right click on the 'W6-A5-Android-Test'
+project and select [Run As] -> [Android Unit Test]
+
+By default, the application and test program do an "offline" download
+since students often run this code an emulator or some other
+environment with slow/no Internet connectivity.  If you'd like to
+run/test it in the Internet please change the DOWNLOAD_OFFLINE boolean
+in
+
+W6-A5-ThreadedDownloads-StartedServices/src/edu/vuum/mocca/DownloadUtils.java
+
+to false.
+
