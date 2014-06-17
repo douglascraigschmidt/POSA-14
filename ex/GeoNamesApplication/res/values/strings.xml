@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeoNamesApplication</string>
+    <string name="prompt">Enter URL:</string>
+    <string name="default_url">"http://api.geonames.org/earthquakesJSON?north=44.1%26south=-9.9%26east=-22.4%26west=55.2%26username=demo"</string>
+    <string name="bound_sync_string">Call GeoNames Service Sync</string>
+    <string name="bound_async_string">Call GeoNames Service Async</string>
+    <string name="reset_output_string">Reset Output</string>
+</resources>

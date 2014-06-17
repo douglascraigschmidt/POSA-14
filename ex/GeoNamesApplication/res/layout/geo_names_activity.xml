@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+  <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center">
+	    <TextView 
+	        android:text="@string/prompt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	       />
+	    
+	    <EditText
+	       android:text="@string/default_url"
+	       android:id="@+id/url"
+	       android:inputType="textUri"
+	       android:layout_width="fill_parent"
+	       android:layout_height="wrap_content"
+	       />
+	    
+    </LinearLayout>
+
+  <LinearLayout
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:gravity="center">
+    <Button 
+       android:text="@string/bound_sync_string"
+       android:onClick="runService"
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/bound_sync_button"
+       />
+    <Button 
+       android:text="@string/bound_async_string"
+       android:onClick="runService"
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/bound_async_button"
+       />
+  </LinearLayout>
+  <Button 
+     android:text="@string/reset_output_string"
+     android:onClick="resetOutput"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true"
+     android:id="@+id/reset_output_button"
+     />
+
+  <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/play_button" 
+        android:layout_alignParentTop="true" >
+    <TextView  android:id="@+id/textView1"
+               android:layout_width="wrap_content" 
+               android:layout_height="wrap_content">
+    </TextView>
+  </ScrollView>
+</LinearLayout>
