@@ -166,25 +166,20 @@ public class DownloadActivity extends Activity {
         }
 
         /**
-        /**
-         * This hook method is dispatched in response to receiving
-         * the pathname back from the DownloadService.
+         * This hook method is dispatched in response to receiving the
+         * pathname back from the DownloadService.
          */
-        public void handleMessage(Message msg) {
+        public void handleMessage(Message message) {
             DownloadActivity activity = mActivity.get();
-            // Bail out of the DownloadActivity is gone.
+            // Bail out if the DownloadActivity is gone.
             if (activity == null)
                 return;
 
-            // Extract the data from Message, which is in the form
-            // of a Bundle that can be passed across processes.
-            Bundle data = msg.getData();
-
-            // Extract the pathname from the Bundle.
-            String pathname = data.getString("PATHNAME");
+            // Try to extract the pathname from the message.
+            String pathname = DownloadService.getPathname(message);
                 
-            // See if things worked or not.
-            if (msg.arg1 != RESULT_OK || pathname == null)
+            // See if the download worked or not.
+            if (pathname == null)
                 activity.showDialog("failed download");
 
             // Stop displaying the progress dialog.

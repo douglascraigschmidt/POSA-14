@@ -96,7 +96,7 @@ public class PlayPingPong implements Runnable {
 
         // Data member that indicates the string to print (typically a
         // "ping" or a "pong").
-        protected String mStringToPrint;
+        protected final String mStringToPrint;
     }
 
     /**
@@ -263,7 +263,7 @@ public class PlayPingPong implements Runnable {
     }
 
     private void makePingPongThreads(String schedMechanism,
-            PingPongThread[] pingPongThreads) {
+                                     PingPongThread[] pingPongThreads) {
         formatStrings();
         if (schedMechanism.equals("SEMA")) {
             // Create the semaphores that schedule threads

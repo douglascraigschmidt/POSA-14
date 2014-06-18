@@ -69,8 +69,9 @@ public class GeoNamesActivity extends GeoNamesBase {
     GeoNamesRequest mGeoNamesRequest = null;
      
     /** 
-     * This ServiceConnection is used to receive results after binding
-     * to the GeoNamesServiceSync Service using bindService().
+     * This ServiceConnection is used to receive the GeoNamesCall
+     * proxy after binding to the GeoNamesServiceSync Service using
+     * bindService().
      */
     ServiceConnection mServiceConnectionSync = new ServiceConnection() {
             /**
@@ -98,24 +99,27 @@ public class GeoNamesActivity extends GeoNamesBase {
         };
      
     /** 
-     * This ServiceConnection is used to receive results after binding
-     * to the GeoNamesServiceAsync Service using bindService().
+     * This ServiceConnection is used to receive the GeoNamesRequest
+     * proxy after binding to the GeoNamesServiceAsync Service using
+     * bindService().
      */
     ServiceConnection mServiceConnectionAsync = new ServiceConnection() {
             /**
-             * Cast the returned IBinder object to the GeoNamesRequest
-             * AIDL Interface and store it for later use in
-             * mGeoNamesRequest.
+             * Called after the KeyGeneratorService is connected to
+             * convey the result returned from onBind().
              */
             @Override
             public void onServiceConnected(ComponentName name,
                                            IBinder service) {
             	Log.d(TAG, "ComponentName: " + name);
+                // Cast the returned IBinder object to the
+                // GeoNamesRequest AIDL Interface and store it for
+                // later use in mGeoNamesRequest.
                 mGeoNamesRequest = GeoNamesRequest.Stub.asInterface(service);
             }
 
             /**
-             * Called if the remote service crashes and is no longer
+             * Called if the Service crashes and is no longer
              * available.  The ServiceConnection will remain bound,
              * but the service will not respond to any requests.
              */
