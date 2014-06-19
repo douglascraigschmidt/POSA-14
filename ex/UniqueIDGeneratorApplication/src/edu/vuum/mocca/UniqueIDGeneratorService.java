@@ -1,19 +1,19 @@
 package edu.vuum.mocca;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 /**
@@ -37,27 +37,33 @@ public class UniqueIDGeneratorService extends Service {
      * A class constant that determines the maximum number of threads
      * used to service download requests.
      */
-    static final int MAX_THREADS = 4;
+    private static final int MAX_THREADS = 4;
 	
     /**
      * The ExecutorService that references a ThreadPool.
      */
-    ExecutorService mExecutor;
+    private ExecutorService mExecutor;
+
+    /**
+     * A persistent collection of unique IDs.  For simplicity we use a
+     * SharedPreference, which isn't optimized for performance but is
+     * easy to use.
+     */
+    private SharedPreferences uniqueIDs = null;
 
     /**
      * Hook method called when the Service is created.
      */
     @Override
     public void onCreate() {
+        // Get a SharedPreferences instance that points to the default
+        // file used by the preference framework in this Service.
+        uniqueIDs = PreferenceManager.getDefaultSharedPreferences(this);
+
         // Create a FixedThreadPool Executor that's configured to use
         // MAX_THREADS.
         mExecutor = Executors.newFixedThreadPool(MAX_THREADS);
     }
-
-    /**
-     * A set of unique keys.
-     */
-    private final Set<UUID> keys = new HashSet<UUID>();
 
     /**
      * Extracts the encapsulated unique ID from the Message.
@@ -95,25 +101,45 @@ public class UniqueIDGeneratorService extends Service {
             // thread pool.
             Runnable keyGeneratorRunnable = new Runnable() {
                     public void run () {
-                        UUID id;
+                        String uniqueID;
 
                         // We need to synchronize this block of code
                         // since it's accessed by multiple threads in
                         // the pool.
-                        synchronized (keys) {
-                            do {
-                                id = UUID.randomUUID();
-                            } while (keys.contains(id));
-                            keys.add(id);
-                        }
+                        synchronized (this) {
+                            // This look keep generating a random UUID
+                            // if it's not unique (i.e., is not
+                            // currently found in the persistent
+                            // collection of SharedPreferences).  The
+                            // likelihood of a non-unique UUID is low,
+                            // but we're being extra paranoid for the
+                            // sake of this example ;-)
+                            for (;;) {
+                                uniqueID = UUID.randomUUID().toString();
 
-                        final String key = id.toString();
+                                if (uniqueIDs.getString(uniqueID,
+                                                        "").equals("u"))
+                                    Log.d(TAG, uniqueID + " already in use");
+                                else {
+                                    Log.d(TAG, uniqueID + " not in use");
+                                    break;
+                                }
+                            }
+
+                            // We found a unique ID, so add it as the
+                            // "key" to the persistent collection of
+                            // SharedPreferences, with a value "u" for
+                            // "used".
+                            SharedPreferences.Editor editor = uniqueIDs.edit();
+                            editor.putString(uniqueID, "u");
+                            editor.commit();
+                        }
 
                         // Create a Message that's used to send the
                         // unique ID back to the UniqueIDGeneratorActivity.
                         Message reply = Message.obtain();
                         Bundle data = new Bundle();
-                        data.putString("ID", key);
+                        data.putString("ID", uniqueID);
                         reply.setData(data);
 
                         try {
@@ -122,7 +148,7 @@ public class UniqueIDGeneratorService extends Service {
                             if (replyMessenger == null)
                                 Log.d(TAG, "replyMessenger is null");
                             else {
-                                Log.d(TAG, "sending key" + key);
+                                Log.d(TAG, "sending key" + uniqueID);
                                 replyMessenger.send(reply);
                             }
                         } catch (RemoteException e) {
