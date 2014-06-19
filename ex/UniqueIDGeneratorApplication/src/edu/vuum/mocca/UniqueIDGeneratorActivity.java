@@ -139,8 +139,7 @@ public class UniqueIDGeneratorActivity extends Activity {
         if (mMessengerRef == null)
             // Bind to the UniqueIDGeneratorService associated with this
             // Intent.
-            bindService(new Intent(this, 
-                                   UniqueIDGeneratorService.class),
+            bindService(UniqueIDGeneratorService.makeIntent(this),
                         this.mConnection,
                         Context.BIND_AUTO_CREATE);
     }

@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -66,6 +67,16 @@ public class UniqueIDGeneratorService extends Service {
     }
 
     /**
+     * Factory method to make the desired Intent.
+     */
+    public static Intent makeIntent(Context context) {
+        // Create the Intent that's associated to the
+        // UniqueIDGeneratorService class.
+        return new Intent(context, 
+        				  UniqueIDGeneratorService.class);
+    }
+
+    /**
      * Extracts the encapsulated unique ID from the Message.
      */
     public static String uniqueID(Message message) {
@@ -117,8 +128,8 @@ public class UniqueIDGeneratorService extends Service {
                             for (;;) {
                                 uniqueID = UUID.randomUUID().toString();
 
-                                if (uniqueIDs.getString(uniqueID,
-                                                        "").equals("u"))
+                                if (uniqueIDs.getLong(uniqueID,
+                                                      0) == 1)
                                     Log.d(TAG, uniqueID + " already in use");
                                 else {
                                     Log.d(TAG, uniqueID + " not in use");
@@ -128,10 +139,10 @@ public class UniqueIDGeneratorService extends Service {
 
                             // We found a unique ID, so add it as the
                             // "key" to the persistent collection of
-                            // SharedPreferences, with a value "u" for
-                            // "used".
+                            // SharedPreferences, with a value of 1 to
+                            // indicate this ID is already "used".
                             SharedPreferences.Editor editor = uniqueIDs.edit();
-                            editor.putString(uniqueID, "u");
+                            editor.putLong(uniqueID, 1);
                             editor.commit();
                         }
 
