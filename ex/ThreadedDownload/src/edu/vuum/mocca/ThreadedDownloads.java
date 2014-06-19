@@ -457,6 +457,14 @@ public class ThreadedDownloads extends Activity {
      */
     private class DownloadTask extends AsyncTask<String, Integer, Bitmap> {
         /**
+         * Constructor.
+         */
+        DownloadTask() {
+            // Make the default Executor be a THREAD_POOL_EXECUTOR.
+            AsyncTask.setDefaultExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
+
+        /**
          * Called by the AsyncTask framework in the UI Thread to
          * perform initialization actions.
          */
