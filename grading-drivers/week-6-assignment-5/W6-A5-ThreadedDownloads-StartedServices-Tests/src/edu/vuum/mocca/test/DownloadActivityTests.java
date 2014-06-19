@@ -70,9 +70,16 @@ public class DownloadActivityTests
         getInstrumentation().callActivityOnStart(mActivity);
         getInstrumentation().callActivityOnResume(mActivity);
  
+        // Let us dismiss the lockscreen
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            }
+        });
+        
         // Wait for things to settle
         Thread.sleep(Options.SHORT_WAIT_TIME);
-      
     }
 	
     /**
