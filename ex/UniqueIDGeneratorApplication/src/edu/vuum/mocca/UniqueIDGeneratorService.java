@@ -38,7 +38,7 @@ public class UniqueIDGeneratorService extends Service {
      * A class constant that determines the maximum number of threads
      * used to service download requests.
      */
-    private static final int MAX_THREADS = 4;
+    private final int MAX_THREADS = 4;
 	
     /**
      * The ExecutorService that references a ThreadPool.
@@ -53,10 +53,22 @@ public class UniqueIDGeneratorService extends Service {
     private SharedPreferences uniqueIDs = null;
 
     /**
+     * A Messenger that encapsulates the RequestHandler used to handle
+     * request Messages sent from the UniqueIDGeneratorActivity.
+     */
+    private Messenger mReqMessenger = null;
+
+    /**
      * Hook method called when the Service is created.
      */
     @Override
     public void onCreate() {
+        // A Messenger that encapsulates the RequestHandler used to
+        // handle request Messages sent from the
+        // UniqueIDGeneratorActivity.
+        mReqMessenger =
+            new Messenger(new RequestHandler());
+
         // Get a SharedPreferences instance that points to the default
         // file used by the preference framework in this Service.
         uniqueIDs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -84,14 +96,6 @@ public class UniqueIDGeneratorService extends Service {
     }
 
     /**
-     * Implementation a Messenger that encapsulates the RequestHandler
-     * used to handle request Messages sent from the
-     * UniqueIDGeneratorActivity.
-     */
-    private final Messenger mMessengerImpl =
-            new Messenger(new RequestHandler());
-
-    /**
      * @class RequestHandler
      *
      * @brief This class handles messages sent by the
@@ -110,7 +114,7 @@ public class UniqueIDGeneratorService extends Service {
 
             // Runnable that's used to generate a unique ID in the
             // thread pool.
-            Runnable keyGeneratorRunnable = new Runnable() {
+            Runnable idGeneratorRunnable = new Runnable() {
                     public void run () {
                         String uniqueID;
 
@@ -128,7 +132,7 @@ public class UniqueIDGeneratorService extends Service {
                             for (;;) {
                                 uniqueID = UUID.randomUUID().toString();
 
-                                if (uniqueIDs.getLong(uniqueID,
+                                if (uniqueIDs.getInt(uniqueID,
                                                       0) == 1)
                                     Log.d(TAG, uniqueID + " already in use");
                                 else {
@@ -142,7 +146,7 @@ public class UniqueIDGeneratorService extends Service {
                             // SharedPreferences, with a value of 1 to
                             // indicate this ID is already "used".
                             SharedPreferences.Editor editor = uniqueIDs.edit();
-                            editor.putLong(uniqueID, 1);
+                            editor.putInt(uniqueID, 1);
                             editor.commit();
                         }
 
@@ -159,7 +163,7 @@ public class UniqueIDGeneratorService extends Service {
                             if (replyMessenger == null)
                                 Log.d(TAG, "replyMessenger is null");
                             else {
-                                Log.d(TAG, "sending key" + uniqueID);
+                                Log.d(TAG, "sending unique ID" + uniqueID);
                                 replyMessenger.send(reply);
                             }
                         } catch (RemoteException e) {
@@ -170,7 +174,7 @@ public class UniqueIDGeneratorService extends Service {
 
             // Put the runnable in the thread pool for subsequent
             // concurrent processing.
-            mExecutor.execute(keyGeneratorRunnable);
+            mExecutor.execute(idGeneratorRunnable);
         }
     }
 
@@ -180,7 +184,7 @@ public class UniqueIDGeneratorService extends Service {
      * holds.
      */
     @Override
-	public void onDestroy() {
+    public void onDestroy() {
     	// Ensure that the threads used by the ThreadPoolExecutor
     	// complete and are reclaimed by the system.
 
@@ -189,7 +193,7 @@ public class UniqueIDGeneratorService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return mMessengerImpl.getBinder();
+        return mReqMessenger.getBinder();
     }
 }
     
