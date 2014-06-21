@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.vuum.mocca"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Line 12 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Line 14 -->
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Line 21 -->
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="edu.vuum.mocca.ui.ListStoryActivity"
+            android:label="@string/title_activity_main" />
+        
+        <activity android:name="edu.vuum.mocca.ui.LoginActivity">
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" /> <!-- Line 35 -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- THIS IS THE CREATION ACTIVITY -->
+        <activity android:name="edu.vuum.mocca.ui.CreateStoryActivity" >
+        </activity>
+        
+        <!-- THIS IS THE SINGLE VIEW ACTIVITY -->
+        <activity android:name="edu.vuum.mocca.ui.ViewStoryActivity" >
+        </activity>
+        
+        <!-- THIS IS THE EDIT ACTIVITY -->
+        <activity android:name="edu.vuum.mocca.ui.EditStoryActivity" > <!-- Line 49 -->
+        </activity>
+        
+        <!-- THIS IS THE SOUND RECORD ACTIVITY -->
+        <activity
+            android:name="edu.vuum.mocca.ui.SoundRecordActivity"
+            android:label="@string/title_activity_sound_record">
+            <intent-filter> 										<!-- Line 56 -->
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </activity>
+        
+    </application>
+
+</manifest>

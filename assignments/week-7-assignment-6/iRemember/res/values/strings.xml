@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+The iRemember source code (henceforth referred to as "iRemember") is
+copyrighted by Mike Walker, Adam Porter, Doug Schmidt, and Jules White
+at Vanderbilt University and the University of Maryland, Copyright (c)
+2014, all rights reserved.  Since iRemember is open-source, freely
+available software, you are free to use, modify, copy, and
+distribute -perpetually and irrevocably- the source code and object code
+produced from the source, as well as copy and distribute modified
+versions of this software. You must, however, include this copyright
+statement along with any code built using iRemember that you release. No
+copyright statement needs to be provided if you just ship binary
+executables of your software products.
+
+You can use iRemember software in commercial and/or binary software
+releases and are under no obligation to redistribute any of your source
+code that is built using the software. Note, however, that you may not
+misappropriate the iRemember code, such as copyrighting it yourself or
+claiming authorship of the iRemember software code, in a way that will
+prevent the software from being distributed freely using an open-source
+development model. You needn't inform anyone that you're using iRemember
+software in your software, though we encourage you to let us know so we
+can promote your project in our success stories.
+
+iRemember is provided as is with no warranties of any kind, including
+the warranties of design, merchantability, and fitness for a particular
+purpose, noninfringement, or arising from a course of dealing, usage or
+trade practice.  Vanderbilt University and University of Maryland, their
+employees, and students shall have no liability with respect to the
+infringement of copyrights, trade secrets or any patents by DOC software
+or any part thereof.  Moreover, in no event will Vanderbilt University,
+University of Maryland, their employees, or students be liable for any
+lost revenue or profits or other special, indirect and consequential
+damages.
+
+iRemember is provided with no support and without any obligation on the
+part of Vanderbilt University and University of Maryland, their
+employees, or students to assist in its use, correction, modification,
+or enhancement.
+
+The names Vanderbilt University and University of Maryland may not be
+used to endorse or promote products or services derived from this source
+without express written permission from Vanderbilt University or
+University of Maryland. This license grants no permission to call
+products or services derived from the iRemember source, nor does it
+grant permission for the name Vanderbilt University or
+University of Maryland to appear in their names.
+  -->
+  
+<resources>
+
+    <!-- ************** Application-wide Strings ************* -->
+    <string name="app_name">iRemember</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">iRemember</string>
+    
+    <string name="authority">edu.vuum.mocca.provider.MoocProvider</string>
+    <!-- <string name="authority">edu.vuum.mocca.provider.MoocProvider</string> -->
+
+    <!-- ******************* Defined Colors ****************** -->
+    <color name="cyan">#00ffff</color>
+    <color name="gray">#808080</color>
+    <color name="lightblue">#add8e6</color>
+
+    <!-- **** Strings for View Activity for each Relation **** -->
+    
+    <!-- location View Activity Strings -->
+    <string name="story_view_button_label_delete">Delete</string>
+    <string name="story_view_button_label_edit">Edit</string>
+    <string name="story_view_deletion_dialog_title">Closing Activity</string>
+    <string name="story_view_deletion_dialog_message">Are you sure you want to Delete this Entry?</string>
+    <string name="story_view_deletion_dialog_yes">Yes</string>
+    <string name="story_view_deletion_dialog_no">No</string>
+
+    
+    <string name="story_view_edittext_login_id_default_value">LoginId</string>
+    <string name="story_view_edittext_story_id_default_value">StoryId</string>
+    <string name="story_view_edittext_title_default_value">Title</string>
+    <string name="story_view_edittext_body_default_value">Body</string>
+    <string name="story_view_edittext_audio_link_default_value">AudioLink</string>
+    <string name="story_view_edittext_video_link_default_value">VideoLink</string>
+    <string name="story_view_edittext_image_name_default_value">ImageName</string>
+    <string name="story_view_edittext_image_meta_data_default_value">ImageData</string>
+    <string name="story_view_edittext_tags_default_value">Tags</string>
+    <string name="story_view_edittext_creation_time_default_value">CreationTime</string>
+    <string name="story_view_edittext_story_time_default_value">StoryTime</string>
+    <string name="story_view_edittext_latitude_default_value">Latitude</string>
+    <string name="story_view_edittext_longitude_default_value">Longitude</string>
+    
+
+
+    
+    <string name="story_view_label_login_id">LoginId</string>
+    <string name="story_view_label_story_id">StoryId</string>
+    <string name="story_view_label_title">Title</string>
+    <string name="story_view_label_body">Body</string>
+    <string name="story_view_label_audio_link">AudioLink</string>
+    <string name="story_view_label_video_link">VideoLink</string>
+    <string name="story_view_label_image_name">ImageName</string>
+    <string name="story_view_label_image_meta_data">ImageData</string>
+    <string name="story_view_label_tags">Tags</string>
+    <string name="story_view_label_creation_time">Story Recording Date</string>
+    <string name="story_view_label_story_time">Story Occurrence Date</string>
+    <string name="story_view_label_latitude">Latitude</string>
+    <string name="story_view_label_longitude">Longitude</string>
+    
+    <!-- location View Activity Strings -->
+    <string name="tags_view_button_label_delete">Delete</string>
+    <string name="tags_view_button_label_edit">Edit</string>
+    <string name="tags_view_deletion_dialog_title">Closing Activity</string>
+    <string name="tags_view_deletion_dialog_message">Are you sure you want to Delete this Entry?</string>
+    <string name="tags_view_deletion_dialog_yes">Yes</string>
+    <string name="tags_view_deletion_dialog_no">No</string>
+
+    
+    <string name="tags_view_edittext_login_id_default_value">LoginId</string>
+    <string name="tags_view_edittext_story_id_default_value">StoryId</string>
+    <string name="tags_view_edittext_tag_default_value">Tag</string>
+    
+
+
+    
+    <string name="tags_view_label_login_id">LoginId</string>
+    <string name="tags_view_label_story_id">StoryId</string>
+    <string name="tags_view_label_tag">Tag</string>
+    
+    
+
+
+    <!-- **** Strings for List Activity for each Relation **** -->
+    
+    <!-- story List Activity Strings -->
+    <string name="story_list_button_label_add">ADD</string>
+    <string name="story_list_button_label_refresh">REFRESH</string>
+    <string name="story_list_filter_hint">Tag Filter...</string>
+    
+    <!-- tags List Activity Strings -->
+    <string name="tags_list_button_label_add">ADD</string>
+    <string name="tags_list_button_label_refresh">REFRESH</string>
+    
+
+
+    <!-- **** Strings for Create Activity for each Relation **** -->
+    
+    <!-- story Create Activity Strings -->
+    
+    <string name="story_create_label_login_id">loginId:</string>
+    <string name="story_create_label_story_id">storyId:</string>
+    <string name="story_create_label_title">title:</string>
+    <string name="story_create_label_body">body:</string>
+    <string name="story_create_label_audio_link">audioLink:</string>
+    <string name="story_create_label_video_link">videoLink:</string>
+    <string name="story_create_label_image_name">imageName:</string>
+    <string name="story_create_label_image_meta_data">imageMetaData:</string>
+    <string name="story_create_label_tags">tags:</string>
+    <string name="story_create_label_creation_time">creationTime:</string>
+    <string name="story_create_label_story_time">storyTime:</string>
+    <string name="story_create_label_latitude">latitude:</string>
+    <string name="story_create_label_longitude">longitude:</string>
+    
+
+
+    
+    <string name="story_create_login_id_default_value">0</string>
+    <string name="story_create_story_id_default_value">0</string>
+    <string name="story_create_title_default_value"></string>
+    <string name="story_create_body_default_value"></string>
+    <string name="story_create_audio_link_default_value"></string>
+    <string name="story_create_video_link_default_value"></string>
+    <string name="story_create_image_name_default_value"></string>
+    <string name="story_create_image_meta_data_default_value"></string>
+    <string name="story_create_tags_default_value"></string>
+    <string name="story_create_creation_time_default_value">0</string>
+    <string name="story_create_story_time_default_value">0</string>
+    <string name="story_create_latitude_default_value">0.0</string>
+    <string name="story_create_longitude_default_value">0.0</string>
+    
+
+    <string name="story_create_button_label_clear">Clear</string>
+    <string name="story_create_button_label_cancel">Cancel</string>
+    <string name="story_create_button_label_create">Create</string>
+    <string name="story_create_button_label_record">Record</string>
+    <string name="story_create_button_message_save">Save</string>
+    <string name="story_create_button_message_reset">Reset</string>
+    <string name="story_create_button_message_cancel">Cancel</string>
+    <!-- tags Create Activity Strings -->
+    
+    <string name="tags_create_label_login_id">loginId:</string>
+    <string name="tags_create_label_story_id">storyId:</string>
+    <string name="tags_create_label_tag">tag:</string>
+    
+
+
+    
+    <string name="tags_create_login_id_default_value">0</string>
+    <string name="tags_create_story_id_default_value">0</string>
+    <string name="tags_create_tag_default_value"></string>
+    
+
+    <string name="tags_create_button_label_clear">Clear</string>
+    <string name="tags_create_button_label_cancel">Cancel</string>
+    <string name="tags_create_button_label_create">Create</string>
+    <string name="tags_create_button_message_save">Save</string>
+    <string name="tags_create_button_message_reset">Reset</string>
+    <string name="tags_create_button_message_cancel">Cancel</string>
+    
+
+
+    <!-- **** Strings for Edit Activity for each Relation **** -->
+    
+    <!-- story Edit Activity Strings : Labels -->
+    
+    <string name="story_edit_label_login_id">LoginId</string>
+    <string name="story_edit_label_story_id">StoryId</string>
+    <string name="story_edit_label_title">Title</string>
+    <string name="story_edit_label_body">Body</string>
+    <string name="story_edit_label_audio_link">AudioLink</string>
+    <string name="story_edit_label_video_link">VideoLink</string>
+    <string name="story_edit_label_image_name">ImageName</string>
+    <string name="story_edit_label_image_meta_data">Image Name</string>
+    <string name="story_edit_label_tags">Tags</string>
+    <string name="story_edit_label_creation_time">CreationTime</string>
+    <string name="story_edit_label_story_time">StoryTime</string>
+    <string name="story_edit_label_latitude">Latitude</string>
+    <string name="story_edit_label_longitude">Longitude</string>
+    
+
+
+    <!-- story View Activity Strings : Default Values -->
+    
+    <string name="story_edit_default_value_login_id"></string>
+    <string name="story_edit_default_value_story_id"></string>
+    <string name="story_edit_default_value_title"></string>
+    <string name="story_edit_default_value_body"></string>
+    <string name="story_edit_default_value_audio_link"></string>
+    <string name="story_edit_default_value_video_link"></string>
+    <string name="story_edit_default_value_image_name"></string>
+    <string name="story_edit_default_value_image_meta_data"></string>
+    <string name="story_edit_default_value_tags"></string>
+    <string name="story_edit_default_value_creation_time"></string>
+    <string name="story_edit_default_value_story_time"></string>
+    <string name="story_edit_default_value_latitude"></string>
+    <string name="story_edit_default_value_longitude"></string>
+    
+	<!--  Login Activity Strings -->
+	<string name="login_activity_example_program_disclaimer">Login (Please note that this is an example app for the Coursera mooc.
+         The app should function correctly no matter what login is input)</string>
+    <string name="login_activity_login">Login</string>
+    <string name="login_activity_password">Password:</string>
+	<string name="login_activity_login_id">Login ID:</string>
+    
+    <!-- story Edit Activity Strings : Buttons -->
+    <string name="story_edit_button_message_save">Save</string>
+    <string name="story_edit_button_message_reset">Reset</string>
+    <string name="story_edit_button_message_cancel">Cancel</string>
+
+    <!-- tags Edit Fragment Strings : Labels -->
+    
+    <string name="tags_edit_label_login_id">LoginId</string>
+    <string name="tags_edit_label_story_id">StoryId</string>
+    <string name="tags_edit_label_tag">Tag</string>
+    
+
+
+    <!-- tags View Fragment Strings : Default Values -->
+    
+    <string name="tags_edit_default_value_login_id"></string>
+    <string name="tags_edit_default_value_story_id"></string>
+    <string name="tags_edit_default_value_tag"></string>
+    
+
+
+    <!-- tags Edit Fragment Strings : Buttons -->
+    <string name="tags_edit_button_message_save">Save</string>
+    <string name="tags_edit_button_message_reset">Reset</string>
+    <string name="tags_edit_button_message_cancel">Cancel</string>
+
+    
+
+
+    <!-- ******** Sycn Adaptor Account Login Strings *********** -->
+    <string name="ACCOUNT_TYPE">edu.vanderbilt.SyncProviderDemo.account</string>
+    <string name="server">Server Address::</string>
+    <string name="username">Username:</string>
+    <string name="username_hint">username Hint!</string>
+    <string name="password">Password:</string>
+    <string name="password_hint">password Hint!</string>
+    <string name="login">Login</string>
+    <string name="authenticating">Authenticating</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="record_button_label">Record</string>
+    <string name="title_activity_sound_record">SoundRecordActivity</string>
+    <string name="example_program_disclaimer">Login (Please note that this is an example app for the Coursera mooc.
+         The app should function correctly no matter what login is input)</string>
+    
+  
+
+</resources> 
