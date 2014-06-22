@@ -251,6 +251,16 @@ public class SoundRecordActivity extends Activity {
         mDoneButton.setOnClickListener(new OnClickListener() {	
 			@Override
 			public void onClick(View v) {
+				// Release the MediaRecorder/MediaPlayer if they're still being used.
+				if (mRecorder != null) {
+					mRecorder.stop();
+					mRecorder.release();
+				}
+				if (mPlayer != null)	{
+					mPlayer.release();
+				}
+				
+				// Finish
 				finish();
 			}
 		});

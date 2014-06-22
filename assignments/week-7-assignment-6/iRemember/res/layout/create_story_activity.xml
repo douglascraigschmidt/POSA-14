@@ -48,7 +48,7 @@ University of Maryland to appear in their names.
 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/StoryEditRelativeLayout"
+    android:id="@+id/StoryCreateRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/gray"
@@ -197,7 +197,6 @@ University of Maryland to appear in their names.
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/story_create_value_audio_location"
-                android:onClick="addVideoClicked"
                 android:text="@string/record_button_label"
                 android:visibility="gone" />
 

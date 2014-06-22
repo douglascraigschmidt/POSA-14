@@ -48,6 +48,7 @@ University of Maryland to appear in their names.
 
 package edu.vuum.mocca.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -59,6 +60,7 @@ import android.util.Log;
  * in the application.
  * 
  */
+@SuppressLint("Registered")
 public class StoryActivityBase extends Activity {
 
 	// A tag used for debugging with Logcat
