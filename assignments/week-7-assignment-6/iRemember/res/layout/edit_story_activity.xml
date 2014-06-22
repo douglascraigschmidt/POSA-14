@@ -61,7 +61,7 @@ University of Maryland to appear in their names.-->
         android:layout_marginBottom="55dp" >
 
         <RelativeLayout
-            android:id="@+id/StoryEditRelativeLayout"
+            android:id="@+id/StoryEditRelativeLayoutScrollable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >

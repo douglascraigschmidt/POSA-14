@@ -42,9 +42,12 @@ Note: One of the vulnerabilities in this assignment is patched in
 Android SDK Versions 4.1 and up.  If you think that means it doesn't
 matter, you should know that only 14% of Android devices are using an
 SDK above 4.0!  We therefore recommend that you create an AVD that is
-using Android 4.0 or *below* for this assignment. Also, please make
+using Android 4.0 (api 14) for this assignment. Also, please make
 sure your AVD has SD card memory since this application relies heavily
 on external storage.
+
+Be warned that some AVD's using below SDK 4.0 have reported some unexpected
+behavior.
 
 The application you will be inspecting is called iRemember, which we
 have adapted from Prof. Porter's MOOC on "Programming Mobile
@@ -158,8 +161,8 @@ The key command is "geo fix".
 
 INSTRUCTIONS FOR PART 2
 
-In the second part of the assignment, you will need to fix the
-security issues in the following files:
+In the second part of the assignment, you will need to fix two of the five
+security issues. Those two issues are found in the following files:
 
 . AndroidManifest.xml
 . LoginActivity.java
@@ -168,5 +171,4 @@ Please modify these two files to fix the security issues in them.
 When you have correctly modified the files to fix these issues, the
 security vulnerability checker will no longer be able to record sound
 or get login information from iRemember.  You should leave comments
-describing what you fixed and why.
-
+describing what you fixed and why. 

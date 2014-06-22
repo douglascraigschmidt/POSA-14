@@ -113,7 +113,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 
 	DatePicker storyDate;
 
-	Uri imagePath;
+	static Uri imagePath;	// Making this static keeps it from getting GC'd when we take pictures
 	Uri fileUri;
 	String audioPath;
 	Location loc;
@@ -416,8 +416,15 @@ public class CreateStoryActivity extends StoryActivityBase {
 			}
 		} 
 		else if (requestCode == CreateStoryActivity.MIC_SOUND_REQUEST) {
-			audioPath = (String) data.getExtras().get("data");  // Line 419
-			audioLocation.setText(audioPath.toString());
+			// If we successfully recorded sound, grab the results.
+			if (resultCode == SoundRecordActivity.RESULT_OK) {
+				audioPath = (String) data.getExtras().get("data");  // Line 419
+				audioLocation.setText(audioPath.toString());
+			}
+			// If not, let the user know.
+			else {
+				Toast.makeText(this, "Sound capture failed.", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 }
