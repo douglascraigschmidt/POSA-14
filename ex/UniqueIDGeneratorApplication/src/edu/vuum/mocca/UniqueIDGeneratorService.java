@@ -41,14 +41,14 @@ public class UniqueIDGeneratorService extends Service {
     private final int MAX_THREADS = 4;
 	
     /**
-     * The ExecutorService that references a ThreadPool.
+     * The ExecutorService implementation that references a
+     * ThreadPool.
      */
     private ExecutorService mExecutor;
 
     /**
-     * A persistent collection of unique IDs.  For simplicity we use a
-     * SharedPreference, which isn't optimized for performance but is
-     * easy to use.
+     * A collection of unique IDs implemented internally using a
+     * persistent Java HashMap.
      */
     private SharedPreferences uniqueIDs = null;
 
@@ -89,10 +89,10 @@ public class UniqueIDGeneratorService extends Service {
     }
 
     /**
-     * Extracts the encapsulated unique ID from the Message.
+     * Extracts the encapsulated unique ID from the reply Message.
      */
-    public static String uniqueID(Message message) {
-        return message.getData().getString("ID");
+    public static String uniqueID(Message replyMessage) {
+        return replyMessage.getData().getString("ID");
     }
 
     /**
@@ -175,6 +175,10 @@ public class UniqueIDGeneratorService extends Service {
         mExecutor.shutdown();
     }
 
+    /**
+     * Factory method that returns the underlying IBinder associated
+     * with the Request Messenger.
+     */
     @Override
     public IBinder onBind(Intent intent) {
         return mReqMessenger.getBinder();
