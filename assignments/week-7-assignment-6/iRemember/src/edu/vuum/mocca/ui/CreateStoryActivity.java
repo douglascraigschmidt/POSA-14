@@ -418,7 +418,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		else if (requestCode == CreateStoryActivity.MIC_SOUND_REQUEST) {
 			// If we successfully recorded sound, grab the results.
 			if (resultCode == SoundRecordActivity.RESULT_OK) {
-				audioPath = (String) data.getExtras().get("data");  // Line 419
+				audioPath = (String) data.getExtras().get("data");  // Line 421
 				audioLocation.setText(audioPath.toString());
 			}
 			// If not, let the user know.
