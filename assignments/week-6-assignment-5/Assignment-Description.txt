@@ -61,6 +61,11 @@ particular, you'll need to do the following:
 
   http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executors.html
 
+  There's also an example that shows how to use a Executor thread pool
+  available at
+  
+  https://github.com/douglascraigschmidt/POSA-14/tree/master/ex/UniqueIDGeneratorApplication
+
 . Understand the methods provided in the DownloadUtils class, which
   contains functionality that is common to both the
   DownloadIntentService and ThreadPoolDownloadService.
