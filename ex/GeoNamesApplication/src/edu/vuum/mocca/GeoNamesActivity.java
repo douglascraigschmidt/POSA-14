@@ -133,7 +133,7 @@ public class GeoNamesActivity extends GeoNamesBase {
     /**
      * The implementation of the GeoNamesCallback AIDL
      * Interface. Should be passed to the GeoNamesServiceAsync
-     * Service using the GeoNamesRequest.downloadImage() method.
+     * Service using the GeoNamesRequest.callWebService() method.
      * 
      * This implementation of GeoNamesCallback.Stub plays the role of
      * Invoker in the Broker Pattern.
