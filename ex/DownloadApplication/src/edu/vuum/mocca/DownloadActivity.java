@@ -49,6 +49,11 @@ public class DownloadActivity extends Activity {
     private ProgressDialog mProgressDialog;
 
     /**
+     * Instance of DownloadHandler.
+     */
+    Handler downloadHandler = new DownloadHandler(this);
+
+    /**
      * Method that initializes the Activity when it is first created.
      * 
      * @param savedInstanceState
@@ -189,11 +194,6 @@ public class DownloadActivity extends Activity {
             activity.displayImage(BitmapFactory.decodeFile(pathname));
         }
     };
-
-    /**
-     * Instance of DownloadHandler.
-     */
-    Handler downloadHandler = new DownloadHandler(this);
 
     /**
      * Display the Dialog to the User.
