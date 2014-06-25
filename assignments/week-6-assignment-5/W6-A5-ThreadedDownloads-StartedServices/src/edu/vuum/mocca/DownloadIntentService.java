@@ -81,7 +81,7 @@ public class DownloadIntentService extends IntentService {
      * user to define what happens when an Intent is actually handled.
      */
     @Override
-	protected void onHandleIntent (Intent intent) {
+    protected void onHandleIntent (Intent intent) {
         // TODO - You fill in here with a call the appropriate helper
         // method from the DownloadUtils class that downloads the uri
         // in the intent and returns the file's pathname using a
