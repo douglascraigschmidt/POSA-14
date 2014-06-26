@@ -4,15 +4,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -39,16 +38,21 @@ public class AcronymActivity extends Activity {
      * A custom ArrayAdapter used to display the list of AcronymData objects.
      */
     AcronymDataArrayAdapter adapter;
+    
+    /**
+     * Acronym entered by the usre.
+     */
+    EditText mEditText;
 
     /**
-     * The implementation of the AcronymCallback AIDL
+     * The implementation of the AcronymResults AIDL
      * Interface. Should be passed to the WebService using the
-     * AcronymRequest.callAcronymRequest() method.
+     * AcronymRequest.expandAcronym() method.
      * 
-     * This implementation of AcronymCallback.Stub plays the role of
+     * This implementation of AcronymResults.Stub plays the role of
      * Invoker in the Broker Pattern.
      */
-    AcronymCallback.Stub mAcronymCallback = new AcronymCallback.Stub() {
+    AcronymResults.Stub mAcronymResults = new AcronymResults.Stub() {
             /**
              * This method is called back by the Service to return the
              * results.
@@ -106,45 +110,32 @@ public class AcronymActivity extends Activity {
 
         // Get references to the UI components.
         setContentView(R.layout.activity_main);
-        final Button mButton = (Button) findViewById(R.id.button1);
-        final EditText mEditText = (EditText) findViewById(R.id.editText1);
+
+        mEditText = (EditText) findViewById(R.id.editText1);
         mListView = (ListView) findViewById(R.id.listView1);
+    }
 
-        /*
-         * Requirement to have Android ignore what it thinks is a long
-         * running process (Inernet lookup of data) on the UI thread.
-         * 
-         * However we are making use of the Asynchronous callback pattern.
-         * 
-         * This eliminates the need for us to manually call the
-         * service from within a separate thread from the UI thread,
-         * as synchronous service calls would require us to do.
-         */
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-            .permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+    /*
+     * Start the Asynchronous lookup.
+     */
+    public void expandAcronym(View v) {
+        if (mAcronymRequest != null) {
+            // Get the acronym entered by the user.
+            String acronym = mEditText.getText().toString();
 
-        // Setup the button click, to start the Asynchronous lookup.
-        mButton.setOnClickListener(new OnClickListener() {
-                /*
-                 * Start the Asynchronous lookup.
-                 */
-                @Override
-                    public void onClick(View v) {
-                    if (mAcronymRequest != null) {
-                        String acronym = mEditText.getText().toString();
-                        try {
-                            // Invoke a one-way AIDL call.
-                            mAcronymRequest.callAcronymRequest(mAcronymCallback,
-                                                               acronym);
-                        } catch (RemoteException e) {
-                            Log.e(TAG, "RemoteException:" + e.getMessage());
-                        }
-                    } else {
-                        Log.d(TAG, "mAcronymRequest was null.");
-                    }
-                } // onClick
-            }); // mButton.setOnClickListener ending
+            hideKeyboard();
+
+            try {
+                // Invoke a one-way AIDL call, which does not block
+                // the client.
+                mAcronymRequest.expandAcronym(mAcronymResults,
+                                              acronym);
+            } catch (RemoteException e) {
+                Log.e(TAG, "RemoteException:" + e.getMessage());
+            }
+        } else {
+            Log.d(TAG, "mAcronymRequest was null.");
+        }
     }
 
     /**
@@ -200,5 +191,16 @@ public class AcronymActivity extends Activity {
         if (mAcronymRequest != null) {
             unbindService(mServiceConnectionAsync);
         }
+    }
+
+    /**
+     * Hide the keyboard after a user has finished typing the url.
+     */
+    private void hideKeyboard() {
+        InputMethodManager mgr =
+            (InputMethodManager) getSystemService
+            (Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(mEditText.getWindowToken(),
+                                    0);
     }
 }

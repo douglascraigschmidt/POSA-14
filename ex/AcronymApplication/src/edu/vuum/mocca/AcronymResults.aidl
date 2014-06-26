@@ -4,10 +4,10 @@ import edu.vuum.mocca.AcronymData;
 import java.util.List;
 
 /**
- * Interface defining the methods that receive callbacks from the
- * remote service.
+ * Interface defining the method that receives callbacks from the
+ * AcronymServiceAsync.
  */
-interface AcronymCallback {
+interface AcronymResults {
     /**
      * This one-way (non-blocking) method allows the
      * AcyronymServiceAsync to return the List of AcronymData results

@@ -19,10 +19,10 @@ import android.util.Log;
  *        Activity can then interact with this Service by making
  *        one-way method calls on the AcronymRequest object asking
  *        this Service to lookup the Acronym's meaning, passing in an
- *        AcronymCallback object and the Acronym string.  After the
+ *        AcronymResults object and the Acronym string.  After the
  *        lookup is finished, this Service sends the Acronym results
  *        back to the Activity by calling sendResults() on the
- *        AcronymCallback object.
+ *        AcronymResults object.
  * 
  *        AIDL is an example of the Broker Pattern, in which all
  *        interprocess communication details are hidden behind the
@@ -47,13 +47,15 @@ public class AcronymServiceAsync extends Service {
      */
     AcronymRequest.Stub mAcronymRequestImpl = new AcronymRequest.Stub() {
             /**
-             * Implementation of the AcronymRequest's
-             * callAcronymRequest() method, which calls methods in
-             * DownloadUtils for brevity.
+             * Implement the AIDL AcronymRequest expandAcronym()
+             * method, which forwards to DownloadUtils getResults() to
+             * obtain the results from the Acronym Web service and
+             * then sends the results back to the Activity via a
+             * callback.
              */
             @Override
-		public void callAcronymRequest(AcronymCallback callback,
-                                               String acronym)
+		public void expandAcronym(AcronymResults callback,
+                                          String acronym)
                 throws RemoteException {
 
                 // Call the Acronym Web service to get the list of
