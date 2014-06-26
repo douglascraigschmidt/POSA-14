@@ -103,7 +103,7 @@ To Run the Android Application, right click on the 'W8-A7-Android'
 project and select [Run As] -> [Android Application]
 
 To Run the Android Unit Test, right click on the 'W8-A7-Android-Test'
-project and select [Run As] -> [Android Unit Test]
+project and select [Run As] -> [Android JUnit Test]
 
 By default, the application and test program do an "offline" download
 since students often run this code an emulator or some other
