@@ -140,9 +140,9 @@ public class ThreadPoolDownloadServiceTests
         Thread.sleep(Options.SHORT_WAIT_TIME);	
 
         //Create an Intent to start the service
-        mIntent = ThreadPoolIntentService.makeIntent(getContext(), 
-                                                     mHandler, 
-                                                     Options.TEST_URI);        
+        mIntent = ThreadPoolDownloadService.makeIntent(getContext(), 
+                                                       mHandler, 
+                                                       Options.TEST_URI);        
 
         // Start the service
         startService(mIntent);
