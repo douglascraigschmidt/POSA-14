@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">ServiceParcelableExAsync2</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">AcronymApplication</string>
     <string name="action_settings">Settings</string>
     <string name="row_result_tv">Result</string>
     <string name="result_string">Result</string>
