@@ -54,7 +54,7 @@ public class DownloadActivityTests extends ActivityInstrumentationTestCase2<Down
     /**
      * This is the implementation of DownloadCallback we'll use to test mDownloadRequest
      */
-    static DownloadCallback.Stub mDownloadCallback = new DownloadCallback.Stub() {
+    DownloadCallback.Stub mDownloadCallback = new DownloadCallback.Stub() {
             /**
              * Set the received pathname in this activity then notify the JUnit thread that
              * we've gotten a result.

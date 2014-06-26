@@ -7,7 +7,6 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 /**
  * This is the main Activity that the program uses to start the
