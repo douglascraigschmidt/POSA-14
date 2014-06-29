@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">W8-A7-ThreadedDownloads-BoundServices</string>
+    <string name="prompt">Enter URL:</string>
+    <string name="default_url">http://www.dre.vanderbilt.edu/~schmidt/ka.png</string>
+    <string name="bound_sync_string">Run Synchronous Bound Service</string>
+    <string name="bound_async_string">Run Asynchronous Bound Service</string>
+    <string name="reset_image_string">Reset Image</string>
+</resources>

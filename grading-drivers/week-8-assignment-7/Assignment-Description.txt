@@ -1,0 +1,117 @@
+Week 8: Programming Assignment 7
+
+Released Monday, June 30th, 2014
+Due Monday, July 14th, 2014
+
+In this assignment, you will implement a program that downloads images
+using Bound Services and then displays them in the context of the UI
+Thread.  The user can optionally select one of two different Bound
+Services whose implementations you will complete:
+
+. A DownloadBoundServiceSync that uses on the Android Interface
+  Definition Language (AIDL) and Binder framework to download files in
+  a Bound Service that communicates synchronously with the
+  DownloadActivity.
+
+. A DownloadBoundServiceAsync that uses on the Android Interface
+  Definition Language (AIDL) and Binder framework to download files in
+  a Bound Service that communicates asynchronously with the
+  DownloadActivity.
+
+In this directory you'll find Java source code, AndroidManifest.xml,
+and associated XML metadata files.  The directory
+W8-A7-ThreadedDownloads-StartedServices/src/edu/vuum/mocca/ contains
+the skeleton Java code that you'll implement by completing the "TODO -
+You fill in here" comments to provide a working solution.  DO NOT
+CHANGE THE OVERALL STRUCTURE OF THE SKELETON - just fill in the "TODO
+- You fill in here" portions!!!
+
+The main goal of this project is to understand the pattern-oriented
+threaded download application and how to start and interact with Bound
+Services using AIDL and the underlying Binder IPC mechanisms.  In
+particular, you'll need to do the following:
+
+. Understand the protocol for launching, connecting, interacting with,
+  and shutting down Bound Services, as described in these videos:
+
+  Section 2: Module 1: Part 7: Programming Bound Services (Part 1)
+  Section 2: Module 1: Part 8: Programming Bound Services (Part 2)
+
+. Understand how to program the DownloadActivity,
+  DownloadBoundServiceSync, and DownloadBoundServiceAsync classes to
+  launch the Bound Services using Intents, establish connections via
+  callbacks, and send/receive typed messages from the using AIDL and
+  the Binder IPC mechanisms, which are covered in these videos:
+
+  . Section 2: Module 1: Part 9: Programming Bound Services with AIDL
+    (which will be available shortly on the Coursera website)
+
+  . Another overview of AIDL is available (starting at timestamp 7:00)
+    in the video at
+  
+    https://class.coursera.org/android-001/lecture/85
+
+  . More detailed coverage of AIDL and Binder RPC (starting at
+    timestamp 40:18) in the video at
+
+    https://www.youtube.com/watch?v=PvRTTvLOzag&list=PLZ9NgFYEMxp50tvT8806xllaCbd31DpDy&index=20
+
+  . Additional discussion of Advanced Bound Service Communication is
+    available in the video at
+
+    https://www.youtube.com/watch?v=N3bZWje8KQc&list=PLZ9NgFYEMxp50tvT8806xllaCbd31DpDy&index=21
+
+. Understand factory methods and implement the makeIntent() factory
+  methods in each service, which are similar to the
+  UniqueIDGeneratorService.makeIntent() factory method covered in
+  these videos:
+
+  Section 2: Module 1: Part 7: Programming Bound Services (Part 1)
+  Section 2: Module 1: Part 8: Programming Bound Services (Part 2)
+
+. Understand the methods provided in the DownloadUtils class, which
+  contains functionality that is common to both the
+  DownloadBoundServiceSync and DownloadBoundServiceAsync classes.
+
+These videos are available at
+
+https://class.coursera.org/posa-002/lecture
+
+We'll also discuss this assignment specification (and later its
+solution) in the POSA MOOC "Virtual Office Hours", which are described
+in item #38 at the POSA MOOC FAQ available from
+
+http://www.courera.org/course/posa
+
+You'll need to build this Android application in the Eclipse ADT
+environment.  Unlike previous assignments, this program is
+user-driven, so output will vary depending on which URL is provided.
+In addition to using the default URL (which is available from
+https://d396qusza40orc.cloudfront.net/posa/ka.png) you should also
+test this application by finding an Internet URL to an image (ending
+in .jpg, .gif, .png etc.) and see if your application correctly
+displays the image.
+
+We provide several JUnit tests that should test your program's
+functionality.  The unit tests test the Service classes independently
+of the DownloadActivity, and then test the overall functionality of
+the program.  By default, the unit tests try to download the default
+URL and then check if the proper image was downloaded using Bitmap
+comparison.
+
+To Run the Android Application, right click on the 'W8-A7-Android'
+project and select [Run As] -> [Android Application]
+
+To Run the Android Unit Test, right click on the 'W8-A7-Android-Test'
+project and select [Run As] -> [Android JUnit Test]
+
+By default, the application and test program do an "offline" download
+since students often run this code an emulator or some other
+environment with slow/no Internet connectivity.  If you'd like to
+run/test it in the Internet please change the DOWNLOAD_OFFLINE boolean
+in
+
+W8-A7-ThreadedDownloads-StartedServices/src/edu/vuum/mocca/DownloadUtils.java
+
+to false.
+
