@@ -72,14 +72,14 @@ public class AcronymActivity extends Activity {
      * binding to the AcronymServiceAsync Service using bindService().
      */
     private GenericServiceConnection<AcronymRequest> mServiceConnectionAsync =
-        new GenericServiceConnection(AcronymRequest.class);
+        new GenericServiceConnection<AcronymRequest>(AcronymRequest.class);
 
     /**
      * This GenericServiceConnection is used to receive results after
      * binding to the AcronymServiceSync Service using bindService().
      */
     private GenericServiceConnection<AcronymCall> mServiceConnectionSync =
-        new GenericServiceConnection(AcronymCall.class);
+        new GenericServiceConnection<AcronymCall>(AcronymCall.class);
 
     /**
      * Called when the activity is starting - this is where most
