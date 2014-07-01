@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Interface defining the method that the AcronymServiceSync will
- * implement to synchronous provide access to the Acronym Web service.
+ * implement to provide synchronous access to the Acronym Web service.
  */
 interface AcronymCall {
    /**
