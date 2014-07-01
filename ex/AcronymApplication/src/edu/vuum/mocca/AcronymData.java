@@ -56,6 +56,16 @@ public class AcronymData implements Parcelable {
     }
 
     /**
+     * Private constructor provided for the CREATOR interface, which
+     * is used to de-marshal an AcronymData from the Parcel of data.
+     */
+    private AcronymData(Parcel in) {
+        mLongForm = in.readString();
+        mFreq = in.readInt();
+        mSince = in.readInt();
+    }
+
+    /**
      * The toString() custom implementation.
      */
     @Override
@@ -92,16 +102,6 @@ public class AcronymData implements Parcelable {
         dest.writeString(mLongForm);
         dest.writeInt(mFreq);
         dest.writeInt(mSince);
-    }
-
-    /**
-     * Private Constructor for use by CREATOR interface, which is used
-     * to de-marshal an AcronymData from the Parcel of data.
-     */
-    private AcronymData(Parcel in) {
-        mLongForm = in.readString();
-        mFreq = in.readInt();
-        mSince = in.readInt();
     }
 
     /**
