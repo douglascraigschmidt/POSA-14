@@ -36,6 +36,29 @@ public class AcronymServiceAsync extends Service {
         AcronymServiceAsync.class.getCanonicalName();
 
     /**
+     * Called when a client (e.g., AcronymActivity) calls
+     * bindService() with the proper Intent.  Returns the
+     * implementation of AcronymRequest, which is implicitly cast as
+     * an IBinder.
+     */
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mAcronymRequestImpl;
+    }
+
+    /**
+     * Factory method that makes an Intent used to start the
+     * AcronymServiceAsync when passed to bindService().
+     * 
+     * @param context
+     *            The context of the calling component.
+     */
+    public static Intent makeIntent(Context context) {
+        return new Intent(context,
+                          AcronymServiceAsync.class);
+    }
+
+    /**
      * The concrete implementation of the AIDL Interface
      * AcronymRequest, which extends the Stub class that implements
      * AcronymRequest, thereby allowing Android to handle calls across
@@ -70,27 +93,4 @@ public class AcronymServiceAsync extends Service {
                 callback.sendResults(acronymResults);
             }
 	};
-
-    /**
-     * Called when a client (e.g., AcronymActivity) calls
-     * bindService() with the proper Intent.  Returns the
-     * implementation of AcronymRequest, which is implicitly cast as
-     * an IBinder.
-     */
-    @Override
-    public IBinder onBind(Intent intent) {
-        return mAcronymRequestImpl;
-    }
-
-    /**
-     * Factory method that makes an Intent used to start the
-     * AcronymServiceAsync when passed to bindService().
-     * 
-     * @param context
-     *            The context of the calling component.
-     */
-    public static Intent makeIntent(Context context) {
-        return new Intent(context,
-                          AcronymServiceAsync.class);
-    }
 }
