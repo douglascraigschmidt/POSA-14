@@ -2,63 +2,38 @@ package edu.vuum.mocca;
 
 import java.util.List;
 
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ListView;
 
 /**
- * The main Activity that launches the screen users will see.
+ * @class AcronymActivity
+ *
+ * @brief The main Activity that handles communicate with the
+ *        AcronymService(s).
  */
-public class AcronymActivity extends Activity {
+public class AcronymActivity extends AcronymActivityBase {
     /**
-     * Used for logging purposes.
-     */
-    static private String TAG = AcronymActivity.class.getCanonicalName();
-
-    /**
-     * The ListView that will display the results to the user.
-     */
-     private ListView mListView;
-
-    /**
-     * A custom ArrayAdapter used to display the list of AcronymData objects.
-     */
-    private AcronymDataArrayAdapter adapter;
-    
-    /**
-     * Acronym entered by the usre.
-     */
-    private EditText mEditText;
-
-    /**
-     * The implementation of the AcronymResults AIDL Interface.
-     * Should be passed to the WebService using the
+     * The implementation of the AcronymResults AIDL Interface, which
+     * will be passed to the Acronym Web service using the
      * AcronymRequest.expandAcronym() method.
      * 
      * This implementation of AcronymResults.Stub plays the role of
-     * Invoker in the Broker Pattern.
+     * Invoker in the Broker Pattern since it dispatches the upcall to
+     * sendResults().
      */
     private AcronymResults.Stub mAcronymResults = new AcronymResults.Stub() {
             /**
-             * This method is called back by the Service to return the
-             * results.
+             * This method is invoked by the AcronymServiceAsync to
+             * return the results back to the DownloadActivity.
              */
             @Override
 		public void sendResults(final List<AcronymData> acronymDataList)
                 throws RemoteException {
-                // This method runs in a separate Thread as per the
-                // behavior of the Android Binder framework, so we
-                // need to explicitly post a runnable containing the
-                // results back to the UI Thread.
+                // Since the Android Binder framework dispatches this
+                // method in a separate Thread we need to explicitly
+                // post a runnable containing the results to the UI
+                // Thread, where it's displayed.
                 runOnUiThread(new Runnable() {
                         public void run() {
                             displayResults(acronymDataList);
@@ -81,23 +56,9 @@ public class AcronymActivity extends Activity {
     private GenericServiceConnection<AcronymCall> mServiceConnectionSync =
         new GenericServiceConnection<AcronymCall>(AcronymCall.class);
 
-    /**
-     * Called when the activity is starting - this is where most
-     * initialization should go.
-     */
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Get references to the UI components.
-        setContentView(R.layout.activity_main);
-
-        mEditText = (EditText) findViewById(R.id.editText1);
-        mListView = (ListView) findViewById(R.id.listView1);
-    }
-
     /*
-     * Initiate the asynchronous acronym lookup.
+     * Initiate the asynchronous acronym lookup when the user presses
+     * the "Look Up Async" button.
      */
     public void expandAcronymAsync(View v) {
         AcronymRequest acronymRequest = 
@@ -126,7 +87,8 @@ public class AcronymActivity extends Activity {
     }
 
     /*
-     * Initiate the synchronous acronym lookup.
+     * Initiate the synchronous acronym lookup when the user presses
+     * the "Look Up Sync" button.
      */
     public void expandAcronymSync(View v) {
         final AcronymCall acronymCall = 
@@ -170,30 +132,7 @@ public class AcronymActivity extends Activity {
     }
 
     /**
-     * Display the results to the screen.
-     * 
-     * @param results
-     *            List of Resultes to be displayed.
-     */
-    protected void displayResults(List<AcronymData> results) {
-        // Create custom ListView Adapter and fill it with our data.
-        if (adapter == null) {
-            // Create a local instance of our custom Adapter for our
-            // ListView.
-            adapter = new AcronymDataArrayAdapter(this, results);
-        } else {
-            // If adapter already existed, then change data set.
-            adapter.clear();
-            adapter.addAll(results);
-            adapter.notifyDataSetChanged();
-        }
-
-        // Set the adapter to the ListView.
-        mListView.setAdapter(adapter);
-    }
-
-    /**
-     * Hook method called when the MainActivity becomes visible to
+     * Hook method called when the AcronymActivity becomes visible to
      * bind the Activity to the Services.
      */
     @Override
@@ -215,13 +154,11 @@ public class AcronymActivity extends Activity {
     }
 
     /**
-     * Hook method called when the MainActivity becomes completely hidden to
-     * unbind the Activity from the Services.
+     * Hook method called when the AcronymActivity becomes completely
+     * hidden to unbind the Activity from the Services.
      */
     @Override
     public void onStop() {
-        super.onStop();
-
         // Unbind the Async Service if it is connected.
         if (mServiceConnectionAsync.getInterface() != null)
             unbindService(mServiceConnectionAsync);
@@ -229,16 +166,7 @@ public class AcronymActivity extends Activity {
         // Unbind the Sync Service if it is connected.
         if (mServiceConnectionSync.getInterface() != null)
             unbindService(mServiceConnectionSync);
-    }
 
-    /**
-     * Hide the keyboard after a user has finished typing the url.
-     */
-    private void hideKeyboard() {
-        InputMethodManager mgr =
-            (InputMethodManager) getSystemService
-            (Context.INPUT_METHOD_SERVICE);
-        mgr.hideSoftInputFromWindow(mEditText.getWindowToken(),
-                                    0);
+        super.onStop();
     }
 }
