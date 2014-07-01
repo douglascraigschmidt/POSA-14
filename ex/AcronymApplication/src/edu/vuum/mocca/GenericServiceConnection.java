@@ -14,7 +14,8 @@ import android.util.Log;
  *        otherwise written in a tedious and error-prone way for each
  *        ServiceConnection object.  It would be cleaner if Java
  *        generics supported traits and signature-based typing the way
- *        that C++ templates do..
+ *        that C++ templates do, but instead we use the Factory Method
+ *        pattern.
  */
 class GenericServiceConnection<AIDLInterface> implements ServiceConnection {
     /**
@@ -63,8 +64,9 @@ class GenericServiceConnection<AIDLInterface> implements ServiceConnection {
     public void onServiceConnected(ComponentName name,
                                    IBinder service) {
         Log.d("GenericServiceConnection", "Connected to ComponentName " + name);
-        // Cast the returned IBinder object to the AIDLInterface and
-        // store it for later use in mInterface.
+        // Use the Factory Method pattern to convert the IBinder
+        // object to the AIDLInterface and store it for later use in
+        // mInterface.  
         mInterface = mInterfaceFactory.asInterface(service);
     }
 
