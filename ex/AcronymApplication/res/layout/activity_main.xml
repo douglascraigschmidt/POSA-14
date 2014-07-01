@@ -17,12 +17,25 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="expandAcronym"
-        android:text="Look Up" />
+        android:orientation="horizontal"
+        android:gravity="center">
+      <Button
+         android:id="@+id/button1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="expandAcronymSync"
+         android:text="Look Up Sync" />
+
+      <Button
+         android:id="@+id/button2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="expandAcronymAsync"
+         android:text="Look Up Async" />
+    </LinearLayout>
 
     <include
         android:id="@+id/labels"

@@ -26,7 +26,9 @@
         </activity>
 
         <service android:name="AcronymServiceAsync"
-                 android:process=":my_process"/>
+                 android:process=":my_process_async"/>
+        <service android:name="AcronymServiceSync"
+                 android:process=":my_process_sync"/>
     </application>
 
 </manifest>
