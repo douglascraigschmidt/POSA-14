@@ -13,12 +13,7 @@ public class AcronymServiceConnectionFactory {
      * @return the GenericServiceConnection to use.
      */
     static public GenericServiceConnection<AcronymRequest> newAcronymRequestConnection() {
-        return new GenericServiceConnection<AcronymRequest>
-            (new GenericServiceConnection.InterfaceFactory<AcronymRequest>() {
-                public AcronymRequest asInterface(IBinder service) {
-                    return AcronymRequest.Stub.asInterface(service);
-                }
-            });
+        return new GenericServiceConnection(AcronymRequest.class);
     }
 
     /**
@@ -26,11 +21,6 @@ public class AcronymServiceConnectionFactory {
      * @return the GenericServiceConnection to use.
      */
     static public GenericServiceConnection<AcronymCall> newAcronymCallConnection() {
-        return new GenericServiceConnection<AcronymCall>
-            (new GenericServiceConnection.InterfaceFactory<AcronymCall>() {
-                public AcronymCall asInterface(IBinder service) {
-                    return AcronymCall.Stub.asInterface(service);
-                }
-            });
+        return new GenericServiceConnection(AcronymCall.class);
     }
 }
