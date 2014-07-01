@@ -9,28 +9,29 @@
     tools:context="edu.vu.isis.serviceparcelableexasync2.MainActivity$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/year_added_to_db"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/result_string" />
+        android:text="@string/year_string" />
 
     <TextView
         android:id="@+id/db_refs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/year_added_to_db"
+        android:paddingLeft="5dp"
+        android:layout_toRightOf="@+id/year_added_to_db"
         android:text="@string/refernces_string" />
 
     <TextView
-        android:id="@+id/year_added_to_db"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:paddingLeft="50dp"
-        android:text="@string/year_string" />
+        android:paddingLeft="5dp"
+        android:layout_toRightOf="@+id/db_refs"
+        android:text="@string/result_string" />
 
 </RelativeLayout>

@@ -72,22 +72,14 @@ public class AcronymActivity extends Activity {
      * binding to the AcronymServiceAsync Service using bindService().
      */
     private GenericServiceConnection<AcronymRequest> mServiceConnectionAsync =
-        new GenericServiceConnection<AcronymRequest>
-        (new GenericServiceConnection.InterfaceFactory<AcronymRequest>() {
-            public AcronymRequest asInterface(IBinder service) { 
-                return AcronymRequest.Stub.asInterface(service); 
-            }});
+        AcronymServiceConnectionFactory.newAcronymRequestConnection();
 
     /**
      * This GenericServiceConnection is used to receive results after
      * binding to the AcronymServiceSync Service using bindService().
      */
     private GenericServiceConnection<AcronymCall> mServiceConnectionSync =
-        new GenericServiceConnection<AcronymCall>
-        (new GenericServiceConnection.InterfaceFactory<AcronymCall>() {
-            public AcronymCall asInterface(IBinder service) { 
-                return AcronymCall.Stub.asInterface(service); 
-            }});
+        AcronymServiceConnectionFactory.newAcronymCallConnection();
 
     /**
      * Called when the activity is starting - this is where most
