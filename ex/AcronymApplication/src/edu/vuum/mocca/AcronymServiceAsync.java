@@ -61,7 +61,7 @@ public class AcronymServiceAsync extends Service {
                 // Call the Acronym Web service to get the list of
                 // possible expansions of the designated acronym.
                 List<AcronymData> acronymResults = 
-                    DownloadUtils.getResults(acronym);
+                    AcronymDownloadUtils.getResults(acronym);
 
                 Log.d(TAG, "" + acronymResults.size() + " results for acronym: " + acronym);
 

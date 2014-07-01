@@ -19,9 +19,9 @@ import android.util.Log;
  * A class to handle the Actual Downloading of information from the
  * Internet.
  */
-public class DownloadUtils {
+public class AcronymDownloadUtils {
     // Logging Tag
-    private final static String LOG_TAG = DownloadUtils.class
+    private final static String LOG_TAG = AcronymDownloadUtils.class
         .getCanonicalName();
 
     /** 
