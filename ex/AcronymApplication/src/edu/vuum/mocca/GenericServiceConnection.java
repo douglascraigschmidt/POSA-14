@@ -84,8 +84,8 @@ public class GenericServiceConnection<AIDLInterface extends android.os.IInterfac
      */
     @SuppressWarnings("unchecked")
     @Override
-        public void onServiceConnected(ComponentName name,
-                                       IBinder service) {
+    public void onServiceConnected(ComponentName name,
+                                   IBinder service) {
         Log.d("GenericServiceConnection", "Connected to ComponentName " + name);
         try {
             mInterface = (AIDLInterface)mAsInterface.invoke(mStub,
@@ -105,7 +105,7 @@ public class GenericServiceConnection<AIDLInterface extends android.os.IInterfac
      * Service will not respond to any requests.
      */
     @Override
-        public void onServiceDisconnected(ComponentName name) {
+    public void onServiceDisconnected(ComponentName name) {
         mInterface = null;
     }
 }

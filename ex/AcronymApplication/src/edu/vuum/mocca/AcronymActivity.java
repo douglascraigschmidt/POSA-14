@@ -28,7 +28,7 @@ public class AcronymActivity extends AcronymActivityBase {
              * return the results back to the DownloadActivity.
              */
             @Override
-		public void sendResults(final List<AcronymData> acronymDataList)
+            public void sendResults(final List<AcronymData> acronymDataList)
                 throws RemoteException {
                 // Since the Android Binder framework dispatches this
                 // method in a separate Thread we need to explicitly

@@ -77,8 +77,8 @@ public class AcronymServiceAsync extends Service {
              * callback.
              */
             @Override
-		public void expandAcronym(AcronymResults callback,
-                                          String acronym)
+            public void expandAcronym(AcronymResults callback,
+                                      String acronym)
                 throws RemoteException {
 
                 // Call the Acronym Web service to get the list of
