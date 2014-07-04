@@ -28,12 +28,6 @@ public class AcronymDownloadUtils {
     private final static String TAG = AcronymDownloadUtils.class
         .getCanonicalName();
 
-    /**
-     * Object that can invoke HTTP GET requests on URLs.
-     */
-    private final static AndroidHttpClient mClient =
-        AndroidHttpClient.newInstance("");
-
     /** 
      * URL to the Acronym web service.
      */
@@ -92,7 +86,8 @@ public class AcronymDownloadUtils {
      * 
      * @return The information that responds to your current acronym search.
      */
-    public static List<AcronymData> getResults(final String acronym) {
+    public static List<AcronymData> getResults(AndroidHttpClient client,
+                                               final String acronym) {
         // Object that encapsulates the HTTP GET request to the
         // Acronym Web service.
         HttpGet request = new HttpGet(ACRONYM_URL + acronym);
@@ -106,8 +101,8 @@ public class AcronymDownloadUtils {
             // Get expanded acronyms from the Web service in JSON
             // format, parse data into a List of AcronymData, and
             // return the results.
-            return mClient.execute(request,
-                                   responseHandler);
+            return client.execute(request,
+                                  responseHandler);
         } catch (ClientProtocolException e) {
             Log.i(TAG, "ClientProtocolException");
         } catch (IOException e) {
