@@ -18,8 +18,10 @@ import android.net.http.AndroidHttpClient;
 import android.util.Log;
 
 /**
- * A class to handle the Actual Downloading of information from the
- * Internet.
+ * @class AcronymDownloadUtils
+ *
+ * @brief Handles the actual downloading of Acronym information from
+ *        the GeoNames Web service.
  */
 public class AcronymDownloadUtils {
     // Logging Tag
