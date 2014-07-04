@@ -1,8 +1,5 @@
 package edu.vuum.mocca;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -31,29 +28,19 @@ public class AcronymData implements Parcelable {
     /**
      * The long form of the acronym (spelled out version).
      */
-    String mLongForm;
+    public String mLongForm;
 
     /**
      * The relative frequency of usage in print, of this meaning of
      * the acronym.
      */
-    int mFreq;
+    public int mFreq;
 
     /**
      * The year the acronym was added to this database of acronyms, or
      * was originally termed.
      */
-    int mSince;
-
-    /**
-     * Constructor that takes a JSON Object to construct the object
-     * (in the JSON format that the Acronym website provides).
-     */
-    public AcronymData(JSONObject jsonObject) throws JSONException {
-        mLongForm = jsonObject.getString("lf");
-        mFreq = jsonObject.getInt("freq");
-        mSince = jsonObject.getInt("since");
-    }
+    public int mSince;
 
     /**
      * Private constructor provided for the CREATOR interface, which
@@ -63,6 +50,16 @@ public class AcronymData implements Parcelable {
         mLongForm = in.readString();
         mFreq = in.readInt();
         mSince = in.readInt();
+    }
+
+    /**
+     * Constructor that initializes an AcronymData object from
+     * its parameters.
+     */
+    public AcronymData(String longForm, int freq, int since) {
+        mLongForm = longForm;
+        mFreq = freq;
+        mSince = since;
     }
 
     /**

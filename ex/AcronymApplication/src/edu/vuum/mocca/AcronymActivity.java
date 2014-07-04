@@ -2,6 +2,7 @@ package edu.vuum.mocca;
 
 import java.util.List;
 
+import android.os.AsyncTask;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
@@ -100,32 +101,27 @@ public class AcronymActivity extends AcronymActivityBase {
 
             hideKeyboard();
 
-            // Use mAcronymCall to download the Acronym data in a
-            // separate Thread and then display it in the UI Thread.
-            // We use a separate Thread to avoid blocking the UI
-            // Thread.
-            new Thread(new Runnable() {
-                    public void run () {
-                        try {
-                            Log.d(TAG,
-                                  "Calling twoway AcronymServiceSync.expandAcronym()");
+            // Use an AsyncTask to download the Acronym data in a
+            // separate thread and then display it in the UI thread.
+            new AsyncTask<String, Void, List<AcronymData>> () {
 
-                            // Download the expanded acronym via a
-                            // synchronous two-way method call.
-                            final List<AcronymData> acronymDataList = 
-                                acronymCall.expandAcronym(acronym);
-
-                            // Display the results in the UI Thread.
-                            runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        displayResults(acronymDataList);
-                                    }
-                                });
-                        } catch (RemoteException e1) {
-                            e1.printStackTrace();
-                        }
+                // Download the expanded acronym via a synchronous
+                // two-way method call, which runs in a background
+                // thread to avoid blocking the UI thread.
+                protected List<AcronymData> doInBackground(String... acronyms) {
+                    try {
+                        return acronymCall.expandAcronym(acronyms[0]);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
-                }).start();
+                    return null;
+                }
+
+                // Display the results in the UI Thread.
+                protected void onPostExecute(List<AcronymData> acronymDataList) {
+                    displayResults(acronymDataList);
+                }
+            }.execute(acronym);
         } else {
             Log.d(TAG, "mAcronymCall was null.");
         }
