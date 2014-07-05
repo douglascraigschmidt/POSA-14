@@ -147,6 +147,8 @@ public class UniqueIDGeneratorService extends Service {
             // underneath us.
             final Messenger replyMessenger = request.replyTo;
 
+            // Log.d(TAG, "replyMessenger = " + replyMessenger.hashCode());
+
             // Put a runnable that generates a unique ID into the
             // thread pool for subsequent concurrent processing.
             mExecutor.execute(new Runnable() {
@@ -157,6 +159,8 @@ public class UniqueIDGeneratorService extends Service {
                         try {
                             // Send the reply back to the
                             // UniqueIDGeneratorActivity.
+                            // Log.d(TAG, "replyMessenger = " + replyMessenger.hashCode());
+                            // try { Thread.sleep (10000); } catch (InterruptedException e) {}
                             replyMessenger.send(reply);
                         } catch (RemoteException e) {
                             e.printStackTrace();
