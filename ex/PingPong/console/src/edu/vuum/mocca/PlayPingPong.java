@@ -245,6 +245,79 @@ public class PlayPingPong implements Runnable
             mLock.unlock();
         }
     }
+    
+	private static class BinarySemaphore {
+		private Boolean mLocked;
+		private Object mMonObj;
+		
+		public BinarySemaphore(Boolean locked) {
+			mLocked = locked;
+			mMonObj = new Object();
+		}
+		public void acquire() {
+			synchronized(mMonObj) {
+				while (mLocked)
+					try {
+						mMonObj.wait();
+					} catch (InterruptedException e) {
+						// ignore.
+					}
+				mLocked = true;
+			}
+		}
+		public void release() {
+			synchronized(mMonObj) {
+				mLocked = false;
+				mMonObj.notify();
+			}
+		}
+	}
+
+    /**
+     * @class PingPongThreadMonObj
+     * 
+     * @brief This class uses monitor objects to implement the
+     *        acquire() and release() hook methods that schedule the
+     *        ping/pong algorithm. It plays the role of the "Concrete
+     *        Class" in the Template Method pattern.
+     */
+    static class PingPongThreadMonObj extends PingPongThread 
+    {
+        /**
+         * Semaphores that schedule the ping/pong algorithm.
+         */
+        private BinarySemaphore mSemas[] = new BinarySemaphore[2];
+        
+        /**
+         * Consts to distinguish between ping and pong BinarySemaphores.
+         */
+        private final static int FIRST_SEMA = 0;
+        private final static int SECOND_SEMA = 1;
+
+        PingPongThreadMonObj(String stringToPrint,
+                             BinarySemaphore firstSema,
+                             BinarySemaphore secondSema,
+                             boolean isOwner) 
+        {
+            super(stringToPrint);
+            mSemas[FIRST_SEMA] = firstSema;
+            mSemas[SECOND_SEMA] = secondSema;
+        }
+
+        /**
+         * Hook method for ping/pong acquire.
+         */
+        void acquire() {
+            mSemas[FIRST_SEMA].acquire();
+        }
+
+        /**
+         * Hook method for ping/pong release.
+         */
+        void release() {
+            mSemas[SECOND_SEMA].release();
+        }
+    }
 
     /**
      * Constructor stores the PlatformStrategy and the number of
@@ -306,6 +379,25 @@ public class PlayPingPong implements Runnable
             pingPongThreads[PONG_THREAD]
                 .setOtherThreadId(pingPongThreads[PING_THREAD].getId());
         }
+        else if (schedMechanism.equals("MONOBJ")) {
+            BinarySemaphore pingSema = new BinarySemaphore(false);
+            BinarySemaphore pongSema = new BinarySemaphore(true);
+
+            pingPongThreads[PING_THREAD] = 
+                new PingPongThreadMonObj("ping",
+                                         pingSema,
+                                         pongSema,
+                                         true);
+            pingPongThreads[PONG_THREAD] = 
+                new PingPongThreadMonObj("pong",
+                						 pongSema,
+                                         pingSema,
+                                         false);
+            pingPongThreads[PING_THREAD]
+                .setOtherThreadId(pingPongThreads[PONG_THREAD].getId());
+            pingPongThreads[PONG_THREAD]
+                .setOtherThreadId(pingPongThreads[PING_THREAD].getId());
+        }
     }
      
     /**
@@ -328,7 +420,7 @@ public class PlayPingPong implements Runnable
         /** 
          * Create the appropriate type of threads with the designated
          * scheduling mechanism (e.g., "SEMA" for Semaphores, "COND"
-         * for ConditionObjects, etc.).
+         * for ConditionObjects, "MONOBJ" for monitor objects, etc.).
          */
         makePingPongThreads(mSyncMechanism, 
                             pingPongThreads);
