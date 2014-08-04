@@ -31,19 +31,19 @@
      android:gravity="center_horizontal">
 
   <Button
-     android:id="@+id/button1"
+     android:id="@+id/runnable_button"
      android:layout_width="0dip"
      android:layout_height="wrap_content"
      android:layout_weight="1"
-     android:onClick="runRunnable"
+     android:onClick="handleButtonClick"
      android:text="@string/runRunnable" />
 
   <Button
-     android:id="@+id/button2"
+     android:id="@+id/messages_button"
      android:layout_width="0dip"
      android:layout_height="wrap_content"
      android:layout_weight="1"
-     android:onClick="runMessages"
+     android:onClick="handleButtonClick"
      android:text="@string/runMessages" />
   </LinearLayout>
   
@@ -54,19 +54,19 @@
      android:gravity="center_horizontal"> 
 
   <Button
-     android:id="@+id/button3"
+     android:id="@+id/async_task_button"
      android:layout_width="0dip"
      android:layout_height="wrap_content"
      android:layout_weight="1"
-     android:onClick="runAsyncTask"
+     android:onClick="handleButtonClick"
      android:text="@string/runAsyncTask" />
 
   <Button
-     android:id="@+id/button4"
+     android:id="@+id/reset_image_button"
      android:layout_width="0dip"
      android:layout_height="wrap_content"
      android:layout_weight="1"
-     android:onClick="resetImage"
+     android:onClick="handleButtonClick"
      android:text="@string/resetImage" />
 
   </LinearLayout>

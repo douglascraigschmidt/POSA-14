@@ -8,7 +8,6 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-    <supports-screens android:smallScreens="false" android:xlargeScreens="true" android:normalScreens="true" android:largeScreens="true"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -16,7 +15,7 @@
         android:theme="@style/AppTheme" 
         android:uiOptions="splitActionBarWhenNarrow">
         <activity
-            android:name=".ThreadedDownloads"
+            android:name=".ThreadedDownloadsActivity"
             android:label="@string/title_activity_threadeddownloads" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

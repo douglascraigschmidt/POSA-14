@@ -122,7 +122,7 @@ public class UniqueIDGeneratorActivity extends Activity {
         // Messenger.
         Message request = Message.obtain();
         request.replyTo = mReplyMessenger;
-        
+        // Log.d(TAG, "mReplyMessenger = " + mReplyMessenger.hashCode());        
         try {
             if (mReqMessengerRef != null) {
                 Log.d(TAG, "sending message");

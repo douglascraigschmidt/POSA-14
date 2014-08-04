@@ -10,12 +10,14 @@ import edu.vuum.mocca.DownloadCallback;
  *        so that the downloading process can return a result across
  *        process boundaries asynchronously.
  *
- *		This file generates a java interface in /gen
+ *        This file generates a java interface in /gen
  */
 interface DownloadRequest {
-    // Download an image at the given uri and store it on the file system.
-    // When finished, call the appropriate method on the callback object to
-    // send the downloaded file's file name on the file system.
+    /**
+     * Download an image at the given uri and store it on the file system.
+     * When finished, call the appropriate method on the callback object to
+     * send the downloaded file's file name on the file system.
+     */
     oneway void downloadImage (in Uri uri, 
                                in DownloadCallback callback); 
 }
