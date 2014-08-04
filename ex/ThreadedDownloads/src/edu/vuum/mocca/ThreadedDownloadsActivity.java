@@ -33,7 +33,7 @@ public class ThreadedDownloadsActivity extends Activity {
      * Maps buttons (represented via their resource ids) to
      * ButtonStrategy implementations.
      */
-    private final ButtonStrategyMap mButtonStrategyMap;
+    private ButtonStrategyMap mButtonStrategyMap;
 
     /**
      * The currently active ButtonStrategy, which is used to keep
@@ -86,7 +86,7 @@ public class ThreadedDownloadsActivity extends Activity {
                     // Indicate there's no active ButtonStrategy.
                     mActiveButtonStrategy = null;
                 }
-            }
+            };
 
         // Create a DownloadContext that stores references to the
         // EditText, ImageView, "this", and completion hook objects in
@@ -96,7 +96,7 @@ public class ThreadedDownloadsActivity extends Activity {
         return new DownloadContext((EditText) findViewById(R.id.mUrlEditText),
                                    (ImageView) findViewById(R.id.mImageView),
                                    this,
-                                   completionHook);
+                                   completionCommand);
     }
 
     /**

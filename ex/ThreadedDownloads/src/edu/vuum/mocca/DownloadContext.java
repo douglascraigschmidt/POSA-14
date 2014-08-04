@@ -1,15 +1,14 @@
 package edu.vuum.mocca;
 
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.URL;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -33,23 +32,23 @@ class DownloadContext {
     /**
      * User's selection of URL to download.
      */
-    private EditText mUrlEditText;
+    private final WeakReference<EditText> mUrlEditText;
 
     /**
      * Image that will be displayed to the user.
      */
-    private ImageView mImageView;
+    private final WeakReference<ImageView> mImageView;
+
+    /**
+     * Activity object used for UI operations.
+     */
+    private final WeakReference<Activity> mActivity;
 
     /**
      * The completion command called after the image has been
      * displayed.
      */
-    private Runnable mCompletionCommand;
-
-    /**
-     * Activity object used for UI operations.
-     */
-    private final Activity mActivity;
+    private final WeakReference<Runnable> mCompletionCommand;
 
     /**
      * Default URL to download.
@@ -65,17 +64,17 @@ class DownloadContext {
                            ImageView imageView,
                            Activity activity,
                            Runnable completionCommand) {
-        mUrlEditText = editText;
-        mImageView = imageView;
-        mActivity = activity;
-        mCompletionCommand = completionCommand;
+        mUrlEditText = new WeakReference<EditText>(editText);
+        mImageView = new WeakReference<ImageView>(imageView);
+        mActivity = new WeakReference<Activity>(activity);
+        mCompletionCommand = new WeakReference<Runnable>(completionCommand);
     }
 
     /**
      * Show a toast to the user.
      */
     public void showToast(String toastString) {
-        Toast.makeText(mActivity,
+        Toast.makeText(mActivity.get(),
                        toastString,
                        Toast.LENGTH_LONG).show();
     }
@@ -99,16 +98,18 @@ class DownloadContext {
                           + " please check the requested URL.");
             else {
                 // Display the image on the user's screen.
-                mImageView.setImageBitmap(image);
+                mImageView.get().setImageBitmap(image);
 
-                // Indicate we're done with this image.
-                mCompletionCommand.run();
+                // Indicate we're done with this image.  This call
+                // runs in the UI Thread, so we don't need to
+                // synchronize it.
+                mCompletionCommand.get().run();
             }
         } 
         // Otherwise, create a new Runnable command that's posted to
         // the UI Thread to display the image.
         else {
-            mActivity.runOnUiThread(new Runnable() {
+            mActivity.get().runOnUiThread(new Runnable() {
                     public void run() {
                         // Display the downloaded image to the user.
                         displayImage(image);
@@ -151,7 +152,7 @@ class DownloadContext {
      * @return String value in mUrlEditText
      */
     public String getUrlString() {
-        return mUrlEditText.getText().toString();
+        return mUrlEditText.get().getText().toString();
     }
 
     /**
@@ -159,9 +160,9 @@ class DownloadContext {
      */
     public void hideKeyboard() {
         InputMethodManager mgr =
-            (InputMethodManager) mActivity.getSystemService
+            (InputMethodManager) mActivity.get().getSystemService
             (Context.INPUT_METHOD_SERVICE);
-        mgr.hideSoftInputFromWindow(mUrlEditText.getWindowToken(),
+        mgr.hideSoftInputFromWindow(mUrlEditText.get().getWindowToken(),
                                     0);
     }
 
@@ -170,10 +171,10 @@ class DownloadContext {
      */
     public void resetImage(int imageResource) {
         // Display this image.
-        mImageView.setImageResource(imageResource);
+        mImageView.get().setImageResource(imageResource);
 
         // Indicate we're done with this image.
-        mCompletionCommand.run();
+        mCompletionCommand.get().run();
     }
 
     /**

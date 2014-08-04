@@ -13,7 +13,7 @@ public class ButtonStrategyMap {
         new HashMap<Integer, ButtonStrategy>();
             
     public ButtonStrategyMap(Integer[] buttonIds,
-                            ButtonStrategy[] buttonStrategys) {
+                             ButtonStrategy[] buttonStrategys) {
         // Map buttons pushed by the user to the requested type of
         // ButtonStrategy.
         for (int i = 0; i < buttonIds.length; ++i)

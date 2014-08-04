@@ -122,7 +122,7 @@ public class DownloadWithMessages implements ButtonStrategy {
         public void handleMessage(Message msg) {
             DownloadContext context = mContext.get();
 
-            if(context == null)
+            if (context == null)
                 return;
                     
             switch (msg.what) {
