@@ -48,7 +48,7 @@ class DownloadContext {
      * The completion command called after the image has been
      * displayed.
      */
-    private final WeakReference<Runnable> mCompletionCommand;
+    private final Runnable mCompletionCommand;
 
     /**
      * Default URL to download.
@@ -67,7 +67,7 @@ class DownloadContext {
         mUrlEditText = new WeakReference<EditText>(editText);
         mImageView = new WeakReference<ImageView>(imageView);
         mActivity = new WeakReference<Activity>(activity);
-        mCompletionCommand = new WeakReference<Runnable>(completionCommand);
+        mCompletionCommand = completionCommand; // new WeakReference<Runnable>(completionCommand);
     }
 
     /**
@@ -76,7 +76,7 @@ class DownloadContext {
     public void showToast(String toastString) {
         Toast.makeText(mActivity.get(),
                        toastString,
-                       Toast.LENGTH_LONG).show();
+                       Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -103,7 +103,7 @@ class DownloadContext {
                 // Indicate we're done with this image.  This call
                 // runs in the UI Thread, so we don't need to
                 // synchronize it.
-                mCompletionCommand.get().run();
+                mCompletionCommand.run();
             }
         } 
         // Otherwise, create a new Runnable command that's posted to
@@ -174,7 +174,7 @@ class DownloadContext {
         mImageView.get().setImageResource(imageResource);
 
         // Indicate we're done with this image.
-        mCompletionCommand.get().run();
+        mCompletionCommand.run();
     }
 
     /**

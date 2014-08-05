@@ -33,7 +33,7 @@ public class ThreadedDownloadsActivity extends Activity {
      * Maps buttons (represented via their resource ids) to
      * ButtonStrategy implementations.
      */
-    private ButtonStrategyMap mButtonStrategyMap;
+    private ButtonStrategyMapper mButtonStrategyMapper;
 
     /**
      * The currently active ButtonStrategy, which is used to keep
@@ -55,11 +55,11 @@ public class ThreadedDownloadsActivity extends Activity {
         // Sets the content view specified in the main.xml file.
         setContentView(R.layout.main);
 
-        // Initialize the ButtonStrategyMap that maps button ids to
+        // Initialize the ButtonStrategyMapper that maps button ids to
         // strategies for downloading and displaying images.
-        mButtonStrategyMap = 
-            new ButtonStrategyMap
-               (new Integer[] { 
+        mButtonStrategyMapper = 
+            new ButtonStrategyMapper
+               (new int[] { 
                     R.id.runnable_button,
                     R.id.messages_button,
                     R.id.async_task_button,
@@ -106,7 +106,9 @@ public class ThreadedDownloadsActivity extends Activity {
      *            Indicates the button pressed by the user.
      */
     public void handleButtonClick(View view) {
-        // Create the context associated with this user request.
+        // Create a DownloadContext object associated with this user
+        // request, which plays the role of the "Context" in the
+        // Strategy pattern.
         DownloadContext downloadContext = makeDownloadContext();
         
         // Hide the keyboard.
@@ -114,13 +116,14 @@ public class ThreadedDownloadsActivity extends Activity {
 
         // Only one download is allowed at a time, so if there's a
         // download in progress then cancel it first.
-        if (mActiveButtonStrategy != null) 
+        if (mActiveButtonStrategy != null) {
             mActiveButtonStrategy.cancelDownload(downloadContext);
+        }
 
         // Get the ButtonStrategy associated with the button's
         // resource id.
         mActiveButtonStrategy = 
-            mButtonStrategyMap.getButtonStrategy(view.getId());
+            mButtonStrategyMapper.getButtonStrategy(view.getId());
 
         // Invoke the ButtonStrategy to download and display the
         // image concurrently.

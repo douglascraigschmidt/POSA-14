@@ -60,7 +60,7 @@ public class DownloadWithRunnable implements ButtonStrategy {
     @Override
     public void cancelDownload(DownloadContext downloadContext) {
         // Let the user know this download is being canceled.
-        downloadContext.showToast("Canceling DownloadWithRunnable");
+        downloadContext.showToast("Canceling DownloadWithRunnable in progress");
 
         // Interrupt the Thread so it will stop the download.
         mThread.interrupt();

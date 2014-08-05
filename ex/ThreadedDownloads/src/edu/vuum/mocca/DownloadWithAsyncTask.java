@@ -94,7 +94,7 @@ public class DownloadWithAsyncTask implements ButtonStrategy {
     @Override
         public void cancelDownload(DownloadContext downloadContext) {
         // Let the user know this download is being canceled.
-        downloadContext.showToast("Canceling DownloadWithAsyncTask");
+        downloadContext.showToast("Canceling DownloadWithAsyncTask in progress");
 
         // Cancel the AsyncTask immediately.
         mDownloader.cancel(true);

@@ -76,7 +76,7 @@ public class DownloadWithMessages implements ButtonStrategy {
     @Override
     public void cancelDownload(DownloadContext downloadContext) {
         // Let the user know this download is being canceled.
-        downloadContext.showToast("Canceling DownloadWithMessages");
+        downloadContext.showToast("Canceling DownloadWithMessages in progress");
 
         // Interrupt the Thread so it will stop the download.
         mThread.interrupt();

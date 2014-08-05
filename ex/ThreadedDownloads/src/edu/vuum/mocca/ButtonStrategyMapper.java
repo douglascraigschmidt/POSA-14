@@ -1,24 +1,24 @@
 package edu.vuum.mocca;
 
-import java.util.HashMap;
+import android.util.SparseArray;
 
 /**
- * @class ButtonStrategyMap
+ * @class ButtonStrategyMapper
  *
  * @brief Maps buttons (represented via their resource ids) to
  *        ButtonStrategy implementations.
  */
-public class ButtonStrategyMap {
-    private HashMap<Integer, ButtonStrategy> mButtonStrategyMap = 
-        new HashMap<Integer, ButtonStrategy>();
+public class ButtonStrategyMapper {
+    private SparseArray<ButtonStrategy> mButtonStrategyArray =
+        new SparseArray<ButtonStrategy>();
             
-    public ButtonStrategyMap(Integer[] buttonIds,
-                             ButtonStrategy[] buttonStrategys) {
+    public ButtonStrategyMapper(int[] buttonIds,
+                                ButtonStrategy[] buttonStrategys) {
         // Map buttons pushed by the user to the requested type of
         // ButtonStrategy.
         for (int i = 0; i < buttonIds.length; ++i)
-            mButtonStrategyMap.put(buttonIds[i],
-                                  buttonStrategys[i]);
+            mButtonStrategyArray.put(buttonIds[i],
+                                     buttonStrategys[i]);
     }
 
     /**
@@ -27,7 +27,7 @@ public class ButtonStrategyMap {
      */
     public ButtonStrategy getButtonStrategy(int buttonId) {
         // Return the designated ButtonStrategy.
-        return mButtonStrategyMap.get(buttonId);
+        return mButtonStrategyArray.get(buttonId);
     }
 }
 
