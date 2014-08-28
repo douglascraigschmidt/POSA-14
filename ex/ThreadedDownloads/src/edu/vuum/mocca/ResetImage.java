@@ -1,5 +1,7 @@
 package edu.vuum.mocca;
 
+import edu.vuum.mocca.R;
+
 /**
  * @class ResetImage
  *
