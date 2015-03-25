@@ -25,7 +25,7 @@ public class DownloadWithAsyncTask implements ButtonStrategy {
      *        and display it to the user in the UI Thread.
      */
     private static class DownloadAsyncTask 
-        extends AsyncTask<String, Integer, Bitmap> {
+        extends AsyncTask<String, Void, Bitmap> {
         /**
          * Context that defines methods used by all concurrency
          * strategies.
@@ -58,7 +58,7 @@ public class DownloadWithAsyncTask implements ButtonStrategy {
          @ @return The Bitmap representation of the downloaded image.
         */
         protected Bitmap doInBackground(String... urls) {
-            // Downlaod the image, which can block since we're in a
+            // Download the image, which can block since we're in a
             // background thread.
             return mDownloadContext.downloadImage(urls[0]);
         }
@@ -85,7 +85,8 @@ public class DownloadWithAsyncTask implements ButtonStrategy {
         public void downloadAndDisplayImage(final DownloadContext downloadContext) {
         mDownloader = new DownloadAsyncTask(downloadContext);
 
-        mDownloader.execute(downloadContext.getUrlString());
+        mDownloader.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 
+                                      downloadContext.getUrlString());
     }
 
     /**

@@ -14,8 +14,7 @@ import java.util.concurrent.CountDownLatch;
  *        Method, Strategy, and Factory Method patterns to factor out
  *        common code and simplify the program design.
  */
-public class PlayPingPong implements Runnable
-{
+public class PlayPingPong implements Runnable {
     /**
      * Number of iterations to ping/pong.
      */
@@ -246,33 +245,6 @@ public class PlayPingPong implements Runnable
         }
     }
     
-	private static class BinarySemaphore {
-		private Boolean mLocked;
-		private Object mMonObj;
-		
-		public BinarySemaphore(Boolean locked) {
-			mLocked = locked;
-			mMonObj = new Object();
-		}
-		public void acquire() {
-			synchronized(mMonObj) {
-				while (mLocked)
-					try {
-						mMonObj.wait();
-					} catch (InterruptedException e) {
-						// ignore.
-					}
-				mLocked = true;
-			}
-		}
-		public void release() {
-			synchronized(mMonObj) {
-				mLocked = false;
-				mMonObj.notify();
-			}
-		}
-	}
-
     /**
      * @class PingPongThreadMonObj
      * 
@@ -390,7 +362,7 @@ public class PlayPingPong implements Runnable
                                          true);
             pingPongThreads[PONG_THREAD] = 
                 new PingPongThreadMonObj("pong",
-                						 pongSema,
+                                         pongSema,
                                          pingSema,
                                          false);
             pingPongThreads[PING_THREAD]

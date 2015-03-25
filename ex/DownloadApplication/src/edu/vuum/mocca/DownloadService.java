@@ -26,10 +26,12 @@ import android.util.Log;
 /**
  * @class DownloadService
  *
- * @brief DownloadService receives an Intent containing a URL (which
- *        is a type of URI) and a Messenger. It downloads the file at
- *        the URL, stores it on the file system, then returns the path
- *        name to the caller using the supplied Messenger.
+ * @brief Downloads & stores a bitmap image on behalf of the
+ *        DownloadActivity.  DownloadService receives an Intent
+ *        containing a URL (which is a type of URI) and a
+ *        Messenger. It downloads the file at the URL, stores it on
+ *        the file system, then returns the path name to the caller
+ *        using the supplied Messenger.
  * 
  *        The DownloadService class implements the CommandProcessor
  *        pattern and The Messenger is used as part of the Active
@@ -37,6 +39,18 @@ import android.util.Log;
  */
 public class DownloadService extends Service 
 {
+    /**
+     * String constant used to extract the Messenger "extra" from an
+     * intent.
+     */
+    private static final String MESSENGER = "MESSENGER";
+
+    /**
+     * String constant used to extract the pathname "extra" from an
+     * intent.
+     */
+    private static final String PATHNAME = "PATHNAME";
+
     /**
      * Looper associated with the HandlerThread.
      */
@@ -99,7 +113,7 @@ public class DownloadService extends Service
         Bundle data = message.getData();
 
         // Extract the pathname from the Bundle.
-        String pathname = data.getString("PATHNAME");
+        String pathname = data.getString(PATHNAME);
 
         // Check to see if the download succeeded.
         if (message.arg1 != Activity.RESULT_OK 
@@ -113,7 +127,7 @@ public class DownloadService extends Service
      * Factory method to make the desired Intent.
      */
     public static Intent makeIntent(Context context,
-                                    Uri uri,
+                                    Uri url,
                                     Handler downloadHandler) {
         // Create the Intent that's associated to the DownloadService
         // class.
@@ -121,11 +135,11 @@ public class DownloadService extends Service
                                    DownloadService.class);
 
         // Set the URI as data in the Intent.
-        intent.setData(uri);
+        intent.setData(url);
 
         // Create and pass a Messenger as an "extra" so the
         // DownloadService can send back the pathname.
-        intent.putExtra("MESSENGER",
+        intent.putExtra(MESSENGER,
                         new Messenger(downloadHandler));
         return intent;
     }
@@ -148,27 +162,6 @@ public class DownloadService extends Service
     	public ServiceHandler(Looper looper) {
             super(looper);
     	}
-
-        /**
-         * A factory method that creates a Message to return to the
-         * DownloadActivity with the pathname of the downloaded image.
-         */
-        private Message makeReplyMessage(String pathname){
-            Message message = Message.obtain();
-            // Return the result to indicate whether the download
-            // succeeded or failed.
-            message.arg1 = pathname == null 
-                ? Activity.RESULT_CANCELED 
-                : Activity.RESULT_OK;
-
-            Bundle data = new Bundle();
-
-            // Pathname for the downloaded image.
-            data.putString("PATHNAME", 
-            			   pathname);
-            message.setData(data);
-            return message;
-        }
 
         /**
          * A factory method that creates a Message that contains
@@ -197,10 +190,31 @@ public class DownloadService extends Service
 
             // Extract the Messenger.
             Messenger messenger = (Messenger)
-                    intent.getExtras().get("MESSENGER");
+                    intent.getExtras().get(MESSENGER);
 
             // Send the pathname via the messenger.
             sendPath(messenger, pathname);
+        }
+
+        /**
+         * A factory method that creates a Message to return to the
+         * DownloadActivity with the pathname of the downloaded image.
+         */
+        private Message makeReplyMessage(String pathname){
+            Message message = Message.obtain();
+            // Return the result to indicate whether the download
+            // succeeded or failed.
+            message.arg1 = pathname == null 
+                ? Activity.RESULT_CANCELED 
+                : Activity.RESULT_OK;
+
+            Bundle data = new Bundle();
+
+            // Pathname for the downloaded image.
+            data.putString(PATHNAME, 
+            			   pathname);
+            message.setData(data);
+            return message;
         }
 
         /**

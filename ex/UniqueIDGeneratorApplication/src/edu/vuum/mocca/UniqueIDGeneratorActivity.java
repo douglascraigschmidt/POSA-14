@@ -18,8 +18,9 @@ import android.widget.TextView;
 /**
  * @class UniqueIDGeneratorActivity
  *
- * @brief A class that interacts with a user to invoke a Bound Service
- *        that generates a system-wide Unique ID.
+ * @brief A class that interacts with a user to generate a system-wide
+ *        Unique ID via the UniqueIDGeneratorService, which is a Bound
+ *        Service.
  */
 public class UniqueIDGeneratorActivity extends Activity {
     /**
@@ -49,8 +50,8 @@ public class UniqueIDGeneratorActivity extends Activity {
     /**
      * @class ReplyHandler
      *
-     * @brief Receives the reply from the UniqueIDGeneratorService, which
-     * contains the unique ID.
+     * @brief Receives the reply from the UniqueIDGeneratorService
+     *        containing the unique ID and displays it to the user.
      */
     class ReplyHandler extends Handler {
         /**

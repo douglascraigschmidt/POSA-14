@@ -23,8 +23,8 @@ import android.widget.Toast;
 /**
  * @class DownloadActivity
  * 
- * @brief A class that allows a user to download a bitmap image using
- *        a DownloadService.
+ * @brief A class that enables a user to download a bitmap image using
+ *        the DownloadService.
  */
 public class DownloadActivity extends Activity {
     /**
@@ -49,7 +49,9 @@ public class DownloadActivity extends Activity {
     private ProgressDialog mProgressDialog;
 
     /**
-     * Stores an instance of DownloadHandler.
+     * Stores an instance of DownloadHandler that inherits from
+     * Handler and uses its handleMessage() hook method to process
+     * Messages sent to it from the DownloadService.
      */
     Handler mDownloadHandler = null;
 
@@ -148,7 +150,7 @@ public class DownloadActivity extends Activity {
     /**
      * @class DownloadHandler
      *
-     * @brief An inner class that inherits from Handler and uses its
+     * @brief A nested class that inherits from Handler and uses its
      *        handleMessage() hook method to process Messages sent to
      *        it from the DownloadService.
      */

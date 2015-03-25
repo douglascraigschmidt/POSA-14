@@ -22,7 +22,7 @@ public class Options
     private int mMaxTurns = 1;
 
     /**
-     * Which synchronization to use, e.g., "SEMA" vs. "COND".
+     * Which synchronization to use, e.g., "SEMA", "COND", or "MONOBJ".
      * Defaults to "SEMA".
      */
     private String mSyncMechanism = "SEMA";
@@ -49,8 +49,8 @@ public class Options
     }
 
     /**
-     * Which synchronization to use, e.g., "SEMA" vs. "COND".
-     * Defaults to "SEMA".
+     * Which synchronization to use, e.g., "SEMA", "COND", or
+     * "MONOBJ".  Defaults to "SEMA".
      */
     public String syncMechanism()
     {
@@ -90,7 +90,7 @@ public class Options
         platform.errorLog("Options", "Usage: ");
         platform.errorLog("Options", "-h: invoke help ");
         platform.errorLog("Options", "-i max-number-of-iterations ");
-        platform.errorLog("Options", "-s sync-mechanism (e.g., \"SEMA\" or \"COND\"");
+        platform.errorLog("Options", "-s sync-mechanism (e.g., \"SEMA\", \"COND\", or \"MONOBJ\"");
         platform.errorLog("Options", "-t max-number-of-turns");
     }
 
