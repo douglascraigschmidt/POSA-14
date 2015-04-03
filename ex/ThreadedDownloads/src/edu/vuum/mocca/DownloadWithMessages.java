@@ -126,7 +126,6 @@ public class DownloadWithMessages implements ButtonStrategy {
                 return;
                     
             switch (msg.what) {
-
             case SHOW_TOAST:
                 context.showToast("downloading via Handlers and Messages");
                 break;
