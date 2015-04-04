@@ -457,7 +457,7 @@ public class ThreadedDownloads extends Activity {
      *        using AsyncTask.
      */
     private class DownloadTask extends AsyncTask<String, Integer, Bitmap> {
-         /**
+        /**
          * Called by the AsyncTask framework in the UI Thread to
          * perform initialization actions.
          */
