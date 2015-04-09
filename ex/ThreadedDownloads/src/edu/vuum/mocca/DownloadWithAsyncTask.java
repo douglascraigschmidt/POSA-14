@@ -84,12 +84,12 @@ public class DownloadWithAsyncTask implements ButtonStrategy {
     @Override
     public void downloadAndDisplayImage(final DownloadContext downloadContext) {
 
-        mDownloader =
-            // new DownloadAsyncTask(downloadContext).execute(downloadContext.getUrlString());
+        mDownloader = (DownloadAsyncTask)
+            new DownloadAsyncTask(downloadContext).execute(downloadContext.getUrlString());
         
-            new DownloadAsyncTask(downloadContext).executeOnExecutor
-                  (AsyncTask.THREAD_POOL_EXECUTOR,
-                   downloadContext.getUrlString());
+           // (DownloadAsyncTask) new DownloadAsyncTask(downloadContext).executeOnExecutor
+           //       (AsyncTask.THREAD_POOL_EXECUTOR,
+           //        downloadContext.getUrlString());
     }
 
     /**
