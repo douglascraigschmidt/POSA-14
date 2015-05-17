@@ -335,4 +335,3 @@ public class DownloadService extends Service
         return null;
     }
 }
-

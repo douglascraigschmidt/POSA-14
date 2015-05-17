@@ -36,7 +36,7 @@ public class UniqueIDGeneratorService extends Service {
      * String used as a key for the unique ID stored in the reply
      * Message.
      */
-    final String ID = "ID";
+    final static String ID = "ID";
 
     /**
      * A RequestHandler that processes Messages from the
