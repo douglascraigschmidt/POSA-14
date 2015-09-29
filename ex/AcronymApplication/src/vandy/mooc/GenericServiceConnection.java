@@ -1,4 +1,4 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

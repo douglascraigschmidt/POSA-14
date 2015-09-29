@@ -1,4 +1,4 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import android.util.Log;
  * @brief Handles the actual downloading of Acronym information from
  *        the GeoNames Web service.
  */
+@SuppressWarnings("deprecation")
 public class AcronymDownloadUtils {
     // Logging Tag
     private final static String TAG = AcronymDownloadUtils.class

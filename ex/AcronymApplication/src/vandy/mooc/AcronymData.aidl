@@ -1,4 +1,4 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
 /**
  * AIDL definition for the AcronymData class, which the AIDL compiler

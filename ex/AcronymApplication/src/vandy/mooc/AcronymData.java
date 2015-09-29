@@ -1,4 +1,4 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
 import android.os.Parcel;
 import android.os.Parcelable;

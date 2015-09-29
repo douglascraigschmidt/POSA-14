@@ -1,6 +1,6 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
-import edu.vuum.mocca.AcronymResults;
+import vandy.mooc.AcronymResults;
 
 /**
  * Interface defining the method that the AcronymServiceAsync will

@@ -1,6 +1,6 @@
-package edu.vuum.mocca;
+package vandy.mooc;
 
-import edu.vuum.mocca.AcronymData;
+import vandy.mooc.AcronymData;
 import java.util.List;
 
 /**

@@ -12,92 +12,61 @@ import java.util.*;
  */
 public class Options
 {
-    /** The singleton @a Options instance. */
+    /** 
+     * The singleton @a Options instance. 
+     */
     private static Options mUniqueInstance = null;
 
-    /** Maximum number of iterations to run the program (defaults to 10). */
+    /**
+     * Maximum number of iterations to run the program (defaults to 10). 
+     */
     private int mMaxIterations = 10;
 
-    /** Maximum number of iterations per "turn" (defaults to 1). */
-    private int mMaxTurns = 1;
-
-    /**
-     * Which synchronization to use, e.g., "SEMA", "COND", or "MONOBJ".
-     * Defaults to "SEMA".
+    /** 
+     * Method to return the one and only singleton uniqueInstance. 
      */
-    private String mSyncMechanism = "SEMA";
-
-    /** Method to return the one and only singleton uniqueInstance. */
-    public static Options instance()
-    {
+    public static Options instance() {
         if (mUniqueInstance == null)
             mUniqueInstance = new Options();
 
         return mUniqueInstance;
     }
 
-    /** Number of iterations to run the program. */
-    public int maxIterations()
-    {
-        return mMaxIterations;
-    }
-
-    /** Number of iterations to run the program. */
-    public int maxTurns()
-    {
-        return mMaxTurns;
-    }
-
-    /**
-     * Which synchronization to use, e.g., "SEMA", "COND", or
-     * "MONOBJ".  Defaults to "SEMA".
+    /** 
+     * Number of iterations to run the program. 
      */
-    public String syncMechanism()
-    {
-        return mSyncMechanism;
+    public int maxIterations() {
+        return mMaxIterations;
     }
 
     /**
      * Parse command-line arguments and set the appropriate values.
      */
-    public boolean parseArgs(String argv[])
-    {
+    public boolean parseArgs(String argv[]) {
         for (int argc = 0; argc < argv.length; argc += 2)
             if (argv[argc].equals("-i"))
                 mMaxIterations = Integer.parseInt(argv[argc + 1]);
-            else if (argv[argc].equals("-s"))
-                mSyncMechanism = argv[argc + 1];
-            else if (argv[argc].equals("-t"))
-                mMaxTurns = Integer.parseInt(argv[argc + 1]);
-            else
-                {
-                    printUsage();
-                    return false;
-                }
+            else {
+                printUsage();
+                return false;
+            }
 
         return true;
     }
 
-    /** Print out usage and default values. */
-    public void printUsage()
-    {
-        PlatformStrategy platform = PlatformStrategy.instance();
-        platform.errorLog("Options", "\nHelp Invoked on ");
-        platform.errorLog("Options", "[-hist] ");
-        platform.errorLog("", "");
-        platform.errorLog("", "");
-
-        platform.errorLog("Options", "Usage: ");
-        platform.errorLog("Options", "-h: invoke help ");
-        platform.errorLog("Options", "-i max-number-of-iterations ");
-        platform.errorLog("Options", "-s sync-mechanism (e.g., \"SEMA\", \"COND\", or \"MONOBJ\"");
-        platform.errorLog("Options", "-t max-number-of-turns");
+    /** 
+     * Print out usage and default values. 
+     */
+    public void printUsage() {
+        System.out.println("\nHelp Invoked on [-hist] ");
+        System.out.println("Usage: ");
+        System.out.println("-h: invoke help ");
+        System.out.println("-i max-number-of-iterations ");
     }
 
     /**
      * Make the constructor private for a singleton.
      */
-    private Options()
-    {
+    private Options() {
     }
 }
